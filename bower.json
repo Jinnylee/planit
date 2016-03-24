@@ -1,0 +1,14 @@
+{
+  "name": "planit-app",
+  "version": "0.0.1",
+  "main": "",
+  "private": true,
+  "dependencies": {
+    "ng-token-auth": "^0.0.28",
+    "angular": "^1.5.2",
+    "angular-route": "^1.5.2"
+  },
+  "resolutions": {
+    "angular": "^1.5.2"
+  }
+}
