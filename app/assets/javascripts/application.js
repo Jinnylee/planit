@@ -15,5 +15,6 @@
 //= require ng-token-auth/dist/ng-token-auth
 //= require angular-cookie/angular-cookie
 //= require jquery
+//= require bootstrap/dist/js/bootstrap
 //= require jquery_ujs
 //= require_tree .

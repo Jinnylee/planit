@@ -9,6 +9,30 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/', {
       templateUrl: "<%= asset_path('static_pages/index.html') %>",
       controller: 'StaticPagesCtrl'
+    }).
+    when('/trips', {
+      templateUrl: "<%= asset_path('trips/index.html') %>",
+      controller: 'TripsCtrl'
+    }).
+    when('/trips/:trip_id/activities', {
+      templateUrl: "<%= asset_path('trips/activities.html') %>",
+      controller: 'ActivitiesCtrl'
+    }).
+    when('/trips/:trip_id/flights', {
+      templateUrl: "<%= asset_path('trips/flights.html') %>",
+      controller: 'FlightsCtrl'
+    }).
+    when('/trips/:trip_id/accommodations', {
+      templateUrl: "<%= asset_path('trips/accommodations.html') %>",
+      controller: 'AccommodationsCtrl'
+    }).
+    when('/trips/:trip_id/expenses', {
+      templateUrl: "<%= asset_path('trips/expenses.html') %>",
+      controller: 'ExpensesCtrl'
+    }).
+    when('/trips/:trip_id/packings', {
+      templateUrl: "<%= asset_path('trips/packings.html') %>",
+      controller: 'PackingsCtrl'
     })
 
   $authProvider.configure({
