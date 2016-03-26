@@ -1,25 +1,56 @@
-<div class="container">
-  <div class="row">
-    <h1> {{ message }} </h1>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Planit</title>
+</head>
 
-  <div class="row">
-    <a href="/#/signup"><button class="btn btn-primary">Signup</button></a>
-    <a href="/#/login"><button class="btn btn-primary">Login</button></a>
-    <button class="btn btn-danger" ng-click="logout()">Logout</button>
-  </div>
-</div>
+<body>
 
-<!-- VIDEO COMPONENT -->
-<div class="homepage-hero-module">
+<!-- VIDEO BACKGROUND:
+ -->
+  <div class="homepage-hero-module">
     <div class="video-container">
         <div class="filter"></div>
         <video autoplay loop class="fillWidth">
-            <source src="PATH_TO_MP4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="/app/assets/images/Beach-Bali.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="/app/assets/images/Beach-Bali.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <div class="poster hidden">
+            <img src="/app/assets/images/Beach-Bali.jpg" alt="">
+        </div>
+    </div>
+  </div>
+
+<!-- LOGIN DETAILS: -->
+
+<!--   <div class="container">
+    <div class="row"> -->
+
+    <div class="signupRow">
+      <h1> {{ message }} </h1>
+      <a href="/#/signup"><button class="btn btn-primary">Signup</button></a>
+      <a href="/#/login"><button class="btn btn-primary">Login</button></a>
+      <button class="btn btn-danger" ng-click="logout()">Logout</button>
+<!--     </div>
+  </div> -->
+
+</body>
+</html>
+
+
+
+
+<!-- VIDEO COMPONENT -->
+<!-- <div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="/app/assets/images/Beach-Bali.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
             <source src="PATH_TO_WEBM" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
         </video>
         <div class="poster hidden">
             <img src="PATH_TO_JPEG" alt="">
         </div>
     </div>
-</div>
+</div> -->

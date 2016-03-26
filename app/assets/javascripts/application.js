@@ -16,5 +16,6 @@
 //= require angular-cookie/angular-cookie
 //= require jquery
 //= require bootstrap/dist/js/bootstrap
+//= require static_pages.js
 //= require jquery_ujs
 //= require_tree .
