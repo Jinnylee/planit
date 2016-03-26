@@ -13,11 +13,11 @@
     <div class="video-container">
         <div class="filter"></div>
         <video autoplay loop class="fillWidth">
-            <source src="../app/assets/images/Beach-Bali.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-            <source src="../images/Beach-Bali.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="../../images/Beach-Bali.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="../../images/Beach-Bali.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
         </video>
         <div class="poster hidden">
-            <img src="../images/Beach-Bali.jpg" alt="">
+            <img src="../../images/Beach-Bali.jpg" alt="">
         </div>
     </div>
   </div>
@@ -31,6 +31,28 @@
       <a href="/#/signup"><button class="btn btn-primary">Signup</button></a>
       <a href="/#/login"><button class="btn btn-primary">Login</button></a>
       <button class="btn btn-danger" ng-click="logout()">Logout</button>
+
+
+
+      <form id="signin-form">
+            <p class="sign-in-font">SIGN IN</p>
+            <p id="fbButton"><button class="btn" id="fb-button"></button><span class="orText"> -- or -- </span></p>
+            <p><input type="email" name="email" placeholder="email"></p>
+            <p><input type="password" name="password" placeholder="password"></p>
+            <button id="submit-button-home" class="btn btn-info"type="submit">Submit</button>
+      </form>
+
+      <form id="signup-form">
+          <p class="sign-up-font">SIGN UP</p>
+          <p><input type="text" placeholder="First name" name="first-name"></p>
+          <p><input type="text" placeholder="Last name" name="last-name"></p>
+          <p><input type="text" placeholder="Username" name="username"></p>
+          <p><input type="email" placeholder="Email" name="email"></p>
+          <p><input type="password" placeholder="Password"name="password"></p>
+          <p><input type="password" placeholder="Password confirm"name="password_confirmation"></p>
+          <button id="submit-button-home" class="btn btn-info"type="submit">Submit</button>
+      </form>
+
     </div>
 
 </body>
