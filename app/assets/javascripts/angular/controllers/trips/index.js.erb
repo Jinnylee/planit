@@ -1,3 +1,81 @@
-app.controller('TripsCtrl', ['$scope', function($scope){
+app.controller('TripsCtrl', ['$scope', '$http', function($scope, $http){
   $scope.message = "Trips";
+  $scope.trips = [];
+  $scope.newOrEditTrip = {};
+  $scope.editing = false;
+  $scope.adding = true;
+
+  var getTrips = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips'
+   }).then(function(resp){
+    console.log("showing trips!");
+    console.log(resp);
+    $scope.trips = resp.data.trips
+   }, function(resp){
+    console.log("error");
+    console.log(resp);
+   });
+  };
+
+  $scope.toggleEditMode = function(trip) {
+    console.log($scope)
+    $scope.newOrEditTrip = {
+      location: trip.location,
+      start_date: trip.start_date,
+      end_date: trip.end_date,
+      _id: trip._id
+    };
+    $scope.editing = true;
+  };
+
+  $scope.addOrEditTrip = function() {
+    if ($scope.editing){
+      console.log("EDITING FUNCTION")
+      $http({
+        method: 'PATCH',
+        url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id,
+        data: $scope.newOrEditTrip
+      }).then(function(resp){
+        console.log("edited trip");
+        getTrips();
+        $scope.newOrEditTrip = {};
+        $scope.editing = false;
+      }, function(resp){
+        console.log("error");
+        console.log(resp);
+      });
+    } else {
+      console.log("POST FUNCTION");
+      $http({
+        method:'POST',
+        url: 'http://localhost:3000/trips',
+        data: $scope.newOrEditTrip
+      }).then(function(resp){
+        console.log("added new trip")
+        getTrips();
+        $scope.newOrEditTrip = {};
+      }, function(resp){
+        console.log("error");
+        console.log(resp);
+      });
+    }
+  };
+
+  $scope.deleteTrip = function(id) {
+    $http({
+      method: 'DELETE',
+      url: 'http://localhost:3000/trips/' + id
+    }).then(function(resp){
+      console.log("deleted trip")
+      getTrips();
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  getTrips();
+
 }]);
