@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include DeviseTokenAuth::Concerns::SetUserByToken
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :get_current_user
 
   def authenticate_user!
@@ -21,6 +22,11 @@ class ApplicationController < ActionController::Base
       @current_user = current_user
     end
     @current_user
+  end
+
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << [:name]
   end
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
