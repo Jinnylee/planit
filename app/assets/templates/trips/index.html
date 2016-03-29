@@ -1,4 +1,4 @@
-<script src="javascripts/index.js"></script>
+<script src="src/js/angular-datepicker.js"></script>
 
 <section>
   <h1>Trips Profile Page</h1>
@@ -24,6 +24,9 @@
           <label>Location: </label>
           <input type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
         </div>
+        <datepicker>
+          <input ng-model="newOrEditTrip.start_date" type="text"/>
+        </datepicker>
 
         <!-- <div>
           <label>Start date: </label>

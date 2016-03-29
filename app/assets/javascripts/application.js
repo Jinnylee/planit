@@ -13,6 +13,7 @@
 //= require angular/angular
 //= require angular-route/angular-route
 //= require ng-token-auth/dist/ng-token-auth
+//= require angularjs-datepicker/src/js/angular-datepicker
 //= require angular-cookie/angular-cookie
 //= require jquery
 //= require bootstrap/dist/js/bootstrap
