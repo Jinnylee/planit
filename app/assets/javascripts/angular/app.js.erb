@@ -33,6 +33,10 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     when('/trips/:id/packings', {
       templateUrl: "<%= asset_path('trips/packings.html') %>",
       controller: 'PackingsCtrl'
+    }).
+    when('/trips/:id/members', {
+      templateUrl: "<%= asset_path('trips/members.html') %>",
+      controller: 'MembersCtrl'
     })
 
   $authProvider.configure({
