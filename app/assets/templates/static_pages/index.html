@@ -28,8 +28,8 @@
 
      <div class="signupRow">
       <h1> {{ message }} </h1>
-      <a href="/#/signup"><button class="btn btn-primary">Signup</button></a>
-      <a href="/#/login"><button class="btn btn-primary">Signin</button></a>
+      <a href="/#/"><button class="btn btn-primary" ng-click="signupIsVisible">Signup</button></a>
+      <a href="/#/login"><button class="btn btn-primary" ng-click="signinIsVisible">Signin</button></a>
 
 
 
@@ -57,7 +57,7 @@
 <!-- SIGN IN -->
   <div class="container">
     <div class="row">
-      <form id="signin-form" ng-submit="login()" role="form" ng-init="loginForm = {}">
+      <form id="signin-form" ng-show="signinIsVisible" ng-submit="login()" role="form" ng-init="loginForm = {}">
         <h1 class="sign-in-font">Sign In</h1>
 
         <div class="form-group">
@@ -79,7 +79,7 @@
 <!-- SIGN UP -->
   <div class="container">
     <div class="row">
-      <form id="signup-form" ng-submit="signup()" role="form" ng-init="registrationForm = {}">
+      <form id="signup-form" ng-show="signupIsVisible" ng-submit="signup()" role="form" ng-init="registrationForm = {}">
         <h1 class="sign-up-font">Sign Up</h1>
 
         <div class="form-group">
