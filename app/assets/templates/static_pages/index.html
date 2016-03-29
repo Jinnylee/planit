@@ -1,11 +1,76 @@
-<div class="container">
-  <div class="row">
-    <h1> {{ message }} </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Planit</title>
+</head>
+
+<body>
+
+<!-- VIDEO BACKGROUND:
+ -->
+  <div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="../../images/Beach-Bali.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="../../images/Beach-Bali.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <div class="poster hidden">
+            <img src="../../images/Beach-Bali.jpg" alt="">
+        </div>
+    </div>
   </div>
 
-  <div class="row">
-    <a href="/#/signup"><button class="btn btn-primary">Signup</button></a>
-    <a href="/#/login"><button class="btn btn-primary">Login</button></a>
-    <button class="btn btn-danger" ng-click="logout()">Logout</button>
-  </div>
-</div>
+<!-- LOGIN DETAILS: -->
+
+
+
+    <div class="signupRow">
+      <h1> {{ message }} </h1>
+      <a href="/#/signup"><button class="btn btn-primary">Signup</button></a>
+      <a href="/#/login"><button class="btn btn-primary">Login</button></a>
+      <button class="btn btn-danger" ng-click="logout()">Logout</button>
+
+
+
+      <form id="signin-form">
+            <p class="sign-in-font">SIGN IN</p>
+            <p id="fbButton"><button class="btn" id="fb-button"></button><span class="orText"> -- or -- </span></p>
+            <p><input type="email" name="email" placeholder="email"></p>
+            <p><input type="password" name="password" placeholder="password"></p>
+            <button id="submit-button-home" class="btn btn-info"type="submit">Submit</button>
+      </form>
+
+      <form id="signup-form">
+          <p class="sign-up-font">SIGN UP</p>
+          <p><input type="text" placeholder="First name" name="first-name"></p>
+          <p><input type="text" placeholder="Last name" name="last-name"></p>
+          <p><input type="text" placeholder="Username" name="username"></p>
+          <p><input type="email" placeholder="Email" name="email"></p>
+          <p><input type="password" placeholder="Password"name="password"></p>
+          <p><input type="password" placeholder="Password confirm"name="password_confirmation"></p>
+          <button id="submit-button-home" class="btn btn-info"type="submit">Submit</button>
+      </form>
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+<!-- VIDEO COMPONENT -->
+<!-- <div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="/app/assets/images/Beach-Bali.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="PATH_TO_WEBM" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <div class="poster hidden">
+            <img src="PATH_TO_JPEG" alt="">
+        </div>
+    </div>
+</div> -->
