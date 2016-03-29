@@ -1,13 +1,13 @@
-<section ng-controller="TripsCtrl">
+<section>
   <h1>Trips Profile Page</h1>
   <div>
     <div ng-repeat="trip in trips">
       <div>
-        <div><strong>{{ trip.location }}</strong></div>
+        <div><a ui-sref-active="active" ui-sref="/trips/:trip.id/activities"><strong>{{ trip.location }}</strong></a></div>
         <div>{{ trip.start_date }}</div>
         <div>{{ trip.end_date }}</div>
       </div>
-      <button class="delete" ng-click="deleteTrip(trip._id)">X</button>
+      <button class="delete" ng-click="deleteTrip(trip.id)">X</button>
       <button class="edit" ng-click="toggleEditMode(trip)">Edit</button>
     </div>
   </div>

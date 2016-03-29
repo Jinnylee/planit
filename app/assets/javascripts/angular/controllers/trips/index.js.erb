@@ -8,11 +8,11 @@ app.controller('TripsCtrl', ['$scope', '$http', function($scope, $http){
   var getTrips = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips'
+      url: 'http://localhost:3000/trips.json'
    }).then(function(resp){
     console.log("showing trips!");
     console.log(resp);
-    $scope.trips = resp.data.trips
+    $scope.trips = resp.data
    }, function(resp){
     console.log("error");
     console.log(resp);
@@ -20,22 +20,23 @@ app.controller('TripsCtrl', ['$scope', '$http', function($scope, $http){
   };
 
   $scope.toggleEditMode = function(trip) {
-    console.log($scope)
+    console.log("togleEditMode", trip);
     $scope.newOrEditTrip = {
       location: trip.location,
       start_date: trip.start_date,
       end_date: trip.end_date,
-      _id: trip._id
+      _id: trip.id
     };
     $scope.editing = true;
   };
 
   $scope.addOrEditTrip = function() {
     if ($scope.editing){
-      console.log("EDITING FUNCTION")
+      console.log("EDITING FUNCTION");
+      console.log("addOrEditTrip", $scope.newOrEditTrip);
       $http({
         method: 'PATCH',
-        url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id,
+        url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id + '.json',
         data: $scope.newOrEditTrip
       }).then(function(resp){
         console.log("edited trip");
@@ -50,7 +51,7 @@ app.controller('TripsCtrl', ['$scope', '$http', function($scope, $http){
       console.log("POST FUNCTION");
       $http({
         method:'POST',
-        url: 'http://localhost:3000/trips',
+        url: 'http://localhost:3000/trips.json',
         data: $scope.newOrEditTrip
       }).then(function(resp){
         console.log("added new trip")
@@ -66,7 +67,7 @@ app.controller('TripsCtrl', ['$scope', '$http', function($scope, $http){
   $scope.deleteTrip = function(id) {
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/trips/' + id
+      url: 'http://localhost:3000/trips/' + id + '.json'
     }).then(function(resp){
       console.log("deleted trip")
       getTrips();
