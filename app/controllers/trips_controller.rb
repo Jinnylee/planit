@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @trips = Trip.all
+    @trips = current_user.trips.order(created_at: :desc)
     respond_to do |format|
       format.json { render 'index.jbuilder' }
     end

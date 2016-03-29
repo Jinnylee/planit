@@ -1,3 +1,5 @@
+<script src="javascripts/index.js"></script>
+
 <section>
   <h1>Trips Profile Page</h1>
   <div>
@@ -20,8 +22,9 @@
       <form id="newTrip" ng-submit="addOrEditTrip()">
         <div>
           <label>Location: </label>
-          <input type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location"></input>
+          <input type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
         </div>
+
         <!-- <div>
           <label>Start date: </label>
           <input type="text" placeholder="Enter start date" ng-model="newOrEditTrip.start_date"></input>

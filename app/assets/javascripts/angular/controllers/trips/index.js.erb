@@ -1,8 +1,9 @@
-app.controller('TripsCtrl', ['$scope', '$http', function($scope, $http){
+app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($scope, $http, $auth, $location){
 
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
-      console.log(resp);
+      console.log(resp, "logged out!");
+      $location.path('/');
     }).catch(function(resp) {
       console.log(resp);
     });
@@ -87,5 +88,6 @@ app.controller('TripsCtrl', ['$scope', '$http', function($scope, $http){
   };
 
   getTrips();
+
 
 }]);
