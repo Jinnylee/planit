@@ -1,5 +1,25 @@
-<h1>Members: </h1>
-<div>
-  <h2>Add Members</h2>
-  <input placeholder="Email"></input>
-</div>
+<button ng-click="pending=false">Members</button>
+<button ng-click="pending=true">Pending Members</button>
+
+<section ng-hide="pending">
+
+  <div class="row">
+    <h1>Invite members</h1>
+
+    <form id="newMember" ng-submit="addMember()">
+      <div>
+        <label>Location: </label>
+        <input type="text" placeholder="Email" ng-model="member.email"></input>
+      </div>
+        <input type="submit" value="Invite">
+    </form>
+  </div>
+
+  <h1>Members: </h1>
+</section>
+
+<section ng-show="pending">
+  <div>
+    <div>{{pending.email}}</div>
+  </div>
+</section>

@@ -1,4 +1,36 @@
 app.controller('MembersCtrl', ['$scope', function($scope){
 
+  $scope.pending = false;
+  $scope.members = [];
+  $scope.newMembers = {};
+
+  var getMembers = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/:trip_id/members.json'
+   }).then(function(resp){
+    console.log("showing members!");
+    console.log(resp);
+    $scope.members = resp.data
+   }, function(resp){
+    console.log("error");
+    console.log(resp);
+   });
+  };
+
+  $scope.addMember = function() {
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/:trip_id/members.json',
+      data: $scope.newOrEditTrip
+    }).then(function(resp){
+      console.log("invited new member")
+      getMembers();
+      $scope.newMembers = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
 
 }]);
