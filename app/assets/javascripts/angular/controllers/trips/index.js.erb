@@ -1,4 +1,13 @@
 app.controller('TripsCtrl', ['$scope', '$http', function($scope, $http){
+
+  $scope.logout = function () {
+    $auth.signOut().then(function(resp) {
+      console.log(resp);
+    }).catch(function(resp) {
+      console.log(resp);
+    });
+  };
+
   $scope.message = "Trips";
   $scope.trips = [];
   $scope.newOrEditTrip = {};

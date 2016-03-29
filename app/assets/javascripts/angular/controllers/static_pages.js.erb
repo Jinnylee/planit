@@ -18,7 +18,7 @@ app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($sco
       then(function(resp) {
         console.log(resp);
 
-        $location.path('/');
+        $location.path('/trips');
       }).
       catch(function(resp) {
         console.log(resp);
