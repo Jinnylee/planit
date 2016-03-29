@@ -17,6 +17,7 @@ class TripsController < ApplicationController
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
+    @trip.user_trips.create(user_id: current_user.id)
   end
 
   def update
