@@ -14,23 +14,23 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       templateUrl: "<%= asset_path('trips/index.html') %>",
       controller: 'TripsCtrl'
     }).
-    when('/trips/:trip_id/activities', {
+    when('/trips/:id/activities', {
       templateUrl: "<%= asset_path('trips/activities.html') %>",
       controller: 'ActivitiesCtrl'
     }).
-    when('/trips/:trip_id/flights', {
+    when('/trips/:id/flights', {
       templateUrl: "<%= asset_path('trips/flights.html') %>",
       controller: 'FlightsCtrl'
     }).
-    when('/trips/:trip_id/accommodations', {
+    when('/trips/:id/accommodations', {
       templateUrl: "<%= asset_path('trips/accommodations.html') %>",
       controller: 'AccommodationsCtrl'
     }).
-    when('/trips/:trip_id/expenses', {
+    when('/trips/:id/expenses', {
       templateUrl: "<%= asset_path('trips/expenses.html') %>",
       controller: 'ExpensesCtrl'
     }).
-    when('/trips/:trip_id/packings', {
+    when('/trips/:id/packings', {
       templateUrl: "<%= asset_path('trips/packings.html') %>",
       controller: 'PackingsCtrl'
     })

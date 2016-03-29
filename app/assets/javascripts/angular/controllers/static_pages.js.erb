@@ -1,3 +1,29 @@
-app.controller('StaticPagesCtrl', ['$scope', function($scope){
+app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
   $scope.message = "Planit";
+
+  $scope.login = function () {
+    $auth.submitLogin($scope.loginForm).
+      then(function(resp) {
+        console.log(resp);
+
+        $location.path('/trips');
+      }).
+      catch(function(resp) {
+        console.log(resp);
+      });
+  };
+
+  $scope.signup = function () {
+    $auth.submitRegistration($scope.registrationForm).
+      then(function(resp) {
+        console.log(resp);
+
+        $location.path('/trips');
+      }).
+      catch(function(resp) {
+        console.log(resp);
+      });
+  };
+
+
 }]);

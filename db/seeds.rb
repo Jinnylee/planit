@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+trip1 = Trip.create(location: 'Hawaii', start_date: '2016-04-16T00:00:00+00:00', end_date: '2016-04-26T00:00:00+00:00')
