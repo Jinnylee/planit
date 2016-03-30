@@ -1,27 +1,43 @@
+<script src="src/js/angular-datepicker.js"></script>
+
 <section>
   <h1>Trips Profile Page</h1>
   <div>
   <button class="btn btn-danger" ng-click="logout()">Logout</button>
     <div ng-repeat="trip in trips">
       <div>
-        <div><a href="/#/trips/{{trip.id}}/activities"><strong>{{ trip.location }}</strong></a></div>
+        <div><a href="/#/trips/{{trip.id}}/members"><strong>{{ trip.title }}</strong></a></div>
+        <div>{{ trip.location }}</div>
         <div>{{ trip.start_date }}</div>
         <div>{{ trip.end_date }}</div>
       </div>
-      <button class="delete" ng-click="deleteTrip(trip.id)">X</button>
+      <button class="delete" ng-click="deleteTrip(trip.id, $index)">X</button>
       <button class="edit" ng-click="toggleEditMode(trip)">Edit</button>
     </div>
   </div>
 
-  <div class="container" ng-show="adding">
+  <div class="container-fluid" ng-show="adding">
     <div class="row">
       <h1>Add new trip</h1>
 
       <form id="newTrip" ng-submit="addOrEditTrip()">
         <div>
-          <label>Location: </label>
-          <input type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location"></input>
+          <label>Title: </label>
+          <input type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
         </div>
+        <div>
+          <label>Location: </label>
+          <input g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
+        </div>
+
+        <datepicker>
+          <input ng-model="newOrEditTrip.start_date" type="text"/>
+        </datepicker>
+        <datepicker>
+          <input ng-model="newOrEditTrip.end_date" type="text"/>
+        </datepicker>
+
+
         <!-- <div>
           <label>Start date: </label>
           <input type="text" placeholder="Enter start date" ng-model="newOrEditTrip.start_date"></input>

@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @trips = Trip.all
+    @trips = current_user.trips.order(created_at: :desc)
     respond_to do |format|
       format.json { render 'index.jbuilder' }
     end
@@ -16,6 +17,7 @@ class TripsController < ApplicationController
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end
+    @trip.user_trips.create(user_id: current_user.id)
   end
 
   def update
@@ -30,6 +32,7 @@ class TripsController < ApplicationController
   end
 
   def destroy
+    UserTrip.destroy_all(trip_id: params[:id])
     Trip.destroy(params[:id])
     respond_to do |format|
       # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
@@ -39,7 +42,7 @@ class TripsController < ApplicationController
 
   private
     def trip_params
-      params.require(:trip).permit(:location, :start_date, :end_date)
+      params.require(:trip).permit(:location, :start_date, :end_date, :title, :id)
     end
 
     # def editedtrip_params

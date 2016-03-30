@@ -13,9 +13,12 @@
 //= require angular/angular
 //= require angular-route/angular-route
 //= require ng-token-auth/dist/ng-token-auth
+//= require angularjs-datepicker/src/js/angular-datepicker
 //= require angular-cookie/angular-cookie
+//= require angular-google-places-autocomplete/src/autocomplete
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap
 //= require static_pages.js
-//= require jquery_ujs
+//= require moment
 //= require_tree .

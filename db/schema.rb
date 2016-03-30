@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324092759) do
+ActiveRecord::Schema.define(version: 20160329154859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,8 +54,18 @@ ActiveRecord::Schema.define(version: 20160324092759) do
     t.datetime "updated_at",        null: false
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "trip_id"
+    t.string   "secure_hash"
+    t.boolean  "used",        default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string   "location"
+    t.string   "title"
     t.datetime "start_date"
     t.datetime "end_date"
     t.text     "activity"
@@ -83,10 +93,6 @@ ActiveRecord::Schema.define(version: 20160324092759) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.string   "name"
     t.string   "nickname"
     t.string   "image"
