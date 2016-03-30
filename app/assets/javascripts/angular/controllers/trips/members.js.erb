@@ -1,32 +1,34 @@
-app.controller('MembersCtrl', ['$scope', function($scope){
+app.controller('MembersCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
 
   $scope.pending = false;
   $scope.members = [];
-  $scope.newMembers = {};
+  $scope.invitedmembers = {};
 
   var getMembers = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/:trip_id/members.json'
+      url: 'http://localhost:3000/trips/' + $routeParams['id'] + '/members.json'
    }).then(function(resp){
     console.log("showing members!");
     console.log(resp);
-    $scope.members = resp.data
+    $scope.members = resp.data;
    }, function(resp){
     console.log("error");
     console.log(resp);
    });
   };
 
+  getMembers();
+
   $scope.addMember = function() {
     $http({
       method:'POST',
-      url: 'http://localhost:3000/trips/:trip_id/members.json',
-      data: $scope.newOrEditTrip
+      url: 'http://localhost:3000/trips/' + $routeParams['id'] +'/members.json',
+      data: $scope.invitedmembers
     }).then(function(resp){
       console.log("invited new member")
       getMembers();
-      $scope.newMembers = {};
+      $scope.invitedmembers = {};
     }, function(resp){
       console.log("error");
       console.log(resp);

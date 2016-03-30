@@ -1,15 +1,18 @@
 <button ng-click="pending=false">Members</button>
 <button ng-click="pending=true">Pending Members</button>
-
+{{ message }}
 <section ng-hide="pending">
-
-  <div class="row">
+  <ul>
+    <li ng-repeat="member in members">
+    <span><strong>{{ member.name }}</strong></span> {{ member.email }}
+    </li>
+  </ul>
+  <div>
     <h1>Invite members</h1>
 
     <form id="newMember" ng-submit="addMember()">
       <div>
-        <label>Location: </label>
-        <input type="text" placeholder="Email" ng-model="member.email"></input>
+        <input type="text" placeholder="Email" ng-model="invitedmembers.email"></input>
       </div>
         <input type="submit" value="Invite">
     </form>

@@ -1,6 +1,8 @@
 app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
   $scope.message = "Planit";
 
+  $scope.newuser = false;
+
   $scope.login = function () {
     $auth.submitLogin($scope.loginForm).
       then(function(resp) {
