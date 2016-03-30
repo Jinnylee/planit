@@ -1,14 +1,14 @@
-function initAutocomplete() {
-  // Create the autocomplete object, restricting the search to geographical
-  // location types.
-  var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
-  google.maps.event.addDomListener(window, 'load', autocomplete);
+// function initAutocomplete() {
+//   // Create the autocomplete object, restricting the search to geographical
+//   // location types.
+//   var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
+//   google.maps.event.addDomListener(window, 'load', autocomplete);
 
-  // When the user selects an address from the dropdown, populate the address
-  // fields in the form.
-  // autocomplete.addListener('place_changed', fillInAddress);
-};
-initAutocomplete();
+//   // When the user selects an address from the dropdown, populate the address
+//   // fields in the form.
+//   // autocomplete.addListener('place_changed', fillInAddress);
+// };
+// initAutocomplete();
 
 // //sean
 //   var input = document.getElementById('locationTextField');

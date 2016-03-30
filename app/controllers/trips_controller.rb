@@ -32,6 +32,7 @@ class TripsController < ApplicationController
   end
 
   def destroy
+    UserTrip.destroy_all(trip_id: params[:id])
     Trip.destroy(params[:id])
     respond_to do |format|
       # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }

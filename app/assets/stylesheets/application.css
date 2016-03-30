@@ -12,6 +12,7 @@
 
  *= require bootstrap/dist/css/bootstrap
  *= require angularjs-datepicker/src/css/angular-datepicker
+ *= require angular-google-places-autocomplete/src/autocomplete
  *= require_tree .
  *= require_self
  */

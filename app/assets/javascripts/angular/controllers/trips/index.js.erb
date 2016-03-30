@@ -93,13 +93,13 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
     }
   };
 
-  $scope.deleteTrip = function(id) {
+  $scope.deleteTrip = function(id, index) {
     $http({
       method: 'DELETE',
       url: 'http://localhost:3000/trips/' + id + '.json'
     }).then(function(resp){
-      console.log("deleted trip")
-
+      console.log("deleted trip", index)
+      $scope.trips.splice(index, 1);
     }, function(resp){
       console.log("error");
       console.log(resp);

@@ -1,6 +1,4 @@
 <script src="src/js/angular-datepicker.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtSZ9Er3i8oncXV4-7RwimEDY7vmJf5IA&libraries=places&callback=initAutocomplete" async defer></script>
-<script src="javascripts/index.js"></script>
 
 <section>
   <h1>Trips Profile Page</h1>
@@ -13,7 +11,7 @@
         <div>{{ trip.start_date }}</div>
         <div>{{ trip.end_date }}</div>
       </div>
-      <button class="delete" ng-click="deleteTrip(trip.id)">X</button>
+      <button class="delete" ng-click="deleteTrip(trip.id, $index)">X</button>
       <button class="edit" ng-click="toggleEditMode(trip)">Edit</button>
     </div>
   </div>
@@ -29,7 +27,7 @@
         </div>
         <div>
           <label>Location: </label>
-          <input type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
+          <input g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
         </div>
 
         <datepicker>
