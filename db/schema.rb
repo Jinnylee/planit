@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160329154859) do
 
   create_table "trips", force: :cascade do |t|
     t.string   "location"
+    t.string   "title"
     t.datetime "start_date"
     t.datetime "end_date"
     t.text     "activity"

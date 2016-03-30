@@ -1,4 +1,6 @@
 <script src="src/js/angular-datepicker.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtSZ9Er3i8oncXV4-7RwimEDY7vmJf5IA&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="javascripts/index.js"></script>
 
 <section>
   <h1>Trips Profile Page</h1>
@@ -6,7 +8,8 @@
   <button class="btn btn-danger" ng-click="logout()">Logout</button>
     <div ng-repeat="trip in trips">
       <div>
-        <div><a href="/#/trips/{{trip.id}}/members"><strong>{{ trip.location }}</strong></a></div>
+        <div><a href="/#/trips/{{trip.id}}/members"><strong>{{ trip.title }}</strong></a></div>
+        <div>{{ trip.location }}</div>
         <div>{{ trip.start_date }}</div>
         <div>{{ trip.end_date }}</div>
       </div>
@@ -20,6 +23,10 @@
       <h1>Add new trip</h1>
 
       <form id="newTrip" ng-submit="addOrEditTrip()">
+        <div>
+          <label>Title: </label>
+          <input type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
+        </div>
         <div>
           <label>Location: </label>
           <input type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>

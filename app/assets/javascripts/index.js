@@ -1,41 +1,26 @@
-var placeSearch, autocomplete;
-var componentForm = {
-  street_number: 'short_name',
-  route: 'long_name',
-  locality: 'long_name',
-  administrative_area_level_1: 'short_name',
-  country: 'long_name',
-  postal_code: 'short_name'
-};
-
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search to geographical
   // location types.
-  autocomplete = new google.maps.places.Autocomplete(
-      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-      {types: ['geocode']});
+  var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'));
+  google.maps.event.addDomListener(window, 'load', autocomplete);
 
   // When the user selects an address from the dropdown, populate the address
   // fields in the form.
-  autocomplete.addListener('place_changed', fillInAddress);
-}
+  // autocomplete.addListener('place_changed', fillInAddress);
+};
+initAutocomplete();
 
-function fillInAddress() {
-  // Get the place details from the autocomplete object.
-  var place = autocomplete.getPlace();
+// //sean
+//   var input = document.getElementById('locationTextField');
+//     var autocomplete = new google.maps.places.Autocomplete(input);
+//     google.maps.event.addDomListener(window, 'load', autocomplete);
 
-  for (var component in componentForm) {
-    document.getElementById(component).value = '';
-    document.getElementById(component).disabled = false;
-  }
 
-  // Get each component of the address from the place details
-  // and fill the corresponding field on the form.
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType = place.address_components[i].types[0];
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-      document.getElementById(addressType).value = val;
-    }
-  }
-}
+// //shawn
+//     var input = document.getElementById('district');
+//   var searchBox = new google.maps.places.SearchBox(input);
+//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+//   var input2 = document.getElementById('district2');
+//   var searchBox2 = new google.maps.places.SearchBox(input2);
+//   map2.controls[google.maps.ControlPosition.TOP_LEFT].push(input2);
