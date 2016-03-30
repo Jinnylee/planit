@@ -59,3 +59,13 @@
 #signin-form {
   margin-top:20px;
 }
+
+.signupRow {
+  color:white;
+}
+
+button.btn.btn-primary {
+  background:none;
+  border: 2px solid white;
+  margin:3px;
+}
