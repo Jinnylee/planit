@@ -9,7 +9,8 @@
     "angular-route": "^1.5.2",
     "jquery": "^2.2.2",
     "bootstrap": "^3.3.6",
-    "angularjs-datepicker": "^0.2.16"
+    "angularjs-datepicker": "^0.2.16",
+    "angular-google-places-autocomplete": "^0.2.7"
   },
   "resolutions": {
     "angular": "1.5.2"

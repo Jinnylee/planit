@@ -11,6 +11,7 @@
  * file per style scope.
 
  *= require bootstrap/dist/css/bootstrap
+ *= require font-awesome
  *= require angularjs-datepicker/src/css/angular-datepicker
  *= require angular-google-places-autocomplete/src/autocomplete
  *= require_tree .

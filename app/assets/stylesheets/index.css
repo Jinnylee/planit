@@ -1,3 +1,14 @@
-#newTrip {
-  width: 300px;
+.each-trip {
+  background-color: grey;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.create-logout {
+  margin: 30px;
+  float: right;
+}
+
+#alltrips {
+  margin-top: 30px;
 }
