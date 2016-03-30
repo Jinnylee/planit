@@ -16,14 +16,10 @@
   width: 139px;
 }
 
-.navbar-fixed-left + .container {
-  padding-left: 160px;
-}
-
-
-
 .navbar-inverse .navbar-brand {
   color:white;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -37,11 +33,15 @@
 .header-image-row {
   position: fixed;
   left: 75px;
-  height: 100px;
+  height: 120px;
   width: 100%;
   top: 0;
   overflow: hidden;
-  background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4NVzN0xToP2rX5swud5OThwYp0169FnmpddBM1gGCnJYyGb3F");
+  background-image:url("http://cdn1.buuteeq.com/upload/18138/island-luxury-tours-maldives-travel-experts.jpg.1920x506_default.jpg");
   background-size: cover;
-  object-fit:cover;
+  background-position:center;
+}
+
+.trip-information-section {
+  margin-top:135px;
 }
