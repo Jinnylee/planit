@@ -1,13 +1,11 @@
-app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($scope, $auth, $location){
-  $scope.message = "Planit";
+app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', '$routeParams', '$http', function($scope, $auth, $location, $routeParams, $http){
 
-  $scope.newuser = false;
+  $scope.message = "Planit";
 
   $scope.login = function () {
     $auth.submitLogin($scope.loginForm).
       then(function(resp) {
         console.log(resp);
-
         $location.path('/trips');
       }).
       catch(function(resp) {
@@ -18,9 +16,23 @@ app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', function($sco
   $scope.signup = function () {
     $auth.submitRegistration($scope.registrationForm).
       then(function(resp) {
-        console.log(resp);
-
-        $location.path('/trips');
+        if ($routeParams.secure_hash) {
+          var user_id = resp.data.data.id;
+          $http({
+            url: '/members/join_by_hash',
+            method: 'POST',
+            data: {
+              user_id: user_id,
+              secure_hash: $routeParams.secure_hash
+            }
+          }).then(function (resp) {
+            $location.path('/trips');
+          }, function (resp) {
+            // error
+          })
+        } else {
+          $location.path('/trips');
+        }
       }).
       catch(function(resp) {
         console.log(resp);

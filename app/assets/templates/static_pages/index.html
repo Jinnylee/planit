@@ -22,19 +22,13 @@
     </div>
   </div>
 
-
-<!--   <a href="" ng-click="showme=true">Show</a>
-  <button ng-click="showme=false">Hide</button>
-
-  <div class="wrapper">
-    <p ng-hide="showme">It will appear here!</p>
-    <h2 ng-show="showme">This is mah content, yo!</h2> -->
-
-
 <!-- LOGIN DETAILS: -->
+
+
 
      <div class="signupRow">
       <h1> {{ message }} </h1>
+
       <a href="/#/"><button class="btn btn-primary" ng-click="showme2=true; showme=false">Signup</button></a>
       <a href="/#/"><button class="btn btn-primary" ng-click="showme=true; showme2=false">Signin</button></a>
 
@@ -64,7 +58,7 @@
 <!-- SIGN IN -->
   <div class="container">
     <div class="row">
-      <form id="signin-form" ng-show="showme" ng-submit="login()" role="form" ng-init="loginForm = {}">
+      <form id="signin-form" ng-submit="login()" role="form" ng-init="loginForm = {}">
         <h1 class="sign-in-font">Sign In</h1>
 
         <div class="form-group">
@@ -86,7 +80,7 @@
 <!-- SIGN UP -->
   <div class="container">
     <div class="row">
-      <form id="signup-form" ng-show="showme2" ng-submit="signup()" role="form" ng-init="registrationForm = {}">
+      <form id="signup-form" ng-submit="signup()" role="form" ng-init="registrationForm = {}">
         <h1 class="sign-up-font">Sign Up</h1>
 
         <div class="form-group">

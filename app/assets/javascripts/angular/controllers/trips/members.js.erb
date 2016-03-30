@@ -7,7 +7,7 @@ app.controller('MembersCtrl', ['$scope', '$routeParams', '$http', function($scop
   var getMembers = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams['id'] + '/members.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/members.json'
    }).then(function(resp){
     console.log("showing members!");
     console.log(resp);
@@ -23,8 +23,10 @@ app.controller('MembersCtrl', ['$scope', '$routeParams', '$http', function($scop
   $scope.addMember = function() {
     $http({
       method:'POST',
-      url: 'http://localhost:3000/trips/' + $routeParams['id'] +'/members.json',
-      data: $scope.invitedmembers
+      url: 'http://localhost:3000/trips/' + $routeParams.id +'/members.json',
+      data: {
+        email: $scope.invitedmember
+      }
     }).then(function(resp){
       console.log("invited new member")
       getMembers();

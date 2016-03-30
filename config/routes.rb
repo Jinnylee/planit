@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
   root 'static_pages#index'
 
+  post 'members/join_by_hash', to: 'members#join_by_hash'
+
   resources :trips, only: [:index, :show, :create, :update, :destroy] do
     resources :members, only: [:index, :create, :update, :destroy]
     resources :flights, only: [:index, :create, :update, :destroy]

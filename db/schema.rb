@@ -57,9 +57,10 @@ ActiveRecord::Schema.define(version: 20160329154859) do
   create_table "invitations", force: :cascade do |t|
     t.string   "email"
     t.integer  "trip_id"
-    t.integer  "status",     default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "secure_hash"
+    t.boolean  "used",        default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "trips", force: :cascade do |t|
@@ -91,10 +92,6 @@ ActiveRecord::Schema.define(version: 20160329154859) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.string   "name"
     t.string   "nickname"
     t.string   "image"

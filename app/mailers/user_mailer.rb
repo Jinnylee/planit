@@ -7,10 +7,11 @@ class UserMailer < ApplicationMailer
   #
 
   default from: "invitation@planit.com"
-  def invitation(user)
-    @user = user
-    @greeting = "Hi"
+  def invitation(email, secure_hash, current_user)
+    @email = email
+    @secure_hash = secure_hash
+    @current_user = current_user
 
-    mail to: user.email, subject: "Invitation"
+    mail to: @email, subject: "Invitation"
   end
 end
