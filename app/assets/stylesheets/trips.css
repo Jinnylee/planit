@@ -46,3 +46,14 @@
   padding: 50px;
   padding-top: 20px;
 }
+
+.trip-information-section {
+  margin-top:135px;
+  margin-left:50px;
+}
+
+li.navbar-icon a img {
+  width:45px;
+  height:45px;
+
+}
