@@ -23,19 +23,19 @@ class ExpensesController < ApplicationController
     end
   end
 
-  # def update
-  #   @expense = Expense.update(params[:id], expense_params)
+  def update
+    @expense = Expense.update(params[:id], expense_params)
 
-  #   if @expense.save
-  #     params[:expense][:name_list].each do |user_id| # [3, 5]
-  #       @expense.expense_splits.create(user_id: user_id)
-  #     end
+    if @expense.save
+      params[:expense][:name_list].each do |user_id| # [3, 5]
+        @expense.expense_splits.create(user_id: user_id)
+      end
 
-  #     render json: @expense.as_json(include: {expense_splits: {include: :user} })
-  #   else
-  #     render json: @expense.errors, status: :unprocessable_entity
-  #   end
-  # end
+      render json: @expense.as_json(include: {expense_splits: {include: :user} })
+    else
+      render json: @expense.errors, status: :unprocessable_entity
+    end
+  end
 
   def destroy
     ExpenseSplit.destroy_all(expense_id: params[:id])

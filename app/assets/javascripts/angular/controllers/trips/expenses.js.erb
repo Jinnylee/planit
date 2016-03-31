@@ -5,6 +5,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   $scope.newExpense = {};
   $scope.nameList = [];
   $scope.tripId = $routeParams.id;
+  $scope.editing = false;
 
   $scope.validate = function () {
     $auth.validateUser().then(function(resp){
@@ -69,23 +70,26 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
     });
   };
 
-  // $scope.editExpense = function(expense) {
+  // $scope.toggleEditMode = function(expense) {
   //   $scope.newExpense = {
   //     title: expense.title,
   //     amount: expense.amount,
   //     user_id: expense.user_id,
-  //     name_list: nameList,
   //     status: expense.status,
   //     id: expense.id
   //   };
+  //   $scope.editing = true;
+  // };
 
+  // $scope.editExpense = function(id) {
   //   $http({
   //     method: 'PATCH',
   //     url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses' + id + '.json',
-  //     data: $scope.newOrEditTrip
+  //     data: {
+  //       expense: $scope.newExpense
+  //     }
   //   }).then(function(resp){
   //     console.log("edited expense", resp);
-
   //     $scope.newExpense = {};
   //     $scope.editing = false;
   //   }, function(resp){

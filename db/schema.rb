@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331013616) do
+ActiveRecord::Schema.define(version: 20160331121754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accommodation_splits", force: :cascade do |t|
+    t.integer  "accommodation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "accommodations", force: :cascade do |t|
     t.integer  "trip_id"
@@ -45,6 +52,13 @@ ActiveRecord::Schema.define(version: 20160331013616) do
     t.float    "amount"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "flight_splits", force: :cascade do |t|
+    t.integer  "flight_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "flights", force: :cascade do |t|

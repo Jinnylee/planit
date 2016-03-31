@@ -55,7 +55,8 @@
         </div>
 
         <div>
-          <button type="submit" ng-click="addExpense()">Add Expense</button>
+          <button ng-hide="editing" type="submit" ng-click="addExpense()">Add Expense</button>
+          <button ng-show="editing" type="submit" ng-click="editExpense()">Edit Expense</button>
         </div>
       </form>
   </div>
