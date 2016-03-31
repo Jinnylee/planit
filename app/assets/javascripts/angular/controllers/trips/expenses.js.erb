@@ -3,7 +3,6 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   $scope.expenses = [];
   $scope.users = [];
   $scope.newExpense = {};
-  $scope.newExpenseSplit = {};
   $scope.nameList = [];
   $scope.tripId = $routeParams.id;
 
@@ -70,34 +69,43 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
     });
   };
 
-  $scope.editExpense = function() {
-    $http({
-      method: 'PATCH',
-      url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id + '.json',
-      data: $scope.newOrEditTrip
-    }).then(function(resp){
-      console.log("edited trip", resp);
+  // $scope.editExpense = function(expense) {
+  //   $scope.newExpense = {
+  //     title: expense.title,
+  //     amount: expense.amount,
+  //     user_id: expense.user_id,
+  //     name_list: nameList,
+  //     status: expense.status,
+  //     id: expense.id
+  //   };
 
-      $scope.newOrEditTrip = {};
-      $scope.editing = false;
-    }, function(resp){
-      console.log("error");
-      console.log(resp);
-    });
-  };
-
-  // $scope.deleteExpense = function(id, index) {
   //   $http({
-  //     method: 'DELETE',
-  //     url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses/.json'
+  //     method: 'PATCH',
+  //     url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses' + id + '.json',
+  //     data: $scope.newOrEditTrip
   //   }).then(function(resp){
-  //     console.log("deleted trip", index)
-  //     $scope.trips.splice(index, 1);
+  //     console.log("edited expense", resp);
+
+  //     $scope.newExpense = {};
+  //     $scope.editing = false;
   //   }, function(resp){
   //     console.log("error");
   //     console.log(resp);
   //   });
   // };
+
+  $scope.deleteExpense = function(id, index) {
+    $http({
+      method: 'DELETE',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses/' + id + '.json'
+    }).then(function(resp){
+      console.log("deleted expense", index)
+      $scope.expenses.splice(index, 1);
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
 
   getExpenses();
   getUsers();

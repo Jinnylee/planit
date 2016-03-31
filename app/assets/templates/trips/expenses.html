@@ -30,8 +30,8 @@
           <td><span ng-repeat="expense_splits in expense.expense_splits">{{expense_splits.user.name}}<br></span></td>
           <td>{{ expense.amount / expense.expense_splits.length | currency}}</td>
           <td>{{expense.status}}</td>
-          <td><i class="fa fa-pencil-square-o fa-2x"></i></td>
-          <td><i class="fa fa-trash-o fa-2x"></i></td>
+          <td><a href="/#/trips/{{tripId}}/expenses/new"><i class="fa fa-pencil-square-o fa-2x"></i></a></td>
+          <td><i class="fa fa-trash-o fa-2x" ng-click="deleteExpense(expense.id, $index)"></i></td>
         </tr>
       </tbody>
     </table>

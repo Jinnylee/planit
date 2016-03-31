@@ -23,10 +23,27 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def update
-  end
+  # def update
+  #   @expense = Expense.update(params[:id], expense_params)
+
+  #   if @expense.save
+  #     params[:expense][:name_list].each do |user_id| # [3, 5]
+  #       @expense.expense_splits.create(user_id: user_id)
+  #     end
+
+  #     render json: @expense.as_json(include: {expense_splits: {include: :user} })
+  #   else
+  #     render json: @expense.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   def destroy
+    ExpenseSplit.destroy_all(expense_id: params[:id])
+    Expense.destroy(params[:id])
+    respond_to do |format|
+      # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
 
