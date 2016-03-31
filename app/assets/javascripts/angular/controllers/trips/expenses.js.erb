@@ -5,7 +5,25 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   $scope.newExpense = {};
   $scope.nameList = [];
   $scope.tripId = $routeParams.id;
-  $scope.editing = false;
+
+  var checkPath = function(expense) {
+    if ($location.path() == '/trips/' + $routeParams.id + '/expenses/edit') {
+      $scope.editing = true;
+
+      $scope.newExpense = {
+        // title: expense.title,
+        // amount: expense.amount,
+        // user_id: expense.user_id,
+        // status: expense.status,
+        // id: expense.id
+      };
+      console.log("working! editing is true")
+    } else {
+      $scope.editing = false;
+      console.log("working! editing is false")
+    }
+  };
+  checkPath();
 
   $scope.validate = function () {
     $auth.validateUser().then(function(resp){
@@ -70,33 +88,21 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
     });
   };
 
-  // $scope.toggleEditMode = function(expense) {
-  //   $scope.newExpense = {
-  //     title: expense.title,
-  //     amount: expense.amount,
-  //     user_id: expense.user_id,
-  //     status: expense.status,
-  //     id: expense.id
-  //   };
-  //   $scope.editing = true;
-  // };
-
-  // $scope.editExpense = function(id) {
-  //   $http({
-  //     method: 'PATCH',
-  //     url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses' + id + '.json',
-  //     data: {
-  //       expense: $scope.newExpense
-  //     }
-  //   }).then(function(resp){
-  //     console.log("edited expense", resp);
-  //     $scope.newExpense = {};
-  //     $scope.editing = false;
-  //   }, function(resp){
-  //     console.log("error");
-  //     console.log(resp);
-  //   });
-  // };
+  $scope.editExpense = function(id) {
+    $http({
+      method: 'PATCH',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses' + id + '.json',
+      data: {
+        expense: $scope.newExpense
+      }
+    }).then(function(resp){
+      console.log("edited expense", resp);
+      $scope.newExpense = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
 
   $scope.deleteExpense = function(id, index) {
     $http({
