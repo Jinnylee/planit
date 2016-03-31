@@ -10,6 +10,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
+    @trip.location = params["trip"]["location"]["name"]
     respond_to do |format|
       if @trip.save
         format.json { render json: @trip }
@@ -42,7 +43,7 @@ class TripsController < ApplicationController
 
   private
     def trip_params
-      params.require(:trip).permit(:location, :start_date, :end_date, :title, :id)
+      params.require(:trip).permit(:start_date, :end_date, :title, :id)
     end
 
     # def editedtrip_params
