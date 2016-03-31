@@ -41,6 +41,13 @@ class TripsController < ApplicationController
     end
   end
 
+  def get_users
+    @users = UserTrip.includes(:user).where(trip_id: params[:trip_id]).map(&:user)
+    respond_to do |format|
+      format.json { render json: @users }
+    end
+  end
+
   private
     def trip_params
       params.require(:trip).permit(:start_date, :end_date, :title, :id)

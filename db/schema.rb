@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160331013616) do
 
   create_table "trips", force: :cascade do |t|
     t.string   "location"
+    t.string   "title"
     t.datetime "start_date"
     t.datetime "end_date"
     t.text     "activity"
@@ -99,10 +100,6 @@ ActiveRecord::Schema.define(version: 20160331013616) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.string   "name"
     t.string   "nickname"
     t.string   "image"

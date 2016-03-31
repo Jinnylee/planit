@@ -1,3 +1,105 @@
-app.controller('ExpensesCtrl', ['$scope', function($scope){
+app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeParams', function($scope, $http, $auth, $location, $routeParams){
   $scope.message = "Expenses";
+  $scope.expenses = [];
+  $scope.users = [];
+  $scope.newExpense = {};
+  $scope.newExpenseSplit = {};
+  $scope.nameList = [];
+  $scope.tripId = $routeParams.id;
+
+  $scope.validate = function () {
+    $auth.validateUser().then(function(resp){
+      console.log(resp);
+    }).catch(function(resp){
+      console.log(resp);
+    })
+  }
+
+  $scope.toggleName = function (name) {
+    var nameIndex = $scope.nameList.indexOf(name);
+    if (nameIndex == -1){
+      $scope.nameList.push(name);
+    } else {
+      $scope.nameList.splice(nameIndex, 1)
+    }
+    console.log($scope.nameList);
+  }
+
+  var getExpenses = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses.json'
+    }).then(function(resp){
+      console.log("showing expenses!", resp);
+      $scope.expenses = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  var getUsers = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/users.json'
+    }).then(function(resp){
+      console.log("showing users info", resp)
+      $scope.users = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp)
+    });
+  };
+
+  $scope.addExpense = function() {
+    $scope.newExpense.name_list = $scope.nameList;
+
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses',
+      data: {
+        expense: $scope.newExpense
+      }
+    }).then(function(resp){
+      console.log("added new expense", resp);
+      getExpenses();
+      $scope.newExpense = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.editExpense = function() {
+    $http({
+      method: 'PATCH',
+      url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id + '.json',
+      data: $scope.newOrEditTrip
+    }).then(function(resp){
+      console.log("edited trip", resp);
+
+      $scope.newOrEditTrip = {};
+      $scope.editing = false;
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  // $scope.deleteExpense = function(id, index) {
+  //   $http({
+  //     method: 'DELETE',
+  //     url: 'http://localhost:3000/trips/' + $routeParams.id + '/expenses/.json'
+  //   }).then(function(resp){
+  //     console.log("deleted trip", index)
+  //     $scope.trips.splice(index, 1);
+  //   }, function(resp){
+  //     console.log("error");
+  //     console.log(resp);
+  //   });
+  // };
+
+  getExpenses();
+  getUsers();
+
 }]);
