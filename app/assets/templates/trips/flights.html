@@ -1,25 +1,28 @@
-<div class="container">
-  <div class="row">
+<side-bar></side-bar>
 
-    <div class="navbar navbar-inverse navbar-fixed-left">
-      <a class="navbar-brand" href="#">Planit</a>
-      <ul class="nav navbar-nav">
-         <li><a href="#">Link2</a></li>
-         <li><a href="#">Link3</a></li>
-         <li><a href="#">Link4</a></li>
-         <li><a href="#">Link5</a></li>
-      </ul>
+<div class="main-content">
+  <!-- EXPENSES SECTION-->
+  <div class="col-xs-12 col-sm-8">
+    <div class="row">
+      <h1> {{ message }} </h1>
     </div>
 
-    <div class="container">
-      <div class="header-image-row"></div>
+    <a href="/#/trips/{{tripId}}/flights/new" class="btn btn-default">Add Flight</a>
 
-      <div class="trip-information-section">
-        <h2>INSERT TRIP STUFF HERE</h2>
-      </div>
-
+    <div ng-repeat="flight in flights">
+      <div>{{flight.departure_date}}</div>
+      <div>{{flight.arrival_date}}</div>
+      <div>{{flight.departure_airport}}</div>
+      <div>{{flight.arrival_airport}}</div>
+      <div>{{flight.airline}}</div>
+      <div>{{flight.flight_number}}</div>
+      <div>{{flight.terminal}}</div>
+      <div><span ng-repeat="flight_splits in flight.flight_splits">{{flight_splits.user.name}}<br></span></div>
+      <a href="/#/trips/{{tripId}}/flights/new"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+      <i class="fa fa-trash-o fa-2x" ng-click="deleteFlight(flight.id, $index)"></i>
     </div>
 
   </div>
 
+  <div class="col-xs-12 col-sm-4">Chat</div>
 </div>

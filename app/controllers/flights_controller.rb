@@ -3,19 +3,48 @@ class FlightsController < ApplicationController
   before_action :set_trip, only: [:create]
 
   def index
-    @accommodations = Accommodation.includes(:accommodation_splits).where(trip_id: params[:trip_id])
+    @flights = Flight.includes(:flight_splits).where(trip_id: params[:trip_id])
     respond_to do |format|
-      format.json { render json: @accommodations.as_json(include: { accommodation_splits: { include: :user }, user: {} })}
+      format.json { render json: @flights.as_json(include: { flight_splits: { include: :user }, user: {} })}
     end
   end
 
   def create
+    @flight = @trip.flights.new(flight_params)
+
+    if @flight.save
+      params[:flight][:name_list].each do |user_id| # [3, 5]
+        @flight.flight_splits.create(user_id: user_id)
+      end
+
+      render json: @flight.as_json(include: {flight_splits: {include: :user} })
+    else
+      render json: @flight.errors, status: :unprocessable_entity
+    end
   end
 
   def update
   end
 
   def destroy
+    FlightSplit.destroy_all(flight_id: params[:id])
+    Flight.destroy(params[:id])
+    respond_to do |format|
+      # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
+
+  private
+    def flight_params
+      params.require(:flight).permit(:airline, :arrival_airport, :arrival_date, :departure_airport, :departure_date, :flight_number, :terminal)
+    end
+
+    def set_trip
+      @trip = Trip.find_by(id: params[:trip_id])
+      if @trip.nil?
+        render json: {message: "Trip not found"}, status: 404
+      end
+    end
 
 end
