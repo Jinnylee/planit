@@ -9,11 +9,11 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
   $scope.flightId = $routeParams.id;
 
   var checkPath = function() {
-    if ($location.path() == '/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '/edit') {
+    if ($location.path() == 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '/edit') {
       $scope.editing = true;
       $http({
         method: 'GET',
-        url: '/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json'
+        url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json'
       }).then(function(resp){
         console.log("got single flight data!", resp);
         $scope.newFlight = resp.data
@@ -51,7 +51,7 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
   var getFlights = function() {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/flights.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights.json'
     }).then(function(resp){
       console.log("showing flights!", resp);
       $scope.flights = resp.data
@@ -65,7 +65,7 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
   var getUsers = function() {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/users.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
     }).then(function(resp){
       console.log("showing users info", resp)
       $scope.users = resp.data
@@ -80,7 +80,7 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
 
     $http({
       method:'POST',
-      url: '/trips/' + $routeParams.trip_id + '/flights',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights',
       data: {
         flight: $scope.newFlight
       }
@@ -97,7 +97,7 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
   $scope.deleteFlight = function(id, index) {
     $http({
       method: 'DELETE',
-      url: '/trips/' + $routeParams.trip_id + '/flights/' + id + '.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + id + '.json'
     }).then(function(resp){
       console.log("deleted flight", index)
       $scope.flights.splice(index, 1);
