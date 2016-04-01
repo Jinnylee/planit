@@ -14,6 +14,8 @@
 
 .col-xs-12.each-trip > div.row {
   background:white;
+  margin-left:0px;
+  margin-right:0px;
 }
 
 
