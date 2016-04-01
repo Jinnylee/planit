@@ -46,3 +46,59 @@
   padding: 50px;
   padding-top: 20px;
 }
+
+.trip-information-section {
+  margin-top:135px;
+  margin-left:50px;
+}
+
+li.navbar-icon a img {
+  width:45px;
+  height:45px;
+<<<<<<< 1af5ae991b689c659f3d16c55fb2dca605b4a321
+
+=======
+}
+
+
+/*TOOLTIP CSS for navbar*/
+
+a.tooltips {
+  position: relative;
+  display: inline;
+  width:80px;
+}
+a.tooltips span {
+  position: absolute;
+  width:140px;
+  color: #FFFFFF;
+  background: #45BBFF;
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 6px;
+  box-shadow: 1px 1px 4px #1057C2;
+}
+a.tooltips span:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -8px;
+  width: 0; height: 0;
+  border-right: 8px solid #45BBFF;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  z-index: 998;
+}
+a:hover.tooltips span {
+  visibility: visible;
+  opacity: 1;
+  left: 100%;
+  top: 50%;
+  margin-top: -18.5px;
+  margin-left: 15px;
+  z-index: 999;
+>>>>>>> added tooltips to nav bar
+}
