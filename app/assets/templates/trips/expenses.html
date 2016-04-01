@@ -1,6 +1,41 @@
-<div class="container">
-  <div class="row">
-    <h1> {{ message }} </h1>
+<side-bar></side-bar>
+
+<div class="main-content">
+  <!-- EXPENSES SECTION-->
+  <div class="col-xs-12 col-sm-8">
+    <div class="row">
+      <h1> {{ message }} </h1>
+    </div>
+
+    <a href="/#/trips/{{tripId}}/expenses/new" class="btn btn-default">Add Expense</a>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Paid By</th>
+          <th>Split By</th>
+          <th>Invidual amount</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="expense in expenses">
+          <td>{{ expense.title }}</td>
+          <td>{{ expense.amount | currency}}</td>
+          <td>{{ expense.user.name }}</td>
+          <td><span ng-repeat="expense_splits in expense.expense_splits">{{expense_splits.user.name}}<br></span></td>
+          <td>{{ expense.amount / expense.expense_splits.length | currency}}</td>
+          <td>{{expense.status}}</td>
+          <td><a href="/#/trips/{{tripId}}/expenses/{{expenseId}}/edit" ng-click="editPage(expense.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a></td>
+          <td><i class="fa fa-trash-o fa-2x" ng-click="deleteExpense(expense.id, $index)"></i></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
+  <div class="col-xs-12 col-sm-4">Chat</div>
 </div>

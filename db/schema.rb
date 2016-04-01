@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329154859) do
+ActiveRecord::Schema.define(version: 20160331121754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accommodation_splits", force: :cascade do |t|
+    t.integer  "accommodation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "accommodations", force: :cascade do |t|
     t.integer  "trip_id"
@@ -30,6 +37,13 @@ ActiveRecord::Schema.define(version: 20160329154859) do
     t.datetime "updated_at",          null: false
   end
 
+  create_table "expense_splits", force: :cascade do |t|
+    t.integer  "expense_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "expenses", force: :cascade do |t|
     t.integer  "trip_id"
     t.integer  "user_id"
@@ -38,6 +52,13 @@ ActiveRecord::Schema.define(version: 20160329154859) do
     t.float    "amount"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "flight_splits", force: :cascade do |t|
+    t.integer  "flight_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "flights", force: :cascade do |t|
@@ -65,6 +86,7 @@ ActiveRecord::Schema.define(version: 20160329154859) do
 
   create_table "trips", force: :cascade do |t|
     t.string   "location"
+    t.string   "title"
     t.datetime "start_date"
     t.datetime "end_date"
     t.text     "activity"
@@ -92,10 +114,6 @@ ActiveRecord::Schema.define(version: 20160329154859) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.string   "name"
     t.string   "nickname"
     t.string   "image"

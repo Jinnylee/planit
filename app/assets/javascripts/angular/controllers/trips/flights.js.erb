@@ -1,3 +1,82 @@
-app.controller('FlightsCtrl', ['$scope', function($scope){
+app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routeParams', function($scope, $http, $auth, $location, $routeParams){
   $scope.message = "Flights";
+
+  $scope.flights = [];
+  $scope.users = [];
+  $scope.newFlight = {};
+  $scope.nameList = [];
+  $scope.tripId = $routeParams.id;
+
+  $scope.toggleName = function (name) {
+    var nameIndex = $scope.nameList.indexOf(name);
+    if (nameIndex == -1){
+      $scope.nameList.push(name);
+    } else {
+      $scope.nameList.splice(nameIndex, 1)
+    }
+    console.log($scope.nameList);
+  };
+
+  var getFlights = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/flights.json'
+    }).then(function(resp){
+      console.log("showing flights!", resp);
+      $scope.flights = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+
+  var getUsers = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/users.json'
+    }).then(function(resp){
+      console.log("showing users info", resp)
+      $scope.users = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp)
+    });
+  };
+
+  $scope.addFlight = function() {
+    $scope.newFlight.name_list = $scope.nameList;
+
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/flights',
+      data: {
+        flight: $scope.newFlight
+      }
+    }).then(function(resp){
+      console.log("added new flight", resp);
+      getFlights();
+      $scope.newFlight = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.deleteFlight = function(id, index) {
+    $http({
+      method: 'DELETE',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/flights/' + id + '.json'
+    }).then(function(resp){
+      console.log("deleted flight", index)
+      $scope.flights.splice(index, 1);
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  getUsers();
+  getFlights();
+
 }]);

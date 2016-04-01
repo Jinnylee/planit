@@ -13,7 +13,20 @@
  *= require bootstrap/dist/css/bootstrap
  *= require font-awesome
  *= require angularjs-datepicker/src/css/angular-datepicker
+ *= require angular-ui-bootstrap-datetimepicker/datetimepicker.css
  *= require angular-google-places-autocomplete/src/autocomplete
  *= require_tree .
  *= require_self
  */
+
+.main-content {
+  margin-top: 120px;
+  margin-left: 75px;
+  height: calc(100vh - 120px);
+
+  > div {
+    height: 100%;
+    overflow: auto;
+  }
+}
+

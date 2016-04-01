@@ -1,0 +1,11 @@
+app.factory('editData', function() {
+  var editItem = {};
+  return {
+    getEditItem: function(){
+      return editItem;
+    },
+    setEditItem: function(value){
+      editItem = value
+    }
+  };
+});

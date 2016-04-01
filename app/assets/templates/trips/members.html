@@ -1,28 +1,67 @@
-<button ng-click="pending=false">Members</button>
-<button ng-click="pending=true">Pending Members</button>
-{{ message }}
-<section ng-hide="pending">
-  <ul>
-    <li ng-repeat="member in members">
-    <span><strong>{{ member.name }}</strong></span> {{ member.email }}
-    </li>
-  </ul>
-  <div>
-    <h1>Invite members</h1>
+<div class="container">
+  <div class="row">
 
-    <form id="newMember" ng-submit="addMember()">
-      <div>
-        <input type="text" placeholder="Email" ng-model="invitedmember"></input>
+    <div class="navbar navbar-inverse navbar-fixed-left">
+      <a class="navbar-brand" href="#">Planit</a>
+      <ul class="nav navbar-nav">
+         <li><a href="#">Link2</a></li>
+         <li><a href="#">Link3</a></li>
+         <li><a href="#">Link4</a></li>
+         <li><a href="#">Link5</a></li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="header-image-row"></div>
+
+      <div class="trip-information-section col-xs-8">
+        <section class="member-nav">
+          <button ng-click="pending=false">Members</button>
+          <button ng-click="pending=true">Pending Members</button>
+        </section>
+
+        <section ng-show="pending">
+          <div>
+            <div>{{pending.email}}</div>
+          </div>
+        </section>
+
+        <section ng-hide="pending" class="main col-xs-8">
+          <div class="row">
+            <h1>Invite members</h1>
+
+            <form id="newMember" ng-submit="addMember()">
+              <div class="col-xs-8 form-inline">
+                <input type="email" class="form-control" placeholder="Enter email" ng-model="invitedmember"></input>
+                <button class="btn btn-info" type="submit" value="Invite">Send Invitation</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <h1>Members</h1>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="member in members">
+                  <td>{{ member.name }}</td>
+                  <td>{{ member.email }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
-        <input type="submit" value="Invite">
-    </form>
+      <div class="chat col-xs-4"></div>
+
+    </div>
+
   </div>
 
-  <h1>Members: </h1>
-</section>
+</div>
 
-<section ng-show="pending">
-  <div>
-    <div>{{pending.email}}</div>
-  </div>
-</section>

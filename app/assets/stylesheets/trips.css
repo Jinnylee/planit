@@ -42,7 +42,7 @@
   background-position:center;
 }
 
-.trip-information-section {
-  margin-top:135px;
-  margin-left:50px;
+.main {
+  padding: 50px;
+  padding-top: 20px;
 }

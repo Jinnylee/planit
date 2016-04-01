@@ -1,0 +1,65 @@
+<side-bar></side-bar>
+
+<div class="main-content">
+  <!-- NEW EXPENSES SECTION-->
+  <div class="col-xs-12 col-xs-8">
+      <button ng-click="validate()">validate</button>
+      <form>
+        <div class="add-expense-row form-group">
+          <div class="add-expense-row-label">
+            <h4>Description</h4>
+          </div>
+          <div class="add-expense-row-content">
+            <input class="form-control" placeholder="e.g., Hotel cost, Dinner on Friday, Transportation, etc." type="text" ng-model="newExpense.title">
+          </div>
+        </div>
+        <div class="add-expense-row form-group">
+          <div class="add-expense-row-label">
+            <h4>Amount</h4>
+          </div>
+          <div class="add-expense-row-content input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" placeholder="Amount" ng-model="newExpense.amount">
+          </div>
+        </div>
+        <div class="add-expense-row form-group">
+          <div class="add-expense-row-label">
+            <h4>Paid By</h4>
+          </div>
+          <div class="add-expense-row-content">
+            <select class="form-control" ng-options="user.id as user.name for user in users track by user.id" ng-model="newExpense.user_id">
+            </select>
+          </div>
+        </div>
+        <div class="add-expense-row form-group">
+          <div class="add-expense-row-label">
+            <h4>Split By</h4>
+          </div>
+          <div class="add-expense-row-content">
+            <label class="checkbox-inline" ng-repeat="user in users">
+              <input type="checkbox" ng-click="toggleName(user.id)">{{ user.name }} | {{ user.email }}
+            </label>
+          </div>
+        </div>
+        <div class="add-expense-row form-group">
+          <div class="add-expense-row-label">
+            <h4>Status</h4>
+          </div>
+          <div class="add-expense-row-content">
+            <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="newExpense.status">
+            </label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button ng-hide="editing" type="submit" ng-click="addExpense()">Add Expense</button>
+          <button ng-show="editing" type="submit" ng-click="editExpense()">Edit Expense</button>
+        </div>
+      </form>
+  </div>
+
+  <div class="col-xs-12 col-sm-4">Chat</div>
+</div>

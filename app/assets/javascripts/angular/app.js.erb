@@ -15,10 +15,22 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       controller: 'TripsCtrl'
     }).
     when('/trips/new', {
-      templateUrl: "<%= asset_path('trips/new.html') %>",
+      templateUrl: "<%= asset_path('trips/index_new_edit.html') %>",
+      controller: 'TripsCtrl'
+    }).
+    when('/trips/edit', {
+      templateUrl: "<%= asset_path('trips/index_new_edit.html') %>",
       controller: 'TripsCtrl'
     }).
     when('/trips/:id/activities', {
+      templateUrl: "<%= asset_path('trips/activities.html') %>",
+      controller: 'ActivitiesCtrl'
+    }).
+    when('/trips/:id/activities/new', {
+      templateUrl: "<%= asset_path('trips/activities.html') %>",
+      controller: 'ActivitiesCtrl'
+    }).
+    when('/trips/:id/activities/edit', {
       templateUrl: "<%= asset_path('trips/activities.html') %>",
       controller: 'ActivitiesCtrl'
     }).
@@ -26,12 +38,36 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       templateUrl: "<%= asset_path('trips/flights.html') %>",
       controller: 'FlightsCtrl'
     }).
+    when('/trips/:id/flights/new', {
+      templateUrl: "<%= asset_path('trips/flights_new_edit.html') %>",
+      controller: 'FlightsCtrl'
+    }).
+    when('/trips/:id/flights/edit', {
+      templateUrl: "<%= asset_path('trips/flights_new_edit.html') %>",
+      controller: 'FlightsCtrl'
+    }).
     when('/trips/:id/accommodations', {
       templateUrl: "<%= asset_path('trips/accommodations.html') %>",
       controller: 'AccommodationsCtrl'
     }).
-    when('/trips/:id/expenses', {
+    when('/trips/:id/accommodations/new', {
+      templateUrl: "<%= asset_path('trips/accommodations_new_edit.html') %>",
+      controller: 'AccommodationsCtrl'
+    }).
+    when('/trips/:id/accommodations/edit', {
+      templateUrl: "<%= asset_path('trips/accommodations_new_edit.html') %>",
+      controller: 'AccommodationsCtrl'
+    }).
+    when('/trips/:trip_id/expenses', {
       templateUrl: "<%= asset_path('trips/expenses.html') %>",
+      controller: 'ExpensesCtrl'
+    }).
+    when('/trips/:trip_id/expenses/new', {
+      templateUrl: "<%= asset_path('trips/expenses_new_edit.html') %>",
+      controller: 'ExpensesCtrl'
+    }).
+    when('/trips/:trip_id/expenses/:id/edit', {
+      templateUrl: "<%= asset_path('trips/expenses_new_edit.html') %>",
       controller: 'ExpensesCtrl'
     }).
     when('/trips/:id/packings', {

@@ -1,3 +1,82 @@
-app.controller('AccommodationsCtrl', ['$scope', function($scope){
+app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$routeParams', function($scope, $http, $auth, $location, $routeParams){
   $scope.message = "Accommodations";
+
+  $scope.accommodations = [];
+  $scope.users = [];
+  $scope.newAccommodation = {};
+  $scope.nameList = [];
+  $scope.tripId = $routeParams.id;
+
+  $scope.toggleName = function (name) {
+    var nameIndex = $scope.nameList.indexOf(name);
+    if (nameIndex == -1){
+      $scope.nameList.push(name);
+    } else {
+      $scope.nameList.splice(nameIndex, 1)
+    }
+    console.log($scope.nameList);
+  };
+
+  var getAccommodations = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/accommodations.json'
+    }).then(function(resp){
+      console.log("showing accommodations!", resp);
+      $scope.accommodations = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+
+  var getUsers = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/users.json'
+    }).then(function(resp){
+      console.log("showing users info", resp)
+      $scope.users = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp)
+    });
+  };
+
+  $scope.addAccommodation = function() {
+    $scope.newAccommodation.name_list = $scope.nameList;
+
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/accommodations',
+      data: {
+        accommodation: $scope.newAccommodation
+      }
+    }).then(function(resp){
+      console.log("added new accommodation", resp);
+      // getAccommodation();
+      $scope.newAccommodation = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.deleteAccommodation = function(id, index) {
+    $http({
+      method: 'DELETE',
+      url: 'http://localhost:3000/trips/' + $routeParams.id + '/accommodations/' + id + '.json'
+    }).then(function(resp){
+      console.log("deleted accommodation", index)
+      $scope.accommodations.splice(index, 1);
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  getUsers();
+  getAccommodations();
+
 }]);
