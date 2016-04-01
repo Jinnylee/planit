@@ -56,9 +56,9 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
-#signin-form {
+/*#signin-form {
   margin-top:20px;
-}
+}*/
 
 .signupRow {
   color:white;
@@ -70,4 +70,22 @@ button.btn.btn-primary {
   margin:3px;
 }
 
+/*SIGN UP AND IN FORMS*/
 
+#signinForm {
+  background-color:black;
+  width:80%;
+  margin:0 auto;
+}
+
+#signupForm {
+  background-color:black;
+  width:80%;
+  margin: 0 auto;
+}
+
+.form-group {
+  width:80%;
+  text-align:center;
+  margin:0 auto;
+}
