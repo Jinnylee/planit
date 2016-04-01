@@ -19,3 +19,18 @@
 }
 
 
+div.trip-title, div.trip-location, div.trip-date {
+  display:inline-block;
+  padding:10px;
+}
+
+div.delete.trip-btn {
+  float:right;
+  font-size:12px;
+}
+
+div.edit.trip-btn {
+  float:right;
+  font-size:12px;
+}
+
