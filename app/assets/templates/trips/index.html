@@ -36,7 +36,7 @@
           </label>
         </div>
 
-        <input id="addTripButton" type="submit" value="Add Trip" ng-hide="editing">
+        <input id="addTripButton" type="submit" value="Add Trip" ng-hide="editing"></input>
       </form>
     </div>
   </section>
@@ -46,9 +46,8 @@
     <div class="row" id="completedTrips">
       <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
         <div class="row">
-          <div class="delete trip-btn" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
-          <div class="edit trip-btn" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x"></i></div>
-        </div>
+        <div class="delete trip-btn" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
+        <div class="edit trip-btn" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x"></i></div>
         <div class="trip-title"><a href="/#/trips/{{trip.id}}/members"><strong>{{ trip.title }}</strong></a></div>
         <div class="trip-location">{{ trip.location }}</div>
         <div class="trip-date">{{ trip.start_date }} ~ {{ trip.end_date }}</div>
