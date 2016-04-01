@@ -64,26 +64,26 @@
   color:white;
 }
 
-button.btn.btn-primary {
-  background:none;
-  border: 2px solid white;
-  margin:3px;
-}
+
 
 /*SIGN UP AND IN FORMS*/
 
 #signinForm {
-  background-color:black;
+  background-color:white;
+  opacity:0.95;
   width:50%;
   margin:0 auto;
   height:60%;
+  color:black;
 }
 
 
 #signupForm {
-  background-color:black;
-  width:80%;
+  background-color:white;
+  opacity:0.95;
+  width:50%;
   margin: 0 auto;
+  color:black;
 }
 
 .form-group {
@@ -93,4 +93,28 @@ button.btn.btn-primary {
   padding:10px;
   margin:20px,20px,20px,20px;
 
+}
+
+/*BUTTONS ON HOME PAGE*/
+
+button.btn.btn-primary {
+  background:none;
+  border: 2px solid white;
+  margin:3px;
+  padding:10px;
+  width:100px;
+  font-weight:bold;
+}
+
+.btn.btn-form.btn-lg {
+  background-color:#45bbff;
+  color:white;
+  margin-bottom:20px;
+}
+
+.btn.btn-danger.btn-lg {
+  background-color:#455eff;
+  color:white;
+  border:none;
+  margin-bottom:20px;
 }
