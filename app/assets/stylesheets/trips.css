@@ -52,6 +52,8 @@
   margin-left:50px;
 }
 
+
+
 li.navbar-icon a img {
   width:45px;
   height:45px;
@@ -63,6 +65,9 @@ li.navbar-icon2 a img {
 
 }
 
+ul.nav.navbar-nav > li.navbar-icon {
+  width:75px;
+}
 
 /*TOOLTIP CSS for navbar*/
 
