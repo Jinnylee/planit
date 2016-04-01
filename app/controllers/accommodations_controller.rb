@@ -9,6 +9,13 @@ class AccommodationsController < ApplicationController
     end
   end
 
+  def show
+    @accommodation = Accommodation.includes(:accommodation_splits).find(params[:id])
+    respond_to do |format|
+      format.json { render json: @accommodation.as_json(include: { accommodation_splits: { include: :user }, user: {} }) }
+    end
+  end
+
   def create
     @accommodation = @trip.accommodations.new(accommodation_params)
     @accommodation.name = params["accommodation"]["name"]["name"]

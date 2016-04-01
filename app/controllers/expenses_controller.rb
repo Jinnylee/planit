@@ -9,12 +9,21 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def show
+    @expense = Expense.includes(:expense_splits).find(params[:id])
+    respond_to do |format|
+      format.json { render json: @expense.as_json(include: { expense_splits: { include: :user }, user: {} }) }
+    end
+  end
+
   def create
     @expense = @trip.expenses.new(expense_params)
 
     if @expense.save
-      params[:expense][:name_list].each do |user_id| # [3, 5]
-        @expense.expense_splits.create(user_id: user_id)
+      if not params[:expense][:name_list].nil?
+        params[:expense][:name_list].each do |user_id| # [3, 5]
+          @expense.expense_splits.create(user_id: user_id)
+        end
       end
 
       render json: @expense.as_json(include: {expense_splits: {include: :user} })
@@ -26,9 +35,15 @@ class ExpensesController < ApplicationController
   def update
     @expense = Expense.update(params[:id], expense_params)
 
+
     if @expense.save
-      params[:expense][:name_list].each do |user_id| # [3, 5]
-        @expense.expense_splits.create(user_id: user_id)
+      if params[:expense][:name_list].nil?
+        @expense.expense_splits.delete_all
+      else
+        params[:expense][:name_list].each do |user_id| # [3, 5]
+          @expense.expense_splits.find_or_create_by(user_id: user_id)
+        end
+        @expense.expense_splits.where.not(user_id: params[:expense][:name_list]).delete_all
       end
 
       render json: @expense.as_json(include: {expense_splits: {include: :user} })
@@ -49,7 +64,7 @@ class ExpensesController < ApplicationController
 
   private
     def expense_params
-      params.require(:expense).permit(:title, :status, :user_id, :amount)
+      params.require(:expense).permit(:title, :pay_status, :user_id, :amount)
     end
 
     def set_trip

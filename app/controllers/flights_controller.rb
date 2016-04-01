@@ -9,6 +9,13 @@ class FlightsController < ApplicationController
     end
   end
 
+  def show
+    @flight = Flight.includes(:flight_splits).find(params[:id])
+    respond_to do |format|
+      format.json { render json: @flight.as_json(include: { flight_splits: { include: :user }, user: {} }) }
+    end
+  end
+
   def create
     @flight = @trip.flights.new(flight_params)
 
