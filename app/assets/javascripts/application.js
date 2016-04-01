@@ -20,6 +20,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/dist/js/bootstrap
-//= require static_pages.js
 //= require moment
 //= require_tree .
