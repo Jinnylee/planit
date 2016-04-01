@@ -1,9 +1,10 @@
 <script src="src/js/angular-datepicker.js"></script>
 
 <div id="tripPage">
-  <h1>{{currentuser}}</h1>
-  <div class="row create-logout">
-    <button ng-click="logout()">Logout</button>
+  <div id="userNameRow">
+    <img src="http://i64.tinypic.com/vugzk.png">
+    <h1 class="currentUserName">{{currentuser}}</h1>
+    <button id="logoutButton" ng-click="logout()">Logout</button>
   </div>
 
   <section class="col-xs-6 col-xs-offset-3" id="alltrips">
@@ -35,18 +36,13 @@
               </label>
             </div>
 
-
               <input id="addTripButton" type="submit" value="Add Trip" ng-hide="editing">
-
           </form>
 
-        </div>
-      </div>
-
-
-    <div class="row">
-      <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
-        <div class="row">
+          <div class="row">
+            <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
+            <div class="row">
+            <h1>hello</h1>
           <div class="delete trip-btn" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
           <div class="edit trip-btn" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x"></i></div>
         </div>
@@ -55,6 +51,12 @@
         <div class="trip-date">{{ trip.start_date }} ~ {{ trip.end_date }}</div>
       </div>
     </div>
+
+        </div>
+      </div>
+
+
+
   </section>
 </div>
 
