@@ -74,9 +74,11 @@ button.btn.btn-primary {
 
 #signinForm {
   background-color:black;
-  width:80%;
+  width:50%;
   margin:0 auto;
+  height:60%;
 }
+
 
 #signupForm {
   background-color:black;
@@ -88,4 +90,7 @@ button.btn.btn-primary {
   width:80%;
   text-align:center;
   margin:0 auto;
+  padding:10px;
+  margin:20px,20px,20px,20px;
+
 }
