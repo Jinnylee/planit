@@ -13,8 +13,8 @@
     <div class="video-container">
         <div class="filter"></div>
         <video autoplay loop class="fillWidth">
-            <source src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.webm" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-            <source src="../../images/Beach-Bali.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.webm" type="video/webm" />Your browser does not support the video tag. Please upgrade your browser.
+            <source src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.mp4" type="video/mp4" />Your browser does not support the video tag. Please upgrade your browser.
         </video>
         <div class="poster hidden">
             <img src="../../images/Beach-Bali.jpg" alt="">
@@ -22,50 +22,26 @@
     </div>
   </div>
 
-<!-- LOGIN DETAILS: -->
-
-
 
      <div class="signupRow">
 <!--       <h1> {{ message }} </h1> -->
-      <div class="row">
+      <div class="row" ng-hide="homeLogo">
         <img src="http://i65.tinypic.com/vs036g.png">
       </div>
 
       <div class="row">
-        <a><button class="btn btn-primary" ng-click="showme2=true; showme=false">Signup</button></a>
-        <a><button class="btn btn-primary" ng-click="showme=true; showme2=false">Signin</button></a>
+        <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme2=true; showme=false; homeLogo=true">Signup</button></a>
+        <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme=true; showme2=false; homeLogo=true">Signin</button></a>
       </div>
 
-      <div class="row">
+      <div class="row" ng-hide="homeLogo">
         <p>How it works</p>
       </div>
 
 
-<!--      <form id="signin-form">
-            <p class="sign-in-font">SIGN IN</p>
-            <p id="fbButton"><button class="btn" id="fb-button"></button><span class="orText"> -- or -- </span></p>
-            <p><input type="email" name="email" placeholder="email"></p>
-            <p><input type="password" name="password" placeholder="password"></p>
-            <button id="submit-button-home" class="btn btn-info"type="submit">Submit</button>
-      </form>
-
-      <form id="signup-form">
-          <p class="sign-up-font">SIGN UP</p>
-          <p><input type="text" placeholder="First name" name="first-name"></p>
-          <p><input type="text" placeholder="Last name" name="last-name"></p>
-          <p><input type="text" placeholder="Username" name="username"></p>
-          <p><input type="email" placeholder="Email" name="email"></p>
-          <p><input type="password" placeholder="Password"name="password"></p>
-          <p><input type="password" placeholder="Password confirm"name="password_confirmation"></p>
-          <button id="submit-button-home" class="btn btn-info"type="submit">Submit</button>
-      </form>
-
-    </div> -->
-
 <!-- SIGN IN -->
   <div class="container">
-    <div class="row">
+    <div id="signinForm" class="row">
       <form id="signin-form" ng-show="showme" ng-submit="login()" role="form" ng-init="loginForm = {}">
         <h1 class="sign-in-font">Sign In</h1>
 
@@ -80,14 +56,14 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg">Login</button>
-        <a href="/#/"><button class="btn btn-danger btn-lg" ng-click="showme2=false; showme=false">Back</button></a>
+        <a href="/#/"><button class="btn btn-danger btn-lg" ng-click="showme2=false; showme=false; homeLogo=false">Back</button></a>
       </form>
     </div>
   </div>
 
 <!-- SIGN UP -->
   <div class="container">
-    <div class="row">
+    <div id="signupForm" class="row">
       <form id="signup-form" ng-show="showme2" ng-submit="signup()" role="form" ng-init="registrationForm = {}">
         <h1 class="sign-up-font">Sign Up</h1>
 
@@ -112,27 +88,10 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg">Register</button>
-        <a href="/#/"><button class="btn btn-danger btn-lg" ng-click="showme2=false; showme=false">Back</button></a>
+        <a href="/#/"><button class="btn btn-danger btn-lg" ng-click="showme2=false; showme=false; homeLogo=false">Back</button></a>
       </form>
     </div>
   </div>
 
 </body>
 </html>
-
-
-
-
-<!-- VIDEO COMPONENT -->
-<!-- <div class="homepage-hero-module">
-    <div class="video-container">
-        <div class="filter"></div>
-        <video autoplay loop class="fillWidth">
-            <source src="/app/assets/images/Beach-Bali.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-            <source src="PATH_TO_WEBM" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
-        </video>
-        <div class="poster hidden">
-            <img src="PATH_TO_JPEG" alt="">
-        </div>
-    </div>
-</div> -->
