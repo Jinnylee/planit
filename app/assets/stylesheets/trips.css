@@ -118,9 +118,10 @@ a:hover.tooltips span {
   background-size:100%;
 }
 
-#alltrips {
+.alltrips {
   background: white;
 }
+
 
 .currentUserName {
   font-size:16px;

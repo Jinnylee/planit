@@ -21,8 +21,8 @@
   </div>
 
   <div class="row">
-    <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme2=true; showme=false; homeLogo=true">Signup</button></a>
-    <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme=true; showme2=false; homeLogo=true">Signin</button></a>
+    <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme2=true; showme=false; homeLogo=true">SIGN UP</button></a>
+    <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme=true; showme2=false; homeLogo=true">SIGN IN</button></a>
   </div>
 
   <div class="row" ng-hide="homeLogo">
@@ -46,7 +46,7 @@
           <input type="password" name="password" ng-model="loginForm.password" required="required" class="form-control" placeholder="Enter Password"/>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+        <button type="submit" class="btn btn-form btn-lg">Login</button>
         <a href="/#/"><button class="btn btn-danger btn-lg" ng-click="showme2=false; showme=false; homeLogo=false">Back</button></a>
       </form>
     </div>
@@ -74,11 +74,11 @@
         </div>
 
         <div class="form-group">
-          <label>password Confirmation</label>
+          <label>Confirm your Password</label>
           <input type="password" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control" placeholder="Enter Password Confirmation"/>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+        <button type="submit" class="btn btn-form btn-lg">Register</button>
         <a href="/#/"><button class="btn btn-danger btn-lg" ng-click="showme2=false; showme=false; homeLogo=false">Back</button></a>
       </form>
     </div>
