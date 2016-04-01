@@ -1,50 +1,52 @@
 <script src="src/js/angular-datepicker.js"></script>
 
-<h1>Trips</h1>
-<section class="col-xs-6 col-xs-offset-3" id="alltrips">
-<div class="container-fluid" ng-show="adding">
-    <div class="row">
-      <h1>Add new trip</h1>
-
-      <form id="newTrip" ng-submit="addOrEditTrip()" autocomplete="off">
-        <div>
-          <label>Title: </label>
-          <input type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
-        </div>
-        <div>
-          <label>Location: </label>
-          <input g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
-        </div>
-
-        <datepicker>
-          <input ng-model="newOrEditTrip.start_date" placeholder="Start date" type="text"/>
-        </datepicker>
-        <datepicker>
-          <input ng-model="newOrEditTrip.end_date" placeholder="End date" type="text"/>
-        </datepicker>
-
-        <div>
-          <input type="submit" value="Add Trip" ng-hide="editing">
-          <input type="submit" value="Edit Trip" ng-show="editing">
-        </div>
-      </form>
-
-    </div>
-  </div>
-
-  <div class="row create-logout">
-    <button>Create Trip</button>
-    <button ng-click="logout()">Logout</button>
-  </div>
-  <div class="row">
-    <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
+<div id="tripPage">
+  <h1>Trips</h1>
+  <section class="col-xs-6 col-xs-offset-3" id="alltrips">
+  <div class="container-fluid" ng-show="adding">
       <div class="row">
-        <div class="delete trip-btn" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
-        <div class="edit trip-btn" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x"></i></div>
+        <h1>Add new trip</h1>
+
+        <form id="newTrip" ng-submit="addOrEditTrip()" autocomplete="off">
+          <div>
+            <label>Title: </label>
+            <input type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
+          </div>
+          <div>
+            <label>Location: </label>
+            <input g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
+          </div>
+
+          <datepicker>
+            <input ng-model="newOrEditTrip.start_date" placeholder="Start date" type="text"/>
+          </datepicker>
+          <datepicker>
+            <input ng-model="newOrEditTrip.end_date" placeholder="End date" type="text"/>
+          </datepicker>
+
+          <div>
+            <input type="submit" value="Add Trip" ng-hide="editing">
+            <input type="submit" value="Edit Trip" ng-show="editing">
+          </div>
+        </form>
+
       </div>
-      <div class="trip-title"><a href="/#/trips/{{trip.id}}/members"><strong>{{ trip.title }}</strong></a></div>
-      <div class="trip-location">{{ trip.location }}</div>
-      <div class="trip-date">{{ trip.start_date }} ~ {{ trip.end_date }}</div>
     </div>
-  </div>
-</section>
+
+    <div class="row create-logout">
+      <button>Create Trip</button>
+      <button ng-click="logout()">Logout</button>
+    </div>
+    <div class="row">
+      <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
+        <div class="row">
+          <div class="delete trip-btn" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
+          <div class="edit trip-btn" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x"></i></div>
+        </div>
+        <div class="trip-title"><a href="/#/trips/{{trip.id}}/members"><strong>{{ trip.title }}</strong></a></div>
+        <div class="trip-location">{{ trip.location }}</div>
+        <div class="trip-date">{{ trip.start_date }} ~ {{ trip.end_date }}</div>
+      </div>
+    </div>
+  </section>
+</div>

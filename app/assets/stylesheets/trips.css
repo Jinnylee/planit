@@ -109,3 +109,9 @@ a:hover.tooltips span {
   margin-left: 15px;
   z-index: 999;
 }
+
+/*TRIPS PAGE CSS*/
+
+#tripPage {
+  background-image:url("http://gearpatrol.com/wp-content/uploads/2015/01/malmo-sweden-best-adventure-travel-gear-patrol.jpg");
+}
