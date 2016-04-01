@@ -10,7 +10,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   var getUsers = function() {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/users.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
     }).then(function(resp){
       console.log("showing users info", resp)
       $scope.users = resp.data
@@ -23,7 +23,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   var getExpenses = function() {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/expenses.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses.json'
     }).then(function(resp){
       console.log("showing expenses!", resp);
       $scope.expenses = resp.data
@@ -43,7 +43,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   var getExpense = function () {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '.json'
     }).then(function(resp){
       console.log("got single expense data!", resp);
       $scope.newExpense = resp.data;
@@ -55,7 +55,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   };
 
   var checkPath = function() {
-    if ($location.path() == '/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '/edit') {
+    if ($location.path() == 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '/edit') {
       $scope.editing = true;
       getExpense();
     } else {
@@ -102,7 +102,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
 
     $http({
       method:'POST',
-      url: '/trips/' + $routeParams.trip_id + '/expenses',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses',
       data: {
         expense: $scope.newExpense
       }
@@ -120,7 +120,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
 
     $http({
       method: 'PATCH',
-      url: '/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '.json',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '.json',
       data: {
         expense: $scope.newExpense
       }
@@ -136,7 +136,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   $scope.deleteExpense = function(id, index) {
     $http({
       method: 'DELETE',
-      url: '/trips/' + $routeParams.trip_id + '/expenses/' + id + '.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses/' + id + '.json'
     }).then(function(resp){
       console.log("deleted expense", index)
       $scope.expenses.splice(index, 1);
