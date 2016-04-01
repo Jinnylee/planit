@@ -18,7 +18,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
   var getTrips = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips.json'
+      url: '/trips.json'
    }).then(function(resp){
     console.log("showing trips!");
     console.log(resp.data);
@@ -56,7 +56,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
       console.log("addOrEditTrip", $scope.newOrEditTrip);
       $http({
         method: 'PATCH',
-        url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id + '.json',
+        url: '/trips/' + $scope.newOrEditTrip._id + '.json',
         data: $scope.newOrEditTrip
       }).then(function(resp){
         console.log("edited trip", resp);
@@ -70,7 +70,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
     } else {
       $http({
         method:'POST',
-        url: 'http://localhost:3000/trips.json',
+        url: '/trips.json',
         data: $scope.newOrEditTrip
       }).then(function(resp){
         console.log("added new trip", resp);
@@ -96,7 +96,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
   $scope.deleteTrip = function(id, index) {
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/trips/' + id + '.json'
+      url: '/trips/' + id + '.json'
     }).then(function(resp){
       console.log("deleted trip", index)
       $scope.trips.splice(index, 1);

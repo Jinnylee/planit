@@ -13,7 +13,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
       $scope.editing = true;
       $http({
         method: 'GET',
-        url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
+        url: '/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
       }).then(function(resp){
         console.log("got single accommodation data!", resp);
         $scope.newAccommodation = resp.data
@@ -51,7 +51,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   var getAccommodations = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations.json'
+      url: '/trips/' + $routeParams.trip_id + '/accommodations.json'
     }).then(function(resp){
       console.log("showing accommodations!", resp);
       $scope.accommodations = resp.data
@@ -65,7 +65,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   var getUsers = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
+      url: '/trips/' + $routeParams.trip_id + '/users.json'
     }).then(function(resp){
       console.log("showing users info", resp)
       $scope.users = resp.data
@@ -80,7 +80,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
 
     $http({
       method:'POST',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations',
+      url: '/trips/' + $routeParams.trip_id + '/accommodations',
       data: {
         accommodation: $scope.newAccommodation
       }
@@ -97,7 +97,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   $scope.deleteAccommodation = function(id, index) {
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + id + '.json'
+      url: '/trips/' + $routeParams.trip_id + '/accommodations/' + id + '.json'
     }).then(function(resp){
       console.log("deleted accommodation", index)
       $scope.accommodations.splice(index, 1);
