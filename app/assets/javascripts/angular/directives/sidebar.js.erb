@@ -1,6 +1,7 @@
 app.directive('sideBar', function(){
   return {
     restrict: 'E',
-    templateUrl: "<%= asset_path('partials/sidebar.html') %>"
+    templateUrl: "<%= asset_path('partials/sidebar.html') %>",
+    controller: "SidebarCtrl"
   };
 });

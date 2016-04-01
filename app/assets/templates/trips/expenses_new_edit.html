@@ -27,7 +27,8 @@
             <h4>Paid By</h4>
           </div>
           <div class="add-expense-row-content">
-            <select class="form-control" ng-options="user.id as user.name for user in users track by user.id" ng-model="newExpense.user_id">
+            <select class="form-control" ng-model="newExpense.user_id">
+              <option ng-repeat="user in users" label="{{user.name}}" value="{{user.id}}" ng-selected="newExpense.user_id == user.id">{{user.name}}</option>
             </select>
           </div>
         </div>
@@ -37,7 +38,7 @@
           </div>
           <div class="add-expense-row-content">
             <label class="checkbox-inline" ng-repeat="user in users">
-              <input type="checkbox" ng-click="toggleName(user.id)">{{ user.name }} | {{ user.email }}
+              <input type="checkbox" ng-click="toggleName(user.id)" ng-checked="isChecked(user.id)">{{ user.name }} | {{ user.email }}
             </label>
           </div>
         </div>
@@ -48,7 +49,7 @@
           <div class="add-expense-row-content">
             <div class="checkbox">
             <label>
-              <input type="checkbox" ng-model="newExpense.status">
+              <input type="checkbox" ng-model="newExpense.pay_status">
             </label>
             </div>
           </div>

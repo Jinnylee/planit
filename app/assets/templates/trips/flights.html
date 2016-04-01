@@ -18,7 +18,7 @@
       <div>{{flight.flight_number}}</div>
       <div>{{flight.terminal}}</div>
       <div><span ng-repeat="flight_splits in flight.flight_splits">{{flight_splits.user.name}}<br></span></div>
-      <a href="/#/trips/{{tripId}}/flights/new"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+      <a href="/#/trips/{{tripId}}/flights/{{flightId}}/edit" ng-click="editPage(flight.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a>
       <i class="fa fa-trash-o fa-2x" ng-click="deleteFlight(flight.id, $index)"></i>
     </div>
 

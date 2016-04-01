@@ -12,7 +12,8 @@
     "angularjs-datepicker": "^0.2.16",
     "angular-google-places-autocomplete": "^0.2.7",
     "angular-ui-bootstrap-datetimepicker": "^1.2.4",
-    "angular-material": "^1.0.6"
+    "angular-material": "^1.0.6",
+    "angular-ui-bootstrap": "^1.2.5"
   },
   "resolutions": {
     "angular": "^1.2.x"

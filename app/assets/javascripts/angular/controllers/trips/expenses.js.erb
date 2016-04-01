@@ -7,22 +7,69 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   $scope.tripId = $routeParams.trip_id;
   $scope.expenseId = $routeParams.id;
 
+  var getUsers = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
+    }).then(function(resp){
+      console.log("showing users info", resp)
+      $scope.users = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp)
+    });
+  };
+
+  var getExpenses = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses.json'
+    }).then(function(resp){
+      console.log("showing expenses!", resp);
+      $scope.expenses = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  var extractNameList = function (expenseSplits) {
+    for (var i=0; i < expenseSplits.length; i++) {
+      var user_id = expenseSplits[i].user_id;
+      $scope.nameList.push(user_id);
+    }
+  };
+
+  var getExpense = function () {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '.json'
+    }).then(function(resp){
+      console.log("got single expense data!", resp);
+      $scope.newExpense = resp.data;
+      extractNameList(resp.data.expense_splits);
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
   var checkPath = function() {
     if ($location.path() == '/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '/edit') {
       $scope.editing = true;
-      $scope.newExpense = {
-        title: expense.title,
-        amount: expense.amount,
-        user_id: expense.user_id,
-        status: expense.status,
-        id: expense.id
-      };
-      // editData.setEditItem($scope.newExpense);
+      getExpense();
     } else {
       $scope.editing = false;
+      getExpenses();
     }
   };
-  checkPath();
+
+  var init = function () {
+    getUsers();
+    checkPath();
+  };
+
+  init();
 
   $scope.editPage = function(id) {
     $scope.expenseId = id;
@@ -46,31 +93,9 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
     console.log($scope.nameList);
   }
 
-  var getExpenses = function() {
-    $http({
-      method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses.json'
-    }).then(function(resp){
-      console.log("showing expenses!", resp);
-      $scope.expenses = resp.data
-    }, function(resp){
-      console.log("error");
-      console.log(resp);
-    });
-  };
-
-  var getUsers = function() {
-    $http({
-      method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
-    }).then(function(resp){
-      console.log("showing users info", resp)
-      $scope.users = resp.data
-    }, function(resp){
-      console.log("error");
-      console.log(resp)
-    });
-  };
+  $scope.isChecked = function (name) {
+    return $scope.nameList.indexOf(name) != -1;
+  }
 
   $scope.addExpense = function() {
     $scope.newExpense.name_list = $scope.nameList;
@@ -83,8 +108,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
       }
     }).then(function(resp){
       console.log("added new expense", resp);
-      getExpenses();
-      $scope.newExpense = {};
+      $location.path('/trips/' + $routeParams.trip_id + '/expenses');
     }, function(resp){
       console.log("error");
       console.log(resp);
@@ -92,15 +116,17 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   };
 
   $scope.editExpense = function(id, index) {
+    $scope.newExpense.name_list = $scope.nameList;
+
     $http({
       method: 'PATCH',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses/' + id + '.json',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '.json',
       data: {
         expense: $scope.newExpense
       }
     }).then(function(resp){
       console.log("edited expense", resp);
-      $scope.newExpense = {};
+      $location.path('/trips/' + $routeParams.trip_id + '/expenses');
     }, function(resp){
       console.log("error");
       console.log(resp);
@@ -119,8 +145,4 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
       console.log(resp);
     });
   };
-
-  getExpenses();
-  getUsers();
-
 }]);
