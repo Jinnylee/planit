@@ -9,7 +9,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
     });
   };
 
-  $scope.message = "Trips";
+  $scope.currentuser = user.name;
   $scope.trips = [];
   $scope.newOrEditTrip = {};
   $scope.editing = false;

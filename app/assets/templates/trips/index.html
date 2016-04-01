@@ -1,30 +1,49 @@
 <script src="src/js/angular-datepicker.js"></script>
 
 <div id="tripPage">
-  <h1>Trips</h1>
+  <h1>{{currentuser}}</h1>
   <section class="col-xs-6 col-xs-offset-3" id="alltrips">
+
+
   <div class="container-fluid" ng-show="adding">
-      <div class="row">
-        <h1>Add new trip</h1>
-
-        <form id="newTrip" ng-submit="addOrEditTrip()" autocomplete="off">
-          <div>
-            <label>Title: </label>
-            <input type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
-          </div>
-          <div>
-            <label>Location: </label>
-            <input g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
+        <form id="newTrip" class="form-basic" ng-submit="addOrEditTrip()" autocomplete="off">
+          <div class="form-title-row">
+            <h1>Add a new trip</h1>
           </div>
 
-          <datepicker>
-            <input ng-model="newOrEditTrip.start_date" placeholder="Start date" type="text"/>
-          </datepicker>
-          <datepicker>
-            <input ng-model="newOrEditTrip.end_date" placeholder="End date" type="text"/>
-          </datepicker>
+          <div class="form-row">
+            <label>
+              <span>Title</span>
+              <input type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
+            </label>
+          </div>
 
-          <div>
+          <div class="form-row">
+            <label>
+              <span>Location</span>
+              <input g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              <span>Start Date</span>
+                <datepicker>
+                  <input ng-model="newOrEditTrip.start_date" placeholder="Start date" type="text"/>
+                </datepicker>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              <span>End Date</span>
+                <datepicker>
+                  <input ng-model="newOrEditTrip.end_date" placeholder="End date" type="text"/>
+                </datepicker>
+            </label>
+          </div>
+
+          <div class="form-row">
             <input type="submit" value="Add Trip" ng-hide="editing">
             <input type="submit" value="Edit Trip" ng-show="editing">
           </div>
@@ -50,3 +69,4 @@
     </div>
   </section>
 </div>
+
