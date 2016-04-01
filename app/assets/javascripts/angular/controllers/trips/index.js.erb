@@ -1,5 +1,4 @@
 app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($scope, $http, $auth, $location){
-
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
       console.log(resp, "logged out!");
@@ -9,7 +8,15 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
     });
   };
 
-  $scope.currentuser = user.name;
+  $auth.validateUser().then(function(resp){
+    console.log(resp);
+    $scope.user = resp;
+    $scope.currentuser = resp.name;
+  }).catch(function(resp){
+    console.log(resp);
+    $location.path('/');
+  });
+
   $scope.trips = [];
   $scope.newOrEditTrip = {};
   $scope.editing = false;

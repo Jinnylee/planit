@@ -2,60 +2,48 @@
 
 <div id="tripPage">
   <h1>{{currentuser}}</h1>
+  <div class="row create-logout">
+    <button ng-click="logout()">Logout</button>
+  </div>
+
   <section class="col-xs-6 col-xs-offset-3" id="alltrips">
+    <div class="container-fluid" ng-show="adding">
+      <form id="newTrip" class="form-basic" ng-submit="addOrEditTrip()" autocomplete="off">
+        <div class="form-title-row">
+          <h1>Add a new trip</h1>
+        </div>
+
+        <div class="form-row">
+          <label>
+            <input class="form-control" type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
+          </label>
+          <label>
+                <input class="form-control" g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>
+                  <datepicker>
+                    <input class="form-control" ng-model="newOrEditTrip.start_date" placeholder="Start date" type="text"/>
+                  </datepicker>
+              </label>
+              <label>
+                  <datepicker>
+                    <input class="form-control" ng-model="newOrEditTrip.end_date" placeholder="End date" type="text"/>
+                  </datepicker>
+              </label>
+            </div>
 
 
-  <div class="container-fluid" ng-show="adding">
-        <form id="newTrip" class="form-basic" ng-submit="addOrEditTrip()" autocomplete="off">
-          <div class="form-title-row">
-            <h1>Add a new trip</h1>
-          </div>
+              <input id="addTripButton" type="submit" value="Add Trip" ng-hide="editing">
 
-          <div class="form-row">
-            <label>
-              <span>Title</span>
-              <input type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
-            </label>
-          </div>
+          </form>
 
-          <div class="form-row">
-            <label>
-              <span>Location</span>
-              <input g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label>
-              <span>Start Date</span>
-                <datepicker>
-                  <input ng-model="newOrEditTrip.start_date" placeholder="Start date" type="text"/>
-                </datepicker>
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label>
-              <span>End Date</span>
-                <datepicker>
-                  <input ng-model="newOrEditTrip.end_date" placeholder="End date" type="text"/>
-                </datepicker>
-            </label>
-          </div>
-
-          <div class="form-row">
-            <input type="submit" value="Add Trip" ng-hide="editing">
-            <input type="submit" value="Edit Trip" ng-show="editing">
-          </div>
-        </form>
-
+        </div>
       </div>
-    </div>
 
-    <div class="row create-logout">
-      <button>Create Trip</button>
-      <button ng-click="logout()">Logout</button>
-    </div>
+
     <div class="row">
       <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
         <div class="row">

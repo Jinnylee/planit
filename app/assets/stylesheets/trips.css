@@ -140,6 +140,8 @@ html{
 
     font: bold 14px sans-serif;
     text-align: center;
+    padding-top:20px;
+    padding-bottom:20px;
 }
 
 .form-basic .form-row{
@@ -246,6 +248,11 @@ html{
     margin: 40px 183px 0;
 }
 
+div.form-row label {
+  max-width:47%;
+
+}
+
 /*  Making the form responsive. */
 
 @media (max-width: 600px) {
@@ -287,4 +294,14 @@ html{
         margin: 0;
     }
 
+}
+
+#addTripButton {
+  background-color:#45bbff;
+  color:white;
+}
+
+#editTripButton {
+  background-color:#45bbff;
+  color:white;
 }

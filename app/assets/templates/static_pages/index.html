@@ -1,45 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Planit</title>
-</head>
-
-<body>
-
 <!-- VIDEO BACKGROUND:
  -->
-  <div class="homepage-hero-module">
-    <div class="video-container">
-        <div class="filter"></div>
-        <video autoplay loop class="fillWidth">
-            <source src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.webm" type="video/webm" />Your browser does not support the video tag. Please upgrade your browser.
-            <source src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.mp4" type="video/mp4" />Your browser does not support the video tag. Please upgrade your browser.
-        </video>
-        <div class="poster hidden">
-            <img src="../../images/Beach-Bali.jpg" alt="">
-        </div>
+<div class="homepage-hero-module">
+  <div class="video-container">
+    <div class="filter"></div>
+    <video autoplay loop class="fillWidth">
+      <source ng-src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.webm" type="video/webm" />Your browser does not support the video tag. Please upgrade your browser.
+      <source ng-src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.mp4" type="video/mp4" />Your browser does not support the video tag. Please upgrade your browser.
+    </video>
+    <div class="poster hidden">
+      <img src="../../images/Beach-Bali.jpg" alt="">
     </div>
+  </div>
+</div>
+
+
+<div class="signupRow">
+  <!--       <h1> {{ message }} </h1> -->
+  <div class="row" ng-hide="homeLogo">
+    <img src="http://i65.tinypic.com/vs036g.png">
+  </div>
+
+  <div class="row">
+    <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme2=true; showme=false; homeLogo=true">Signup</button></a>
+    <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme=true; showme2=false; homeLogo=true">Signin</button></a>
+  </div>
+
+  <div class="row" ng-hide="homeLogo">
+    <p>How it works</p>
   </div>
 
 
-     <div class="signupRow">
-<!--       <h1> {{ message }} </h1> -->
-      <div class="row" ng-hide="homeLogo">
-        <img src="http://i65.tinypic.com/vs036g.png">
-      </div>
-
-      <div class="row">
-        <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme2=true; showme=false; homeLogo=true">Signup</button></a>
-        <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme=true; showme2=false; homeLogo=true">Signin</button></a>
-      </div>
-
-      <div class="row" ng-hide="homeLogo">
-        <p>How it works</p>
-      </div>
-
-
-<!-- SIGN IN -->
+  <!-- SIGN IN -->
   <div class="container">
     <div id="signinForm" class="row">
       <form id="signin-form" ng-show="showme" ng-submit="login()" role="form" ng-init="loginForm = {}">
@@ -61,7 +52,7 @@
     </div>
   </div>
 
-<!-- SIGN UP -->
+  <!-- SIGN UP -->
   <div class="container">
     <div id="signupForm" class="row">
       <form id="signup-form" ng-show="showme2" ng-submit="signup()" role="form" ng-init="registrationForm = {}">
@@ -92,6 +83,4 @@
       </form>
     </div>
   </div>
-
-</body>
-</html>
+</div>
