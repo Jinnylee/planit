@@ -80,7 +80,7 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
     })
 
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000'
+    apiUrl: location.origin
   })
 
   // app.controller('ExpensesCtrl', ['$scope', '$routeParams', function($scope, $routeParams){
