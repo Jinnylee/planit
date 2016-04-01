@@ -1,7 +1,6 @@
 .each-trip {
-  background-color: grey;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  background-color: white;
+  margin-top:20px;
 }
 
 .create-logout {
@@ -12,3 +11,9 @@
 #alltrips {
   margin-top: 30px;
 }
+
+.col-xs-12.each-trip > div.row {
+  background:white;
+}
+
+

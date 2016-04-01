@@ -16,10 +16,10 @@
 
         <div class="form-row">
           <label>
-            <input class="form-control" type="text" placeholder="Title" ng-model="newOrEditTrip.title"></input>
+            <input class="form-control" type="text" placeholder="Title" ng-model="newOrEditTrip.title"/>
           </label>
           <label>
-            <input class="form-control" g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"></input>
+            <input class="form-control" g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"/>
           </label>
         </div>
 
@@ -36,16 +36,18 @@
           </label>
         </div>
 
-        <input id="addTripButton" type="submit" value="Add Trip" ng-hide="editing"></input>
+        <input id="addTripButton" type="submit" value="Add Trip" ng-hide="editing"/>
       </form>
     </div>
-  </section>
 
-
-  <section>
     <div class="row" id="completedTrips">
       <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
         <div class="row">
+          <form class="form-basic">
+            <div class="form-title-row">
+              <h1>Completed Trips</h1>
+            </div>
+          </form>
         <div class="delete trip-btn" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
         <div class="edit trip-btn" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x"></i></div>
         <div class="trip-title"><a href="/#/trips/{{trip.id}}/members"><strong>{{ trip.title }}</strong></a></div>
@@ -53,6 +55,7 @@
         <div class="trip-date">{{ trip.start_date }} ~ {{ trip.end_date }}</div>
       </div>
     </div>
+
   </section>
 
 </div>
