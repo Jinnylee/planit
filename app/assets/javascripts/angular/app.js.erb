@@ -58,15 +58,15 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       templateUrl: "<%= asset_path('trips/accommodations_new_edit.html') %>",
       controller: 'AccommodationsCtrl'
     }).
-    when('/trips/:id/expenses', {
+    when('/trips/:trip_id/expenses', {
       templateUrl: "<%= asset_path('trips/expenses.html') %>",
       controller: 'ExpensesCtrl'
     }).
-    when('/trips/:id/expenses/new', {
+    when('/trips/:trip_id/expenses/new', {
       templateUrl: "<%= asset_path('trips/expenses_new_edit.html') %>",
       controller: 'ExpensesCtrl'
     }).
-    when('/trips/:id/expenses/edit', {
+    when('/trips/:trip_id/expenses/:id/edit', {
       templateUrl: "<%= asset_path('trips/expenses_new_edit.html') %>",
       controller: 'ExpensesCtrl'
     }).
