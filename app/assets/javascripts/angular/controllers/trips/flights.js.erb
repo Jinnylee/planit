@@ -8,44 +8,18 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
   $scope.tripId = $routeParams.trip_id;
   $scope.flightId = $routeParams.id;
 
-  var checkPath = function() {
-    if ($location.path() == 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '/edit') {
-      $scope.editing = true;
-      $http({
-        method: 'GET',
-        url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json'
-      }).then(function(resp){
-        console.log("got single flight data!", resp);
-        $scope.newFlight = resp.data
-      }, function(resp){
-        console.log("error");
-        console.log(resp);
-      });
-      // $scope.newFlight = {
-      //   title: flight.title,
-      //   amount: flight.amount,
-      //   user_id: flight.user_id,
-      //   status: flight.status,
-      //   id: flight.id
-      // };
-    } else {
-      $scope.editing = false;
-    }
-  };
-  checkPath();
 
-  $scope.editPage = function(id) {
-    $scope.flightId = id;
-  }
-
-  $scope.toggleName = function (name) {
-    var nameIndex = $scope.nameList.indexOf(name);
-    if (nameIndex == -1){
-      $scope.nameList.push(name);
-    } else {
-      $scope.nameList.splice(nameIndex, 1)
-    }
-    console.log($scope.nameList);
+  var getUsers = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
+    }).then(function(resp){
+      console.log("showing users info", resp)
+      $scope.users = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp)
+    });
   };
 
   var getFlights = function() {
@@ -61,19 +35,57 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
     });
   };
 
-
-  var getUsers = function() {
-    $http({
-      method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
-    }).then(function(resp){
-      console.log("showing users info", resp)
-      $scope.users = resp.data
-    }, function(resp){
-      console.log("error");
-      console.log(resp)
-    });
+  var extractNameList = function(flightSplits) {
+    for (var i=0; i < flightSplits.length; i++) {
+      var user_id = flightSplits[i].user_id;
+      $scope.nameList.push(user_id);
+    }
   };
+
+  var getFlight = function() {
+    $http({
+        method: 'GET',
+        url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json'
+      }).then(function(resp){
+        console.log("got single flight data!", resp);
+        $scope.newFlight = resp.data;
+        extractNameList(resp.data.flight_splits);
+      }, function(resp){
+        console.log("error");
+        console.log(resp);
+    });
+  }
+
+  var checkPath = function() {
+    if ($location.path() == '/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '/edit') {
+      $scope.editing = true;
+      console.log("path checked to edit true")
+      getFlight();
+    } else {
+      $scope.editing = false;
+      getFlights();
+      console.log("path checked to edit false", $location.path())
+    }
+  };
+
+  $scope.editPage = function(id) {
+    $scope.flightId = id;
+  }
+
+  $scope.toggleName = function (name) {
+    var nameIndex = $scope.nameList.indexOf(name);
+    if (nameIndex == -1){
+      $scope.nameList.push(name);
+    } else {
+      $scope.nameList.splice(nameIndex, 1)
+    }
+    console.log($scope.nameList);
+  };
+
+  $scope.isChecked = function(name) {
+    return $scope.nameList.indexOf(name) != -1;
+    console.log(nameList);
+  }
 
   $scope.addFlight = function() {
     $scope.newFlight.name_list = $scope.nameList;
@@ -86,9 +98,26 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
       }
     }).then(function(resp){
       console.log("added new flight", resp);
-      getFlights();
-      $scope.newFlight = {};
+      $location.path('/trips/' + $routeParams.trip_id + '/flights');
     }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.editFlight = function(id, index) {
+    $scope.newFlight.name_list = $scope.nameList;
+
+    $http({
+      method:'PATCH',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json',
+      data: {
+        flight: $scope.newFlight
+      }
+    }).then(function(resp) {
+      console.log("edited flight", resp);
+      $location.path('/trips/' + $routeParams.trip_id + '/flights');
+    }, function(resp) {
       console.log("error");
       console.log(resp);
     });
@@ -107,7 +136,11 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
     });
   };
 
-  getUsers();
-  getFlights();
+  var init = function() {
+    getUsers();
+    checkPath();
+  };
+
+  init();
 
 }]);

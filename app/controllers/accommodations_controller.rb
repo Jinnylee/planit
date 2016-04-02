@@ -32,6 +32,23 @@ class AccommodationsController < ApplicationController
   end
 
   def update
+    @accommodation = Accommodation.update(params[:id], accommodation_params)
+
+
+    if @accommodation.save
+      if params[:accommodation][:name_list].nil?
+        @accommodation.accommodation_splits.delete_all
+      else
+        params[:accommodation][:name_list].each do |user_id| # [3, 5]
+          @accommodation.accommodation_splits.find_or_create_by(user_id: user_id)
+        end
+        @accommodation.accommodation_splits.where.not(user_id: params[:accommodation][:name_list]).delete_all
+      end
+
+      render json: @accommodation.as_json(include: {accommodation_splits: {include: :user} })
+    else
+      render json: @accommodation.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy

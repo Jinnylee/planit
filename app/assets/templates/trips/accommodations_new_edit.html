@@ -44,7 +44,7 @@
           </div>
           <div class="add-accommodation-row-content">
             <label class="checkbox-inline" ng-repeat="user in users">
-              <input type="checkbox" ng-click="toggleName(user.id)">{{ user.name }} | {{ user.email }}
+              <input type="checkbox" ng-click="toggleName(user.id)" ng-checked="isChecked(user.id)">{{ user.name }} | {{ user.email }}
             </label>
           </div>
         </div>

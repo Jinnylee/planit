@@ -10,52 +10,25 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
 
 
   $auth.validateUser().then(function(resp){
-  console.log(resp);
-  $scope.user = resp;
-  $scope.currentuser = resp.name;
+    console.log(resp);
+    $scope.user = resp;
+    $scope.currentuser = resp.name;
   }).catch(function(resp){
-  console.log(resp);
-  $location.path('/');
+    console.log(resp);
+    $location.path('/');
   });
 
-  var checkPath = function() {
-    if ($location.path() == 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '/edit') {
-      $scope.editing = true;
-      $http({
-        method: 'GET',
-        url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
-      }).then(function(resp){
-        console.log("got single accommodation data!", resp);
-        $scope.newAccommodation = resp.data
-      }, function(resp){
-        console.log("error");
-        console.log(resp);
-      });
-      // $scope.newaccommodation = {
-      //   title: accommodation.title,
-      //   amount: accommodation.amount,
-      //   user_id: accommodation.user_id,
-      //   status: accommodation.status,
-      //   id: accommodation.id
-      // };
-    } else {
-      $scope.editing = false;
-    }
-  };
-  checkPath();
-
-  $scope.editPage = function(id) {
-    $scope.accommodationId = id;
-  }
-
-  $scope.toggleName = function (name) {
-    var nameIndex = $scope.nameList.indexOf(name);
-    if (nameIndex == -1){
-      $scope.nameList.push(name);
-    } else {
-      $scope.nameList.splice(nameIndex, 1)
-    }
-    console.log($scope.nameList);
+  var getUsers = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
+    }).then(function(resp){
+      console.log("showing users info", resp)
+      $scope.users = resp.data
+    }, function(resp){
+      console.log("error");
+      console.log(resp)
+    });
   };
 
   var getAccommodations = function() {
@@ -71,19 +44,57 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
     });
   };
 
+  var extractNameList = function (accommodationSplits) {
+    for (var i=0; i < accommodationSplits.length; i++) {
+      var user_id = accommodationSplits[i].user_id;
+      $scope.nameList.push(user_id);
+    }
+  };
 
-  var getUsers = function() {
+  var getAccommodation = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
     }).then(function(resp){
-      console.log("showing users info", resp)
-      $scope.users = resp.data
+      console.log("got single accommodation data!", resp);
+      $scope.newAccommodation = resp.data;
+      extractNameList(resp.data.accommodation_splits);
+      console.log(resp.data.accommodation_splits, "here");
     }, function(resp){
       console.log("error");
-      console.log(resp)
+      console.log(resp);
     });
   };
+
+  var checkPath = function() {
+    if ($location.path() == '/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '/edit') {
+      $scope.editing = true;
+      console.log("path checked to edit true")
+      getAccommodation();
+    } else {
+      $scope.editing = false;
+      getAccommodations();
+      console.log("path checked to edit false", $location.path())
+    }
+  };
+
+  $scope.editPage = function(id) {
+    $scope.accommodationId = id;
+  }
+
+  $scope.toggleName = function (name) {
+    var nameIndex = $scope.nameList.indexOf(name);
+    if (nameIndex == -1){
+      $scope.nameList.push(name);
+    } else {
+      $scope.nameList.splice(nameIndex, 1)
+    }
+    console.log($scope.nameList);
+  };
+
+  $scope.isChecked = function (name) {
+    return $scope.nameList.indexOf(name) != -1;
+  }
 
   $scope.addAccommodation = function() {
     $scope.newAccommodation.name_list = $scope.nameList;
@@ -96,8 +107,25 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
       }
     }).then(function(resp){
       console.log("added new accommodation", resp);
-      // getAccommodation();
-      $scope.newAccommodation = {};
+      $location.path('/trips/' + $routeParams.trip_id + '/accommodations');
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.editAccommodation = function(id, index) {
+    $scope.newAccommodation.name_list = $scope.nameList;
+
+    $http({
+      method: 'PATCH',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json',
+      data: {
+        accommodation: $scope.newAccommodation
+      }
+    }).then(function(resp){
+      console.log("edited accommodation", resp);
+      $location.path('/trips/' + $routeParams.trip_id + '/accommodations');
     }, function(resp){
       console.log("error");
       console.log(resp);
@@ -117,7 +145,11 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
     });
   };
 
-  getUsers();
-  getAccommodations();
+  var init = function () {
+    getUsers();
+    checkPath();
+  };
+
+  init();
 
 }]);
