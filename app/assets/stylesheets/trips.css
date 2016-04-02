@@ -37,7 +37,7 @@
   width: 100%;
   top: 0;
   overflow: hidden;
-  background-image:url("http://cdn1.buuteeq.com/upload/18138/island-luxury-tours-maldives-travel-experts.jpg.1920x506_default.jpg");
+  background-color:navy;
   background-size: cover;
   background-position:center;
 }
@@ -47,11 +47,18 @@
   padding-top: 20px;
 }
 
-.trip-information-section {
-  margin-top:135px;
-  margin-left:50px;
+.main-content {
+  background-image:url("http://thewowstyle.com/wp-content/uploads/2015/01/spectacular-places1_placesofheaven.png");
+  background-size:100%;
 }
 
+/*FORMS*/
+.ng-pristine.ng-valid {
+  background-color:white;
+  width:60%;
+  margin:0 auto;
+  margin-top:2%;
+}
 
 li.navbar-icon a img {
   width:45px;
