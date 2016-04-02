@@ -2,7 +2,6 @@ var loadVideo = function () {
   console.log("test")
   // VIDEO COMPONENT
 
-  //jQuery is required to run this code
   $(document).ready(function() {
     scaleVideoContainer();
 
@@ -56,6 +55,12 @@ var loadVideo = function () {
     });
   }
 }
+
+// PARALLEX
+
+  // $('.parallax').parallax();
+
+// STATIC PAGES CONTROLLER
 
 app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', '$routeParams', '$http', function($scope, $auth, $location, $routeParams, $http){
   loadVideo();

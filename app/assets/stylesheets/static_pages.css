@@ -133,3 +133,8 @@ button.btn.btn-primary {
   position:relative;
   height:800px;
 }
+
+/*PARALLEX SECTION*/
+.parallax-container {
+      height: 800px;
+    }
