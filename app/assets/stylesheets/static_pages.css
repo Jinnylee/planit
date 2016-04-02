@@ -69,11 +69,15 @@
 }
 
 
-.howItWorks {
-  margin-bottom:2%;
+.signupRow p {
+  margin-top:2%;
+  font-weight:bold;
 }
 /*SIGN UP AND IN FORMS*/
 
+.arrowPic img {
+  margin-bottom:0%;
+}
 #signinForm {
   background-color:white;
   opacity:0.95;
@@ -128,5 +132,4 @@ button.btn.btn-primary {
 .informationRow1{
   position:relative;
   height:800px;
-  background-image:url("http://gearpatrol.com/wp-content/uploads/2015/01/wuyishan-fujian-china-best-adventure-travel-gear-patrol.jpg");
 }
