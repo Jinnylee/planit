@@ -6,4 +6,5 @@ class Trip < ActiveRecord::Base
   has_many :accommodations
   has_many :flights
   has_many :packings
+  has_many :activities
 end
