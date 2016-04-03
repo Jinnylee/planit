@@ -1,13 +1,13 @@
-app.controller('MembersCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
+app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '$http', function($scope, $location, $routeParams, $auth, $http){
 
   $scope.pending = false;
   $scope.members = [];
-  $scope.invitedmembers = {};
+  $scope.invitedmember = {};
 
   var getMembers = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.id + '/members.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/members.json'
    }).then(function(resp){
     console.log("showing members!");
     console.log(resp);
@@ -23,14 +23,14 @@ app.controller('MembersCtrl', ['$scope', '$routeParams', '$http', function($scop
   $scope.addMember = function() {
     $http({
       method:'POST',
-      url: 'http://localhost:3000/trips/' + $routeParams.id +'/members.json',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id +'/members.json',
       data: {
         email: $scope.invitedmember
       }
     }).then(function(resp){
       console.log("invited new member")
       getMembers();
-      $scope.invitedmembers = {};
+      $scope.invitedmember = {};
     }, function(resp){
       console.log("error");
       console.log(resp);

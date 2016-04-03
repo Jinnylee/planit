@@ -70,11 +70,11 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       templateUrl: "<%= asset_path('trips/expenses_new_edit.html') %>",
       controller: 'ExpensesCtrl'
     }).
-    when('/trips/:id/packings', {
+    when('/trips/:trip_id/packings', {
       templateUrl: "<%= asset_path('trips/packings.html') %>",
       controller: 'PackingsCtrl'
     }).
-    when('/trips/:id/members', {
+    when('/trips/:trip_id/members', {
       templateUrl: "<%= asset_path('trips/members.html') %>",
       controller: 'MembersCtrl'
     })
