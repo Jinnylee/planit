@@ -1,5 +1,6 @@
 app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeParams', function($scope, $http, $auth, $location, $routeParams){
   $scope.message = "Expenses";
+
   $scope.expenses = [];
   $scope.users = [];
   $scope.newExpense = {};
@@ -55,21 +56,16 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   };
 
   var checkPath = function() {
-    if ($location.path() == 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '/edit') {
+    if ($location.path() == '/trips/' + $routeParams.trip_id + '/expenses/' + $routeParams.id + '/edit') {
       $scope.editing = true;
+      console.log("path checked to edit true")
       getExpense();
     } else {
       $scope.editing = false;
       getExpenses();
+      console.log("path checked to edit false", $location.path())
     }
   };
-
-  var init = function () {
-    getUsers();
-    checkPath();
-  };
-
-  init();
 
   $scope.editPage = function(id) {
     $scope.expenseId = id;
@@ -145,4 +141,12 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
       console.log(resp);
     });
   };
+
+  var init = function () {
+    getUsers();
+    checkPath();
+  };
+
+  init();
+
 }]);

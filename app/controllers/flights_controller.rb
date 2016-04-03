@@ -31,6 +31,21 @@ class FlightsController < ApplicationController
   end
 
   def update
+    @flight = Flight.update(params[:id], flight_params)
+
+    if @flight.save
+      if params[:flight][:name_list].nil?
+        @flight.flight_splits.delete_all
+      else
+        params[:flight][:name_list].each do |user_id|
+          @flight.flight_splits.find_or_create_by(user_id: user_id)
+        end
+      @flight.flight_splits.where.not(user_id: params[:flight][:name_list]).delete_all
+      end
+      render json: @flight.as_json(include: { flight_splits: {include: :user} })
+    else
+      render json: @flight.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -44,7 +59,7 @@ class FlightsController < ApplicationController
 
   private
     def flight_params
-      params.require(:flight).permit(:airline, :arrival_airport, :arrival_date, :departure_airport, :departure_date, :flight_number, :terminal)
+      params.require(:flight).permit(:airline, :arrival_airport, :arrival_date, :departure_airport, :departure_date, :flight_number, :terminal, :user_id)
     end
 
     def set_trip

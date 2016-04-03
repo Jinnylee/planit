@@ -51,7 +51,7 @@
           </div>
           <div class="add-flight-row-content">
             <label class="checkbox-inline" ng-repeat="user in users">
-              <input type="checkbox" ng-click="toggleName(user.id)">{{ user.name }} | {{ user.email }}
+              <input type="checkbox" ng-click="toggleName(user.id)" ng-checked="isChecked(user.id)">{{ user.name }} | {{ user.email }}
             </label>
           </div>
         </div>
@@ -78,7 +78,7 @@
 
         <div>
           <button ng-hide="editing" type="submit" ng-click="addFlight()">Add flight</button>
-          <button ng-show="editing" type="submit">Edit flight</button>
+          <button ng-show="editing" type="submit" ng-click="editFlight()">Edit flight</button>
         </div>
       </form>
   </div>
