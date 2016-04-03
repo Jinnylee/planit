@@ -1,0 +1,30 @@
+<side-bar></side-bar>
+
+<div class="main-content">
+  <!-- NEW PACKING SECTION-->
+  <div class="col-xs-12 col-xs-8">
+      <form autocomplete="off">
+        <div class="add-packing-row form-group">
+          <div class="add-packing-row-label">
+            <h4>Packing</h4>
+          </div>
+          <div class="add-packing-row-content">
+            <input class="form-control" placeholder="e.g. Mosquito Repellant" type="text" ng-model="newPacking.name">
+          </div>
+        </div>
+        <div class="add-packing-row form-group">
+          <div class="add-packing-row-label">
+            <h4>Description</h4>
+          </div>
+          <div class="add-packing-row-content">
+            <input class="form-control" placeholder="e.g. we're going hiking!" type="text" ng-model="newPacking.description">
+          </div>
+        </div>
+        <div>
+          <button type="submit" ng-click="addPacking()">Add packing list</button>
+        </div>
+      </form>
+  </div>
+
+  <div class="col-xs-12 col-sm-4">Chat</div>
+</div>
