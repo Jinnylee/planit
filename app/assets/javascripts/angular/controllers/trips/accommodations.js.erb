@@ -37,7 +37,23 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations.json'
     }).then(function(resp){
       console.log("showing accommodations!", resp);
-      $scope.accommodations = resp.data
+      // $scope.accommodations = resp.data
+      resp.data.forEach(function(obj){
+        check_in = moment(obj.check_in).format('MM/DD/YYYY')
+        check_out = moment(obj.check_out).format('MM/DD/YYYY')
+        $scope.accommodations.push({
+          trip_id: obj.trip_id,
+          check_in: check_in,
+          check_out: check_out,
+          name: obj.name,
+          description: obj.description,
+          confirmation_number: obj.confirmation_number,
+          price: obj.price,
+          link: obj.link,
+          id: obj.id
+        });
+        console.log($scope.accommodations);
+      })
     }, function(resp){
       console.log("error");
       console.log(resp);
@@ -57,9 +73,22 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
     }).then(function(resp){
       console.log("got single accommodation data!", resp);
-      $scope.newAccommodation = resp.data;
+      check_in = moment(resp.data.check_in).format('MM/DD/YYYY')
+      check_out = moment(resp.data.check_out).format('MM/DD/YYYY')
+      $scope.newAccommodation = {
+        trip_id: resp.data.trip_id,
+        check_in: check_in,
+        check_out: check_out,
+        name: resp.data.name,
+        description: resp.data.description,
+        confirmation_number: resp.data.confirmation_number,
+        price: resp.data.price,
+        link: resp.data.link,
+        id: resp.data.id
+      };
+      console.log($scope.newAccommodation, "here")
       extractNameList(resp.data.accommodation_splits);
-      console.log(resp.data.accommodation_splits, "here");
+      // console.log(resp.data.accommodation_splits, "here");
     }, function(resp){
       console.log("error");
       console.log(resp);
