@@ -2,7 +2,7 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
 
   $scope.pending = false;
   $scope.members = [];
-  $scope.invitedmember = {};
+  $scope.invitedmembers = {};
 
   var getMembers = function() {
     $http({
