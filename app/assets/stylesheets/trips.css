@@ -46,7 +46,7 @@
 /*FORMS*/
 .ng-pristine.ng-valid {
   background-color:white;
-/*  width:60%;*/
+/*  width:70%;*/
   margin:0 auto;
   margin-top:2%;
 }
@@ -156,7 +156,20 @@ a:hover.tooltips span {
   margin-top:3%;
 }
 
-.membersHeader {
+#memberInput {
+  width:70%;
+  display:inline-block;
+}
+
+button#newMemberButton {
+  background-color:#45bbff;
+  color:white;
+  float:right;
+  line-height:20px;
+  margin: 2%;
+}
+
+h1.tripPageHeader {
   font-size:20px;
   text-decoration:bold;
   background:darkturquoise;
@@ -166,8 +179,8 @@ a:hover.tooltips span {
   margin-bottom: 5%;
   height: 50px;
   line-height: 50px;
-
 }
+
 
 /*FORM CSS ON TRIPS PAGE*/
 

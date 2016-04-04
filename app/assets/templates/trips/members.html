@@ -20,9 +20,9 @@
         <h1 class="tripPageHeader">Invite members</h1>
 
         <form id="newMember" ng-submit="addMember()">
-          <div class="col-xs-8 form-inline">
-            <input type="email" class="form-control" placeholder="Enter email" ng-model="invitedmember"></input>
-            <button class="btn btn-info" type="submit" value="Invite">Send Invitation</button>
+          <div class="col-xs-12 form-inline">
+            <input type="email" id = "memberInput" class="form-control" placeholder="Enter email" ng-model="invitedmember"></input>
+            <button id="newMemberButton" class="btn" type="submit" value="Invite">Send Invitation</button>
           </div>
         </form>
       </div>
