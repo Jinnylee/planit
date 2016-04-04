@@ -5,7 +5,7 @@ class ChatsController < ApplicationController
   def index
     @chats = Chat.where(trip_id: params[:trip_id])
     respond_to do |format|
-      format.json { render json: @chats }
+      format.json { render json: @chats.as_json(include: :user) }
     end
   end
 

@@ -29,12 +29,13 @@
 
 </div>
 
-<div class="col-xs-12 col-sm-4">
-  <div class="chat-box">
-    <div class="col-xs-12" ng-repeat="chat in chats">{{chat.user_id}}: {{chat.message}}</div>
+
+  <div class="col-xs-12 col-sm-4">
+    <div class="chat-box">
+      <div class="col-xs-12" ng-repeat="chat in chats">{{chat.user.name}}: {{chat.message}}</div>
+    </div>
+    <div class="input-message">
+      <input type="text" placeholder="Type message" ng-model="newMessage.message">
+      <button class="btn btn-default" ng-click="addChat()">Enter</button>
+    </div>
   </div>
-  <div class="input-message">
-    <input type="text" placeholder="Type message" ng-model="newMessage.message">
-    <button class="btn btn-default" ng-click="addChat()">Enter</button>
-  </div>
-</div>
