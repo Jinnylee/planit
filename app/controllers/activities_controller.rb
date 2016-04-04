@@ -3,6 +3,13 @@ class ActivitiesController < ApplicationController
   before_action :set_trip, only: [:create]
 
   def index
+    @activities = Activity.where(trip_id: params[:trip_id])
+    respond_to do |format|
+      format.json { render json: @activities }
+    end
+  end
+
+  def show
   end
 
   def create

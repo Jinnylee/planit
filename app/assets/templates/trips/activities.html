@@ -4,22 +4,16 @@
   <!-- ACTIVITIES SECTION-->
   <div class="col-xs-12 col-xs-8">
   {{message}}
-      <!-- Nav tabs -->
+    <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-      <li><a href="/#/trips/{{trip_id}}/activities/#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-      <li><a href="/#/trips/{{trip_id}}/activities/#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-      <li><a href="/#/trips/{{trip_id}}/activities/#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-      <li><a href="/#/trips/{{trip_id}}/activities/#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+      <li role="presentation" ng-repeat="date in dates"><a href="#{{date}}" aria-controls="{{date}}" role="tab" data-toggle="tab">{{date}}</a></li>
     </ul>
-
-  <!-- Tab panes -->
+      <!--Tab panes-->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane" id="home">home!</div>
-      <div role="tabpanel" class="tab-pane" id="profile">profile!</div>
-      <div role="tabpanel" class="tab-pane" id="messages">messages!</div>
-      <div role="tabpanel" class="tab-pane" id="settings">yay!</div>
+      <div role="tabpanel" class="tab-pane" id="{{date}}" ng-repeat="date in dates">
+        <div>hi</div>
+      </div>
     </div>
-
 
   </div>
 
