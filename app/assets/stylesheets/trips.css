@@ -151,6 +151,7 @@ a:hover.tooltips span {
   margin-right: 1%;
   height: 35px;
   width: 80px;
+  border:none;
 }
 
 .member-nav  {
@@ -168,7 +169,7 @@ a:hover.tooltips span {
 }
 
 /*FLIGHTS PAGE*/
-#addFlightsSection, #currentFlightsSection, #addExpenseSection, #currentExpensesSection {
+#addFlightsSection, #currentFlightsSection, #addExpenseSection, #currentExpensesSection, #addPackingsSection, #currentPackingsSection {
   background-color: white;
   opacity: 0.95;
   margin-top:2%;
@@ -208,6 +209,16 @@ td.expenseEditIcon {
   padding:0;
 }
 
+.packingListBullets {
+  list-style:none;
+  margin-left:2%;
+  padding-left:0;
+}
+
+#trashCanPacking {
+  float:right;
+  right:50px;
+}
 /*FLIGHTS EDIT PAGE*/
 /*
 This is for the form - adding a new flight*/
@@ -252,6 +263,18 @@ button#newMemberButton {
   line-height:20px;
   margin-bottom:2%;
   margin-right:5%;
+}
+
+#addPackingButton {
+  background-color:#45bbff;
+  color:white;
+  margin-bottom:2%;
+  margin-right:5%;
+  vertical-align:-1px;
+}
+
+#packingInputBox {
+  width:80%;
 }
 
 h1.tripPageHeader {
