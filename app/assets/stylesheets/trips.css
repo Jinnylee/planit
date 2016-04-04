@@ -161,6 +161,13 @@ a:hover.tooltips span {
   display:inline-block;
 }
 
+section.member-nav button {
+  background-color:#45bbff;
+  color:white;
+  border: none;
+  border-radius: 10%;
+  line-height: 25px;
+}
 button#newMemberButton {
   background-color:#45bbff;
   color:white;
