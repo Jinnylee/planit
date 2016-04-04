@@ -1,9 +1,78 @@
+<script src="src/js/angular-datepicker.js"></script>
 <side-bar></side-bar>
 
 <div class="main-content">
-  <!-- ACTIVITIES SECTION-->
+  <!-- NEW ACTIVITIES SECTION-->
   <div class="col-xs-12 col-xs-8">
+      <form autocomplete="off">
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Title</h4>
+          </div>
+          <div class="add-activity-row-content">
 
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Description</h4>
+          </div>
+          <div class="add-activity-row-content input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" placeholder="Price per night" ng-model="newActivity.price">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Date</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <datepicker>
+              <input class="form-control" ng-model="newActivity.check_out" placeholder="Check out" type="text"/>
+            </datepicker>
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Time</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <input type="text" class="form-control" placeholder="Activity confirmation number" ng-model="newActivity.confirmation_number">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Location</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <input g-places-autocomplete class="form-control" placeholder="e.g., JW Marriott Hotel Hong Kong, Waikiki Beach Walk Hotel, etc." type="text" ng-model="newActivity.name">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Cost</h4>
+          </div>
+          <div class="add-activity-row-content input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" placeholder="Cost of activity" ng-model="newActivity.price">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Link</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <datepicker>
+              <input class="form-control" ng-model="newActivity.check_out" placeholder="Check out" type="text"/>
+            </datepicker>
+          </div>
+        </div>
+
+        <div>
+          <button ng-hide="editing" type="submit" ng-click="addActivity()">Add activity</button>
+          <button ng-show="editing" type="submit" ng-click="editActivity()">Edit activity</button>
+        </div>
+      </form>
   </div>
 
   <div class="col-xs-12 col-sm-4">Chat</div>
