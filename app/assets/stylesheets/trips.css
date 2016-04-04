@@ -151,6 +151,10 @@ a:hover.tooltips span {
   width:100%;
 }
 
+#currentMembersTable {
+  margin-left: 5%;
+}
+
 #inviteMembers {
   margin-bottom:3%;
   margin-top:3%;
@@ -167,6 +171,7 @@ section.member-nav button {
   border: none;
   border-radius: 10%;
   line-height: 25px;
+  margin-right:1%;
 }
 button#newMemberButton {
   background-color:#45bbff;
@@ -174,6 +179,7 @@ button#newMemberButton {
   float:right;
   line-height:20px;
   margin: 2%;
+  margin-right:5%;
 }
 
 h1.tripPageHeader {

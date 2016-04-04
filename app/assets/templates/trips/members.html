@@ -5,8 +5,8 @@
   <div class="col-xs-12 col-xs-8">
     <!-- ADDING TO PACKING LIST -->
     <section class="member-nav">
-      <button ng-click="pending=false">Members</button>
-      <button ng-click="pending=true">Pending Members</button>
+      <button class="memberButton" ng-click="pending=false">Members</button>
+      <button class="memberButton" ng-click="pending=true">Pending Members</button>
     </section>
 
     <section ng-show="pending">
@@ -37,7 +37,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="member in members">
+            <tr id="currentMembersTable" ng-repeat="member in members">
               <td>{{ member.name }}</td>
               <td>{{ member.email }}</td>
             </tr>
