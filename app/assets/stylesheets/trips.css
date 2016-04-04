@@ -51,11 +51,15 @@
 /*  width:70%;*/
   margin:0 auto;
   margin-top:2%;
+  padding:none;
 }
 
-#addNewTripForm {
+form#newTrip {
+  padding:none;
+}
+#addNewTripInput {
   width:100%;
-  margin:0 auto;
+  margin-left:30%;
 }
 
 li.navbar-icon a img {
@@ -127,6 +131,11 @@ a:hover.tooltips span {
   background: white;
 }
 
+#completedTrips {
+  opacity: 0.90;
+  width: 96%;
+  margin-left: 2%;
+}
 
 .currentUserName {
   font-size:16px;
