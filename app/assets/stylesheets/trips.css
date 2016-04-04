@@ -168,7 +168,7 @@ a:hover.tooltips span {
 }
 
 /*FLIGHTS PAGE*/
-#addFlightsSection, #currentFlightsSection {
+#addFlightsSection, #currentFlightsSection, #addExpenseSection, #currentExpensesSection {
   background-color: white;
   opacity: 0.95;
   margin-top:2%;
@@ -178,7 +178,7 @@ a:hover.tooltips span {
   width:100%;
 }
 
-#currentFlightsSection {
+#currentFlightsSection, #currentExpensesSection {
   padding:0px;
 }
 
@@ -186,7 +186,7 @@ a:hover.tooltips span {
   padding-left:2%;
   padding:2%;
 }
-a#newFlightButton {
+a#newFlightButton, a#newExpenseButton {
   background-color:#45bbff;
   color:white;
   margin:0 auto;
@@ -198,9 +198,14 @@ a#newFlightButton {
   margin-left:35%;
 }
 
-#flightTable {
+#flightTable, #expenseTable {
   width: 95%;
   margin-left: 2%;
+}
+
+td.expenseEditIcon {
+  width:2%;
+  padding:0;
 }
 
 /*FLIGHTS EDIT PAGE*/
@@ -213,7 +218,7 @@ This is for the form - adding a new flight*/
 }
 
 .datepicker-departure-date, .datepicker-arrival-date {
-  margin-top:10px;
+  margin-top:5%;
   margin-bottom:10px;
 }
 
