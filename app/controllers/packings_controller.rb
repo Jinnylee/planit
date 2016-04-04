@@ -1,51 +1,58 @@
 class PackingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trip, only: [:create]
 
   def index
-    @packings = Packing.includes(:packing_splits).where(trip_id: params[:trip_id])
+    @packings = Packing.all
     respond_to do |format|
-      format.json { render json: @packings.as_json(include: { packing_splits: { include: :user }, user: {} })}
+      format.json { render json: @packings }
     end
   end
 
   def create
-    @packing = @trip.packings.new(packing_params)
-    @packing.name = params["packing"]["name"]["name"]
-
-    if @packing.save
-      params[:packing][:name_list].each do |user_id| # [3, 5]
-        @packing.packing_splits.create(user_id: user_id)
+    @packing = Packing.new(packing_params)
+    respond_to do |format|
+      if @packing.save
+        format.json { render json: @packing }
+      else
+        format.json { render json: @packing.errors, status: :unprocessable_entity }
       end
-
-      render json: @packing.as_json(include: {packing_splits: {include: :user} })
-    else
-      render json: @packing.errors, status: :unprocessable_entity
     end
   end
 
   def update
+    @packing = packing.update(params[:id], packing_params)
+    respond_to do |format|
+      if @packing.save
+        format.json { render json: @packing }
+      else
+        format.json { render json: @packing.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-    PackingSplit.destroy_all(packing_id: params[:id])
-    Packing.destroy(params[:id])
+    Userpacking.destroy_all(packing_id: params[:id])
+    Trip.destroy(params[:id])
     respond_to do |format|
       # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
+  def get_users
+    @users = UserTrip.includes(:user).where(trip_id: params[:trip_id]).map(&:user)
+    respond_to do |format|
+      format.json { render json: @users }
+    end
+  end
+
   private
     def packing_params
-      params.require(:packing).permit(:description)
+      params.require(:packing)
     end
 
-    def set_trip
-      @trip = Trip.find_by(id: params[:trip_id])
-      if @trip.nil?
-        render json: {message: "Trip not found"}, status: 404
-      end
-  end
+    # def editedpacking_params
+    #   params.require(:editedtrip).permit(:location, :start_date, :end_date)
+    # end
 
 end
