@@ -1,4 +1,35 @@
-app.controller('ActivitiesCtrl', ['$scope', '$routeParams', function($scope, $routeParams){
-  console.log($routeParams)
+app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
   $scope.message = "Activities";
+
+  $scope.activities = [];
+  $scope.newActivity = {};
+  $scope.tripId = $routeParams.trip_id;
+  $scope.activityId = $routeParams.id;
+
+  // $auth.validateUser().then(function(resp){
+  //   console.log(resp);
+  //   $scope.user = resp;
+  //   $scope.currentuser = resp.name;
+  // }).catch(function(resp){
+  //   console.log(resp);
+  //   $location.path('/');
+  // });
+
+  $scope.addActivity = function() {
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities',
+      data: {
+        activity: $scope.newActivity
+      }
+    }).then(function(resp){
+      console.log("added new packing", resp);
+      $scope.newActivity = {};
+      $location.path('/trips/' + $routeParams.trip_id + '/activities');
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
 }]);

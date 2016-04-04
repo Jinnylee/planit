@@ -27,11 +27,11 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       controller: 'ActivitiesCtrl'
     }).
     when('/trips/:trip_id/activities/new', {
-      templateUrl: "<%= asset_path('trips/activities.html') %>",
+      templateUrl: "<%= asset_path('trips/activities_new_edit.html') %>",
       controller: 'ActivitiesCtrl'
     }).
     when('/trips/:trip_id/activities/edit', {
-      templateUrl: "<%= asset_path('trips/activities.html') %>",
+      templateUrl: "<%= asset_path('trips/activities_new_edit.html') %>",
       controller: 'ActivitiesCtrl'
     }).
     when('/trips/:trip_id/flights', {
