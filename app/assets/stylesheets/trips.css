@@ -167,6 +167,31 @@ a:hover.tooltips span {
   width:100%;
 }
 
+/*FLIGHTS PAGE*/
+#flightsSection {
+  background-color: white;
+  opacity: 0.95;
+  margin-top:2%;
+  margin-bottom:3%;
+  padding-bottom:2%;
+  margin-left:3%;
+  width:100%;
+}
+
+a#newFlightButton {
+  background-color:#45bbff;
+  color:white;
+  margin:0 auto;
+  line-height:20px;
+  margin-bottom:2%;
+  margin-right:5%;
+  padding:1%;
+  width:30%;
+  margin-left: 35%;
+}
+
+
+/*MEMBERS PAGE*/
 #currentMembersTable {
   margin-left: 5%;
 }
