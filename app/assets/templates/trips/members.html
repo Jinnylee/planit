@@ -15,9 +15,9 @@
       </div>
     </section>
 
-    <section ng-hide="pending" class="main col-xs-8">
-      <div class="row">
-        <h1>Invite members</h1>
+    <section ng-hide="pending" class="main col-xs-9">
+      <div class="row" id="inviteMembers">
+        <h1 class="tripPageHeader">Invite members</h1>
 
         <form id="newMember" ng-submit="addMember()">
           <div class="col-xs-8 form-inline">
@@ -27,9 +27,9 @@
         </form>
       </div>
 
-      <div class="row">
-        <h1>Members</h1>
-        <table class="table table-hover">
+      <div class="row" id="currentMembers">
+        <h1 class="tripPageHeader">Members</h1>
+        <table class="table table-hover" id="currentMembersTable">
           <thead>
             <tr>
               <th>Name</th>
