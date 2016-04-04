@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post 'members/join_by_hash', to: 'members#join_by_hash'
   get  'trips/:trip_id/users', to: 'trips#get_users'
 
+  get 'trips/:trip_id/chats', to: 'chats#index'
+  post 'trips/:trip_id/chats', to: 'chats#create'
+
   resources :trips, only: [:index, :show, :create, :update, :destroy] do
     resources :members, only: [:index, :create, :update, :destroy]
     resources :flights, only: [:index, :show, :create, :update, :destroy]

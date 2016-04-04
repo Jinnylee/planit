@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   has_many :flights, through: :flight_splits
   has_many :accommodation_splits
   has_many :accommodations, through: :accommodation_splits
+  has_many :chats
 end

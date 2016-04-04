@@ -59,6 +59,43 @@ app.controller('PackingsCtrl', ['$scope', '$http', '$auth', '$location','$routeP
     });
   };
 
+
+  $scope.chats = [];
+  var getChats = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/chats.json'
+    }).then(function(resp){
+      console.log("showing chats!", resp);
+      $scope.chats = resp.data;
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.newMessage = {};
+
+  $scope.addChat = function() {
+    // $scope.newMessage.user_id
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/chats',
+      data: {
+        chat: $scope.newMessage
+      }
+    }).then(function(resp){
+      console.log("added new packing", resp);
+      getChats();
+      $scope.newMessage = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  getChats();
+
   getPackings();
 
 
