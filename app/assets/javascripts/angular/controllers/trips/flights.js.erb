@@ -40,6 +40,7 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
           airline: obj.airline,
           flight_number: obj.flight_number,
           terminal: obj.terminal,
+          flight_splits: obj.flight_splits,
           id: obj.id
         });
         console.log($scope.flights);
