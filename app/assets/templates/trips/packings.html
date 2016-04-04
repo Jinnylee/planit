@@ -4,17 +4,17 @@
   <!-- ACTIVITIES SECTION-->
   <div class="col-xs-12 col-xs-8">
     <!-- ADDING TO PACKING LIST -->
-    <form class="form-inline add-packing">
+    <form class="form-inline add-packing" ng-submit="addPacking()">
       <div class="form-group">
         <label>Items</label>
         <input type="text" class="form-control" placeholder="Things to pack!" ng-model="newPacking">
       </div>
-      <button type="submit" class="btn btn-default" ng-click="addPacking">Add</button>
+      <button type="submit" class="btn btn-default">Add</button>
     </form>
 
   <div>
     <ul>
-      <li ng-repeat="packing in packings">{{packing}}</li>
+      <li ng-repeat="packing in packings">{{packing.item}}  <i class="fa fa-trash-o fa-2x" ng-click="deletePacking(packing.id, $index)"></i></li>
     </ul>
   </div>
 

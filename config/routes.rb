@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :show, :create, :update, :destroy]
     resources :expenses, only: [:index, :show, :create, :update, :destroy]
     resources :accommodations, only: [:index, :show, :create, :update, :destroy]
-    resources :packing, only: [:index, :create, :update, :destroy]
+    resources :packings, only: [:index, :create, :update, :destroy]
   end
 end
