@@ -202,6 +202,21 @@ a#newFlightButton {
   width: 95%;
   margin-left: 2%;
 }
+
+/*FLIGHTS EDIT PAGE*/
+/*
+This is for the form - adding a new flight*/
+#addNewFlight {
+  margin-left:3%;
+  width:63.66%;
+  background-color:rgba(255,255,255,0.8);
+}
+
+.datepicker-departure-date, .datepicker-arrival-date {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
 /*MEMBERS PAGE*/
 #currentMembersTable {
   margin-left: 5%;
