@@ -4,18 +4,27 @@
   <!-- ACTIVITIES SECTION-->
   <div class="col-xs-12 col-xs-8">
   {{message}}
-    <!-- Nav tabs -->
+
+  <!-- Nav tabs -->
+
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" ng-repeat="date in dates"><a href="#{{date}}" aria-controls="{{date}}" role="tab" data-toggle="tab">{{date}}</a></li>
+      <li role="presentation" ng-repeat="date in dates"><a href="/trips/{{trip_id}}/activities/#{{date}}" aria-controls="{{date}}" role="tab" data-toggle="tab">{{date}}</a></li>
     </ul>
-      <!--Tab panes-->
+
+    <!--Tab panes-->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane" id="{{date}}" ng-repeat="date in dates">
-        <div>hi</div>
+      <div ng-repeat="date in dates" role="tabpanel" class="tab-pane" id="{{date}}">
+        <div class="single-activity" ng-repeat="activity in activities">
+          <div>{{activity.title}}</div>
+          <div>{{activity.description}}</div>
+          <div>{{activity.date}}</div>
+          <div>{{activity.time}}</div>
+          <div>{{activity.location}}</div>
+          <div>{{activity.price | currency}}</div>
+          <div>{{activity.link}}</div>
+        </div>
       </div>
     </div>
-
-  </div>
 
   <div class="col-xs-12 col-sm-4">Chat</div>
 </div>
