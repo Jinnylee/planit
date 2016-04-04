@@ -27,31 +27,29 @@
 }
 
 .header-image-row {
-  height:40px;
-}
-
-.header-image-row {
   position: fixed;
   left: 75px;
-  height: 120px;
+  height: 80px;
   width: 100%;
   top: 0;
   overflow: hidden;
-  background-image:url("http://cdn1.buuteeq.com/upload/18138/island-luxury-tours-maldives-travel-experts.jpg.1920x506_default.jpg");
+  background-color:navy;
   background-size: cover;
   background-position:center;
 }
 
-.main {
-  padding: 50px;
-  padding-top: 20px;
+.main-content {
+  background-image:url("http://gearpatrol.com/wp-content/uploads/2015/01/marquette-michigan-best-adventure-travel-gear-patrol-.jpg");
+  background-size:100%;
 }
 
-.trip-information-section {
-  margin-top:135px;
-  margin-left:50px;
+/*FORMS*/
+.ng-pristine.ng-valid {
+  background-color:white;
+  width:60%;
+  margin:0 auto;
+  margin-top:2%;
 }
-
 
 li.navbar-icon a img {
   width:45px;

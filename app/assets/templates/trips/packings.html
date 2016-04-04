@@ -7,10 +7,16 @@
     <form class="form-inline add-packing">
       <div class="form-group">
         <label>Items</label>
-        <input type="text" class="form-control" placeholder="Things to pack!">
+        <input type="text" class="form-control" placeholder="Things to pack!" ng-model="newPacking">
       </div>
-      <button type="submit" class="btn btn-default">Add</button>
+      <button type="submit" class="btn btn-default" ng-click="addPacking">Add</button>
     </form>
+
+  <div>
+    <ul>
+      <li ng-repeat="packing in packings">{{packing}}</li>
+    </ul>
+  </div>
 
   </div>
 

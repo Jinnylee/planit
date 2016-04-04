@@ -64,10 +64,20 @@
   color:white;
 }
 
+.signupRow img {
+  margin-bottom:-8%;
+}
 
 
+.signupRow p {
+  margin-top:2%;
+  font-weight:bold;
+}
 /*SIGN UP AND IN FORMS*/
 
+.arrowPic img {
+  margin-bottom:0%;
+}
 #signinForm {
   background-color:white;
   opacity:0.95;
@@ -118,3 +128,13 @@ button.btn.btn-primary {
   border:none;
   margin-bottom:20px;
 }
+
+.informationRow1{
+  position:relative;
+  height:800px;
+}
+
+/*PARALLEX SECTION*/
+.parallax-container {
+      height: 800px;
+    }
