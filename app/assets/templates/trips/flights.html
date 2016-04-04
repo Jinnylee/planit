@@ -3,7 +3,7 @@
 <div class="main-content">
   <!-- FLIGHTS SECTION-->
   <div class="col-xs-12 col-xs-8" "testingClass">
-    <section id="flightsSection" class="col-xs-9">
+    <section id="addFlightsSection" class="col-xs-9">
       <div class="row">
         <h1 class="tripPageHeader"> {{ message }} </h1>
       </div>
@@ -11,18 +11,36 @@
       <a href="/#/trips/{{tripId}}/flights/new" id="newFlightButton" class="btn btn-default">Add Flight</a>
     </section>
 
-      <div ng-repeat="flight in flights">
-        <div>{{flight.departure_date}}</div>
-        <div>{{flight.arrival_date}}</div>
-        <div>{{flight.departure_airport}}</div>
-        <div>{{flight.arrival_airport}}</div>
-        <div>{{flight.airline}}</div>
-        <div>{{flight.flight_number}}</div>
-        <div>{{flight.terminal}}</div>
-        <div><span ng-repeat="flight_splits in flight.flight_splits">{{flight_splits.user.name}}<br></span></div>
-        <a href="/#/trips/{{tripId}}/flights/{{flightId}}/edit" ng-click="editPage(flight.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-        <i class="fa fa-trash-o fa-2x" ng-click="deleteFlight(flight.id, $index)"></i>
-      </div>
+    <section id="currentFlightsSection" class="col-xs-9">
+      <h1 class="tripPageHeader">Current Flights</h1>
+        <table id="flightTable" class="table table-hover">
+          <thead>
+            <tr>
+              <th>Departure Date</th>
+              <th>Arrival Date</th>
+              <th>Departure Airport</th>
+              <th>Arrival Airport</th>
+              <th>Airline</th>
+              <th>Flight Number</th>
+              <th>Terminal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="flightInfo" ng-repeat="flight in flights">
+              <td>{{flight.departure_date}}</td>
+              <td>{{flight.arrival_date}}</td>
+              <td>{{flight.departure_airport}}</td>
+              <td>{{flight.arrival_airport}}</td>
+              <td>{{flight.airline}}</td>
+              <td>{{flight.flight_number}}</td>
+              <td>{{flight.terminal}}</td>
+              <td><span ng-repeat="flight_splits in flight.flight_splits">{{flight_splits.user.name}}<br></span></td>
+              <td><a href="/#/trips/{{tripId}}/flights/{{flightId}}/edit" ng-click="editPage(flight.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a></td>
+              <td><i class="fa fa-trash-o fa-2x" ng-click="deleteFlight(flight.id, $index)"></i></td>
+            </tr>
+          </tbody>
+        </table>
+    </section>
   </div>
 
   <div class="col-xs-12 col-sm-4">Chat</div>

@@ -168,7 +168,7 @@ a:hover.tooltips span {
 }
 
 /*FLIGHTS PAGE*/
-#flightsSection {
+#addFlightsSection, #currentFlightsSection {
   background-color: white;
   opacity: 0.95;
   margin-top:2%;
@@ -178,6 +178,14 @@ a:hover.tooltips span {
   width:100%;
 }
 
+#currentFlightsSection {
+  padding:0px;
+}
+
+#flightInfo {
+  padding-left:2%;
+  padding:2%;
+}
 a#newFlightButton {
   background-color:#45bbff;
   color:white;
@@ -187,10 +195,13 @@ a#newFlightButton {
   margin-right:5%;
   padding:1%;
   width:30%;
-  margin-left: 35%;
+  margin-left:35%;
 }
 
-
+#flightTable {
+  width: 95%;
+  margin-left: 2%;
+}
 /*MEMBERS PAGE*/
 #currentMembersTable {
   margin-left: 5%;
@@ -233,6 +244,7 @@ h1.tripPageHeader {
   margin-bottom: 5%;
   height: 50px;
   line-height: 50px;
+  padding:0px;
 }
 
 
