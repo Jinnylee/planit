@@ -211,7 +211,7 @@ td.expenseEditIcon {
 /*FLIGHTS EDIT PAGE*/
 /*
 This is for the form - adding a new flight*/
-#addNewFlight {
+#addNewFlight, #addNewExpense {
   margin-left:3%;
   width:63.66%;
   background-color:rgba(255,255,255,0.8);
