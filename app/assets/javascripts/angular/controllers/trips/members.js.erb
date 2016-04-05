@@ -3,6 +3,22 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
   $scope.pending = false;
   $scope.members = [];
   $scope.invitedmembers = {};
+  $scope.pending_members = [];
+
+  var getPendingMembers = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/members/pending.json'
+    }).then(function(resp) {
+      console.log("showing pending members");
+      console.log(resp, "pending members");
+      $scope.pending_members = resp.data;
+    }, function(resp) {
+      console.log("error");
+      console.log(resp);
+    });
+  };
+  getPendingMembers();
 
   var getMembers = function() {
     $http({

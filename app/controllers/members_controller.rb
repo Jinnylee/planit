@@ -34,7 +34,7 @@ class MembersController < ApplicationController
     # respond_to do |format|
     #   # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
     #   format.json { head :no_content }
-    end
+    # end
   end
 
   def join_by_hash
@@ -46,6 +46,14 @@ class MembersController < ApplicationController
       render json: {message: "Can't save", errors: user_trip.errors.messages}, status: 400
     end
   end
+
+  def pending
+    @pending = Invitation.find_by(trip_id: params[:trip_id], used: false)
+    respond_to do |format|
+      format.json { render json: @pending }
+    end
+  end
+
 
 private
   def set_user
