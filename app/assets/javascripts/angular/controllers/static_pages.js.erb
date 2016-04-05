@@ -6,13 +6,11 @@ var loadVideo = function () {
     scaleVideoContainer();
 
     initBannerVideoSize('.video-container .poster img');
-    initBannerVideoSize('.video-container .filter');
     initBannerVideoSize('.video-container video');
 
     $(window).on('resize', function() {
       scaleVideoContainer();
       scaleBannerVideoSize('.video-container .poster img');
-      scaleBannerVideoSize('.video-container .filter');
       scaleBannerVideoSize('.video-container video');
     });
   });
@@ -43,13 +41,10 @@ var loadVideo = function () {
 
       $(this).width(windowWidth);
 
-      if (windowWidth < 1000) {
-        videoHeight = windowHeight;
-        videoWidth = videoHeight / videoAspectRatio;
-        $(this).css({ 'margin-top': 0, 'margin-left': -(videoWidth - windowWidth) / 2 + 'px' });
-
-        $(this).width(videoWidth).height(videoHeight);
-      }
+      videoHeight = windowHeight;
+      videoWidth = videoHeight / videoAspectRatio;
+      $(this).css({ 'margin-top': 0, 'margin-left': -(videoWidth - windowWidth) / 2 + 'px' });
+      $(this).width(videoWidth).height(videoHeight);
 
       $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
     });
