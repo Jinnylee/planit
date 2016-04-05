@@ -169,7 +169,7 @@ a:hover.tooltips span {
 }
 
 /*FLIGHTS PAGE*/
-#addFlightsSection, #currentFlightsSection, #addExpenseSection, #currentExpensesSection, #addPackingsSection, #currentPackingsSection {
+#addFlightsSection, #addHotelsSection, #currentFlightsSection, #currentHotelsSection, #addExpenseSection, #currentExpensesSection, #addPackingsSection, #currentPackingsSection {
   background-color: white;
   opacity: 0.95;
   margin-top:2%;
@@ -179,7 +179,7 @@ a:hover.tooltips span {
   width:100%;
 }
 
-#currentFlightsSection, #currentExpensesSection {
+#currentFlightsSection, #currentExpensesSection, #currentHotelsSection {
   padding:0px;
 }
 
@@ -187,7 +187,7 @@ a:hover.tooltips span {
   padding-left:2%;
   padding:2%;
 }
-a#newFlightButton, a#newExpenseButton {
+a#newFlightButton, a#newExpenseButton, #newHotelButton{
   background-color:#45bbff;
   color:white;
   margin:0 auto;
