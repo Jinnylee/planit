@@ -17,7 +17,7 @@
       <uib-tab id="otherActivityTabs" ng-repeat="date in datesArr" heading="{{date[0] | date:'MMM dd, EEE' }}">
         <div ng-repeat="activity in date[1]" class="well">
           <div class="well">
-            <div><span class="activityTitle">{{activity.title}}<span></div>
+            <div><span class="activityTitle">{{activity.title}}</span></div>
             <div><span class="activityLabel">Description:</span>{{activity.description}}</div>
             <div><span class="activityLabel">Time:</span>{{activity.time}}</div>
             <div><span class="activityLabel">Location:</span>{{activity.location}}</div>
