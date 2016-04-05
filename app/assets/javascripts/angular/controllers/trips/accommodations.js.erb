@@ -93,7 +93,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   };
 
   var checkPath = function() {
-    if ($location.path() == 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '/edit') {
+    if ($location.path() == '/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '/edit') {
       $scope.editing = true;
       getAccommodation();
     } else {
@@ -141,6 +141,8 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
 
   $scope.editAccommodation = function(id, index) {
     $scope.newAccommodation.name_list = $scope.nameList;
+    $scope.newAccommodation.check_in = moment($('#check-in-date').val()).format();
+    $scope.newAccommodation.check_out = moment($('#check-out-date').val()).format();
 
     $http({
       method: 'PATCH',

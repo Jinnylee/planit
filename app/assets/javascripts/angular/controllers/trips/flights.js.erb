@@ -63,8 +63,8 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json'
     }).then(function(resp){
       // $scope.newFlight = resp.data;
-      departure_date = moment(resp.data.check_in).format("lll");
-      arrival_date = moment(resp.data.check_out).format("lll");
+      var departure_date = moment(resp.data.check_in).format("lll");
+      var arrival_date = moment(resp.data.check_out).format("lll");
       $scope.newFlight = {
         trip_id: resp.data.trip_id,
         departure_date: departure_date,
@@ -115,6 +115,7 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
     $scope.newFlight.name_list = $scope.nameList;
     $scope.newFlight.departure_date = moment($('#departure-date').val()).format();
     $scope.newFlight.arrival_date = moment($('#arrival-date').val()).format();
+    console.log($scope.newFlight)
 
     $http({
       method:'POST',
@@ -132,6 +133,9 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
 
   $scope.editFlight = function(id, index) {
     $scope.newFlight.name_list = $scope.nameList;
+    $scope.newFlight.departure_date = moment($('#departure-date').val()).format();
+    $scope.newFlight.arrival_date = moment($('#arrival-date').val()).format();
+    console.log($scope.newFlight)
 
     $http({
       method:'PATCH',
@@ -141,6 +145,7 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
       }
     }).then(function(resp) {
       $location.path('/trips/' + $routeParams.trip_id + '/flights');
+      console.log(resp)
     }, function(resp) {
       console.log("error");
       console.log(resp);

@@ -22,7 +22,7 @@ app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeP
       method: 'GET',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/sidebar.json'
    }).then(function(resp){
-    console.log(resp,"here")
+    // console.log(resp,"here")
     var obj = resp.data;
       start_date = moment(obj.start_date).format('MM/DD/YYYY')
       end_date = moment(obj.end_date).format('MM/DD/YYYY')

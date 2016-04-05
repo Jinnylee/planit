@@ -41,6 +41,7 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
         email: $scope.invitedmember
       }
     }).then(function(resp){
+      console.log("invited new member")
       getMembers();
       $scope.invitedmember = {};
     }, function(resp){

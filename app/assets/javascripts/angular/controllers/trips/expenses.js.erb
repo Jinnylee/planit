@@ -11,7 +11,7 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   var getUsers = function() {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/users.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
     }).then(function(resp){
       $scope.users = resp.data
     }, function(resp){
