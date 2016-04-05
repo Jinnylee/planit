@@ -7,36 +7,37 @@
     <button id="logoutButton" ng-click="logout()">Logout</button>
   </div>
 
-  <section class="col-xs-6 col-xs-offset-3" "alltrips">
+  <section class="col-sm-6 col-sm-offset-3 col-xs-12" "alltrips">
     <div class="container-fluid" ng-show="adding">
-      <form id="newTrip" class="form-basic" ng-submit="addOrEditTrip()" autocomplete="off">
+      <form id="newTrip" class="form-basic col-xs-12" ng-submit="addOrEditTrip()" autocomplete="off">
         <div class="form-title-row">
           <h1>Add a new trip</h1>
         </div>
 
-        <div class="form-row">
-          <label>
-            <input class="form-control" type="text" placeholder="Title" ng-model="newOrEditTrip.title"/>
-          </label>
-          <label>
+        <div class="form-row index-form col-xs-12">
+          <div class="input-add col-xs-12 col-md-6">
+              <input class="form-control" type="text" placeholder="Title" ng-model="newOrEditTrip.title"/>
+          </div>
+          <div class="input-add col-xs-12 col-md-6">
             <input class="form-control" g-places-autocomplete type="text" placeholder="Where are you going?" ng-model="newOrEditTrip.location" id="autocomplete"/>
-          </label>
-        </div>
-
-        <div class="form-row">
-          <label>
+          </div>
+<!--         </div>
+ -->
+<!--         <div class="form-row index-form col-xs-12">
+ -->      <div class="input-add col-xs-12 col-md-6">
             <datepicker>
               <input class="form-control" ng-model="newOrEditTrip.start_date" placeholder="Start date" type="text"/>
             </datepicker>
-          </label>
-          <label>
+          </div>
+          <div class="input-add col-xs-12 col-md-6">
             <datepicker>
               <input class="form-control" "addNewTripInput" ng-model="newOrEditTrip.end_date" placeholder="End date" type="text"/>
             </datepicker>
-          </label>
+          </div>
         </div>
 
         <input id="addTripButton" type="submit" value="Add Trip" ng-hide="editing"/>
+        <input id="editTripButton" type="submit" value="Edit Trip" ng-show="editing"/>
       </form>
     </div>
 

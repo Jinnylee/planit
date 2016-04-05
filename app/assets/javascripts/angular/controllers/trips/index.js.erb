@@ -42,6 +42,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
 
   $scope.toggleEditMode = function(trip) {
     $scope.newOrEditTrip = {
+      title: trip.title,
       location: trip.location,
       start_date: trip.start_date,
       end_date: trip.end_date,
@@ -60,6 +61,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
 
         $scope.newOrEditTrip = {};
         $scope.editing = false;
+
       }, function(resp){
         console.log("error");
         console.log(resp);

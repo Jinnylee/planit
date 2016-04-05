@@ -219,6 +219,10 @@ a:hover.tooltips span {
   margin-top: 4px;
 }
 
+.input-add {
+  margin-bottom: 15px;
+}
+
 /*FLIGHTS PAGE*/
 #addFlightsSection, #addHotelsSection, #addActivitiesSection, #currentFlightsSection, #currentHotelsSection, #addExpenseSection, #currentExpensesSection, #addPackingsSection, #currentPackingsSection {
   background-color: white;
