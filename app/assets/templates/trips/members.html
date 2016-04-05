@@ -9,10 +9,21 @@
       <button class="memberButton" ng-click="pending=true">Pending Members</button>
     </section>
 
-    <section ng-show="pending">
-      <div>
-        <div>{{pending_members.email}}</div>
-      </div>
+    <section ng-show="pending" class="main col-xs-9">
+      <div class="row" id="inviteMembers">
+        <h1 class="tripPageHeader">Pending members</h1>
+          <table class="table table-hover" id="currentMembersTable">
+          <thead>
+            <tr>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="currentMembersTable" ng-repeat="pending_member in pending_members">
+              <td>{{ pending_members.email }}</td>
+            </tr>
+          </tbody>
+        </table>
     </section>
 
     <section ng-hide="pending" class="main col-xs-9">

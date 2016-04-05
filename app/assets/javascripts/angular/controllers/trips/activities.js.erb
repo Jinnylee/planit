@@ -44,7 +44,7 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
     }
 
     $scope.datesArr.sort(function(a,b){
-      return a[0] - b[0];
+      return moment(a[0]).format("YYYYMMDD") - moment(b[0]).format("YYYYMMDD");
     });
 
     console.log($scope.datesArr);
