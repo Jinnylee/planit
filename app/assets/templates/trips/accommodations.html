@@ -1,6 +1,33 @@
-<div class="container">
-  <div class="row">
-    <h1> {{ message }} </h1>
+<side-bar></side-bar>
+
+<div class="main-content">
+  <!-- EXPENSES SECTION-->
+  <div class="col-xs-12 col-sm-8">
+    <section id="addHotelsSection" class="col-xs-9">
+      <div class="row">
+        <h1 class="tripPageHeader"> {{ message }} </h1>
+      </div>
+
+      <a href="/#/trips/{{tripId}}/accommodations/new" id="newHotelButton" class="btn btn-default">Add Accommodation</a>
+    </section>
+
+    <section id="currentHotelsSection" class="col-xs-9">
+      <h1 class="tripPageHeader">Current Accommodation</h1>
+        <div class="hotelDivBox" ng-repeat="accommodation in accommodations">
+          <div id="hotelImage"><img src="http://www.parkhotelgroup.com/d/clarkequay/media/Park_Hotel_Clarke_Quay_-_Club_Premier_Room.jpg">
+          <div id="hotelInformation">
+            <div>{{accommodation.name}}</div>
+            <div>{{accommodation.price | currency}}/night</div>
+            <div>{{accommodation.description}}</div>
+            <div>{{accommodation.check_in}}</div>
+            <div>{{accommodation.check_out}}</div>
+            <div>{{accommodation.confirmation_number}}</div>
+          </div>
+          <div><span ng-repeat="accommodation_splits in accommodation.accommodation_splits">{{accommodation_splits.user.name}}<br></span></div>
+          <a href="/#/trips/{{tripId}}/accommodations/{{accommodationId}}/edit" ng-click="editPage(accommodation.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+          <i class="fa fa-trash-o fa-2x" ng-click="deleteAccommodation(accommodation.id, $index)"></i>
+        </div>
+    </section>
   </div>
 
-</div>
+  <div class="col-xs-12 col-sm-4">Chat</div>

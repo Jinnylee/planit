@@ -1,0 +1,466 @@
+/*NAVBAR CSS*/
+
+.navbar-fixed-left {
+  width: 75px;
+  position: fixed;
+  left: 0;
+  border-radius: 0;
+  height: 100%;
+  background-color:#45bbff;
+  color:white;
+  border-color:#45bbff;
+}
+
+.navbar-fixed-left .navbar-nav > li {
+  float: none;  /* Cancel default li float: left */
+  width: 139px;
+}
+
+.navbar-inverse .navbar-brand {
+  color:white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color:white;
+}
+
+.header-image-row {
+  position: fixed;
+  left: 75px;
+  height: 80px;
+  width: 100%;
+  top: 0;
+  overflow: hidden;
+  background-color:navy;
+  background-size: cover;
+  background-position:center;
+}
+
+.main-content {
+  background-image:url("http://gearpatrol.com/wp-content/uploads/2015/01/marquette-michigan-best-adventure-travel-gear-patrol-.jpg");
+  background-size:100%;
+}
+
+/*FORMS*/
+
+#newTrip.form-basic {
+  background-color:white;
+  opacity:0.95;
+/*  width:70%;*/
+  margin:0 auto;
+  margin-top:2%;
+  padding:none;
+}
+
+form#newTrip {
+  padding:none;
+}
+#addNewTripInput {
+  width:100%;
+  margin-left:30%;
+}
+
+li.navbar-icon a img {
+  width:45px;
+  height:45px;
+}
+
+li.navbar-icon2 a img {
+  width:48px;
+  height:48px;
+
+}
+
+ul.nav.navbar-nav > li.navbar-icon {
+  width:75px;
+}
+
+/*TOOLTIP CSS for navbar*/
+
+a.tooltips {
+  position: relative;
+  display: inline;
+  width:80px;
+}
+a.tooltips span {
+  position: absolute;
+  width:140px;
+  color: #FFFFFF;
+  background: #45BBFF;
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 6px;
+  box-shadow: 1px 1px 4px #1057C2;
+}
+a.tooltips span:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -8px;
+  width: 0; height: 0;
+  border-right: 8px solid #45BBFF;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  z-index: 998;
+}
+a:hover.tooltips span {
+  visibility: visible;
+  opacity: 1;
+  left: 100%;
+  top: 50%;
+  margin-top: -18.5px;
+  margin-left: 15px;
+  z-index: 999;
+}
+
+/*TRIPS PAGE CSS*/
+
+#tripPage {
+  background-image:url("http://thewowstyle.com/wp-content/uploads/2015/01/beautiful-places.jpg");
+  height:100vh;
+  margin-top:-20px;
+  background-size:100%;
+}
+
+.alltrips {
+  background: white;
+}
+
+#completedTrips {
+  opacity: 0.90;
+  width: 96%;
+  margin-left: 2%;
+}
+
+.currentUserName {
+  font-size:16px;
+  display:inline-block;
+  line-height:40px;
+}
+
+#logoutButton {
+  background-color:#45bbff;
+  color:white;
+  float: right;
+  margin-top: 25px;
+  margin-right: 1%;
+  height: 35px;
+  width: 80px;
+  border:none;
+}
+
+.member-nav  {
+  opacity: 0.95;
+  margin-top: 2%;
+}
+
+#inviteMembers, #newMember, #currentMembers {
+  background-color: white;
+  opacity: 0.95;
+  margin-bottom:3%;
+  padding-bottom:2%;
+  margin-left:3%;
+  width:100%;
+}
+
+/*FLIGHTS PAGE*/
+#addFlightsSection, #addHotelsSection, #currentFlightsSection, #currentHotelsSection, #addExpenseSection, #currentExpensesSection, #addPackingsSection, #currentPackingsSection {
+  background-color: white;
+  opacity: 0.95;
+  margin-top:2%;
+  margin-bottom:3%;
+  padding-bottom:2%;
+  margin-left:3%;
+  width:100%;
+}
+
+#currentFlightsSection, #currentExpensesSection, #currentHotelsSection {
+  padding:0px;
+}
+
+#flightInfo {
+  padding-left:2%;
+  padding:2%;
+}
+a#newFlightButton, a#newExpenseButton, #newHotelButton{
+  background-color:#45bbff;
+  color:white;
+  margin:0 auto;
+  line-height:20px;
+  margin-bottom:2%;
+  margin-right:5%;
+  padding:1%;
+  width:30%;
+  margin-left:35%;
+}
+
+#flightTable, #expenseTable {
+  width: 95%;
+  margin-left: 2%;
+}
+
+.hotelDivBox {
+  margin-left:2%;
+  border:2px solid gray;
+  width:90%;
+  display: inline-block;
+  margin-bottom:2%;
+  padding:2%;
+  height:100%;
+}
+
+#hotelImage > img {
+  width:30%;
+  height:30%;
+  display:inline-block;
+}
+
+#hotelInformation {
+  display:inline-block;
+}
+td.expenseEditIcon {
+  width:2%;
+  padding:0;
+}
+
+.packingListBullets {
+  list-style:none;
+  margin-left:2%;
+  padding-left:0;
+}
+
+#trashCanPacking {
+  float:right;
+  right:50px;
+}
+/*FLIGHTS EDIT PAGE*/
+/*
+This is for the form - adding a new flight*/
+#addNewFlight, #addNewExpense {
+  margin-left:3%;
+  width:63.66%;
+  background-color:rgba(255,255,255,0.8);
+}
+
+.datepicker-departure-date, .datepicker-arrival-date {
+  margin-top:5%;
+  margin-bottom:10px;
+}
+
+/*MEMBERS PAGE*/
+#currentMembersTable {
+  margin-left: 5%;
+}
+
+#inviteMembers {
+  margin-bottom:3%;
+  margin-top:3%;
+}
+
+#memberInput {
+  width:70%;
+  display:inline-block;
+}
+
+section.member-nav button {
+  background-color:#45bbff;
+  color:white;
+  border: none;
+  border-radius: 10%;
+  line-height: 25px;
+  margin-right:1%;
+}
+button#newMemberButton {
+  background-color:#45bbff;
+  color:white;
+  float:right;
+  line-height:20px;
+  margin-bottom:2%;
+  margin-right:5%;
+}
+
+#addPackingButton {
+  background-color:#45bbff;
+  color:white;
+  margin-bottom:2%;
+  margin-right:5%;
+  vertical-align:-1px;
+}
+
+#packingInputBox {
+  width:80%;
+}
+
+h1.tripPageHeader {
+  font-size:20px;
+  text-decoration:bold;
+  background:darkturquoise;
+  color:white;
+  text-align:center;
+  margin-top: 0;
+  margin-bottom: 5%;
+  height: 50px;
+  line-height: 50px;
+  padding:0px;
+}
+
+
+/*FORM CSS ON TRIPS PAGE*/
+
+html{
+    background-color: #f3f3f3;
+}
+
+.form-basic{
+/*    max-width: 80%;*/
+    margin: 0 auto;
+    padding: 55px;
+    box-sizing: border-box;
+
+    background-color:  #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+
+    font: bold 14px sans-serif;
+    text-align: center;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.form-basic .form-row{
+    text-align: left;
+    margin-bottom: 22px;
+}
+
+.form-basic .form-title-row{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* The form title */
+
+.form-basic h1{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #4c565e;
+    font-size: 24px;
+    padding: 0 10px 15px;
+    border-bottom: 2px solid #6caee0;
+    margin: 0;
+}
+
+/*.form-basic .form-row > label span{
+    display: inline-block;
+    box-sizing: border-box;
+    color: #5F5F5F;
+    width: 180px;
+    text-align: right;
+    vertical-align: top;
+    padding: 12px 25px;
+}*/
+
+/*.form-basic input{
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 240px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+}*/
+
+.form-basic select{
+    background-color: #ffffff;
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    max-width: 240px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px 8px;
+    border: 1px solid #dbdbdb;
+}
+
+.form-basic textarea{
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 240px;
+    height: 80px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    font: normal 13px sans-serif;
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    resize: vertical;
+}
+
+
+.form-basic button{
+    display: block;
+    border-radius: 2px;
+    background-color:  #6caee0;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 14px 22px;
+    border: 0;
+    margin: 40px 183px 0;
+}
+
+div.form-row label {
+  max-width:47%;
+
+}
+
+/*  Making the form responsive. */
+
+@media (max-width: 600px) {
+
+    .form-basic{
+        padding: 30px;
+        max-width: 480px;
+    }
+
+    .form-basic .form-row{
+        max-width: 300px;
+        margin: 25px auto;
+        text-align: left;
+    }
+
+    .form-basic .form-title-row{
+        margin-bottom: 50px;
+    }
+
+    .form-basic .form-row > label span{
+        display: block;
+        text-align: left;
+        padding: 0 0 15px;
+    }
+
+    .form-basic select{
+        width: 240px;
+    }
+
+    .form-basic input[type=checkbox]{
+        margin-top:0;
+    }
+
+    .form-basic .form-radio-buttons > div{
+        margin: 0 0 10px;
+    }
+
+    .form-basic button{
+        margin: 0;
+    }
+
+}
+
+#addTripButton {
+  background-color:#45bbff;
+  color:white;
+}
+
+#editTripButton {
+  background-color:#45bbff;
+  color:white;
+}

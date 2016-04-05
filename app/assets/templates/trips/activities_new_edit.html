@@ -1,0 +1,76 @@
+<script src="src/js/angular-datepicker.js"></script>
+<side-bar></side-bar>
+
+<div class="main-content">
+  <!-- NEW ACTIVITIES SECTION-->
+  <div class="col-xs-12 col-xs-8">
+      <form autocomplete="off">
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Title</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <input type="text" class="form-control" placeholder="Title" ng-model="newActivity.title">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Description</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <input type="text" class="form-control" placeholder="Description" ng-model="newActivity.description">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Date</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <datepicker>
+              <input class="form-control" ng-model="newActivity.date" placeholder="Date" type="text"/>
+            </datepicker>
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Time</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <input type="text" class="form-control" placeholder="Time" ng-model="newActivity.time">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Location</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <input type="text" class="form-control" placeholder="Location" ng-model="newActivity.location">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Cost</h4>
+          </div>
+          <div class="add-activity-row-content input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" placeholder="Cost of activity" ng-model="newActivity.price">
+          </div>
+        </div>
+        <div class="add-activity-row form-group">
+          <div class="add-activity-row-label">
+            <h4>Link</h4>
+          </div>
+          <div class="add-activity-row-content">
+            <input type="text" class="form-control" placeholder="Link" ng-model="newActivity.link">
+          </div>
+        </div>
+
+        <div>
+          <button ng-hide="editing" type="submit" ng-click="addActivity()">Add activity</button>
+          <button ng-show="editing" type="submit" ng-click="editActivity()">Edit activity</button>
+        </div>
+      </form>
+  </div>
+
+  <div class="col-xs-12 col-sm-4">Chat</div>
+</div>

@@ -1,6 +1,31 @@
-<div class="container">
-  <div class="row">
-    <h1> {{ message }} </h1>
-  </div>
+<side-bar></side-bar>
 
+<div class="main-content">
+  <!-- ACTIVITIES SECTION-->
+  <div class="col-xs-12 col-xs-8">
+  {{message}}
+
+  <a href="/#/trips/{{tripId}}/activities/new" class="btn btn-default">Add Activity</a>
+  <!-- Nav tabs -->
+
+  <uib-tabset active="active">
+    <uib-tab ng-repeat="date in datesArr" heading="{{date[0] | date:'MMM dd, EEE' }}">
+      <div ng-repeat="activity in date[1]" class="well">
+        <div class="well">
+          <div>{{activity.title}}</div>
+          <div>{{activity.description}}</div>
+          <div>{{activity.date}}</div>
+          <div>{{activity.time}}</div>
+          <div>{{activity.location}}</div>
+          <div>{{activity.price | currency}}</div>
+          <div>{{activity.link}}</div>
+        </div>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+
+  <div class="col-xs-12 col-sm-4">Chat</div>
 </div>
+        <!-- <div ng-repeat="activity in activities" class="well"> -->
+
+        <!-- </div> -->

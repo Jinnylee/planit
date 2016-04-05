@@ -1,3 +1,119 @@
-app.controller('TripsCtrl', ['$scope', function($scope){
-  $scope.message = "Trips";
+app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($scope, $http, $auth, $location){
+  $scope.logout = function () {
+    $auth.signOut().then(function(resp) {
+      console.log(resp, "logged out!");
+      $location.path('/');
+    }).catch(function(resp) {
+      console.log(resp);
+    });
+  };
+
+  $auth.validateUser().then(function(resp){
+    console.log(resp);
+    $scope.user = resp;
+    $scope.currentuser = resp.name;
+  }).catch(function(resp){
+    console.log(resp);
+    $location.path('/');
+  });
+
+  $scope.trips = [];
+  $scope.newOrEditTrip = {};
+  $scope.editing = false;
+  $scope.adding = true;
+
+  var getTrips = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips.json'
+   }).then(function(resp){
+    console.log("showing trips!");
+    console.log(resp.data);
+    resp.data.forEach(function(obj){
+      start_date = moment(obj.start_date).format('MM/DD/YYYY')
+      end_date = moment(obj.end_date).format('MM/DD/YYYY')
+      $scope.trips.push({
+        start_date: start_date,
+        end_date: end_date,
+        location: obj.location,
+        title: obj.title,
+        id: obj.id
+      });
+      console.log($scope.trips);
+    })
+   }, function(resp){
+    console.log("error");
+    console.log(resp);
+   });
+  };
+
+  $scope.toggleEditMode = function(trip) {
+    console.log("togleEditMode", trip);
+    $scope.newOrEditTrip = {
+      location: trip.location,
+      start_date: trip.start_date,
+      end_date: trip.end_date,
+      _id: trip.id
+    };
+    $scope.editing = true;
+  };
+
+  $scope.addOrEditTrip = function() {
+    if ($scope.editing){
+      console.log("addOrEditTrip", $scope.newOrEditTrip);
+      $http({
+        method: 'PATCH',
+        url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id + '.json',
+        data: $scope.newOrEditTrip
+      }).then(function(resp){
+        console.log("edited trip", resp);
+
+        $scope.newOrEditTrip = {};
+        $scope.editing = false;
+      }, function(resp){
+        console.log("error");
+        console.log(resp);
+      });
+    } else {
+      $http({
+        method:'POST',
+        url: 'http://localhost:3000/trips.json',
+        data: $scope.newOrEditTrip
+      }).then(function(resp){
+        console.log("added new trip", resp);
+        start_date = moment(resp.data.start_date).format('MM/DD/YYYY')
+        end_date = moment(resp.data.end_date).format('MM/DD/YYYY')
+
+        $scope.trips.push({
+          start_date: start_date,
+          end_date: end_date,
+          title: resp.data.title,
+          location: resp.data.location,
+          id: resp.data.id
+        });
+
+        $scope.newOrEditTrip = {};
+      }, function(resp){
+        console.log("error");
+        console.log(resp);
+      });
+    }
+  };
+
+  $scope.deleteTrip = function(id, index) {
+    $http({
+      method: 'DELETE',
+      url: 'http://localhost:3000/trips/' + id + '.json'
+    }).then(function(resp){
+      console.log("deleted trip", index)
+      $scope.trips.splice(index, 1);
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  getTrips();
+
+
 }]);

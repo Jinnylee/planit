@@ -1,6 +1,41 @@
-<div class="container">
-  <div class="row">
-    <h1> {{ message }} </h1>
+<side-bar></side-bar>
+
+<div class="main-content">
+  <!-- ACTIVITIES SECTION-->
+  <div class="col-xs-12 col-xs-8" "testingClass">
+    <section id="addPackingsSection" class="col-xs-9">
+      <div class="row">
+        <h1 class="tripPageHeader">Add to Packing List</h1>
+      </div>
+      <form class="form-inline add-packing" ng-submit="addPacking()">
+        <div class="form-group">
+          <label>Items</label>
+          <input type="text" id="packingInputBox" class="form-control" placeholder="Things to pack!" ng-model="newPacking">
+        </div>
+        <button type="submit" id="addPackingButton" class="btn btn-default">Add</button>
+      </form>
+    </section>
+
+  <div class="col-xs-12 col-xs-8" "testingClass">
+    <section id="currentPackingsSection" class="col-xs-9">
+      <div class="row">
+        <h1 class="tripPageHeader">Current Packing List</h1>
+      </div>
+        <ul class="packingListBullets">
+          <li class="packingListBullets" ng-repeat="packing in packings">{{packing.item}}  <i id="trashCanPacking" class="fa fa-trash-o fa-2x" ng-click="deletePacking(packing.id, $index)"></i></li>
+        </ul>
+    </section>
   </div>
 
 </div>
+
+
+  <div class="col-xs-12 col-sm-4">
+    <div class="chat-box">
+      <div class="col-xs-12" ng-repeat="chat in chats">{{chat.user.name}}: {{chat.message}}</div>
+    </div>
+    <div class="input-message">
+      <input type="text" placeholder="Type message" ng-model="newMessage.message">
+      <button class="btn btn-default" ng-click="addChat()">Enter</button>
+    </div>
+  </div>

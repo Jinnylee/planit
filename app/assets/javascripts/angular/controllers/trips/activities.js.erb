@@ -1,3 +1,90 @@
-app.controller('ActivitiesCtrl', ['$scope', function($scope){
+app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
   $scope.message = "Activities";
+  $scope.newActivity = {};
+  $scope.tripId = $routeParams.trip_id;
+  $scope.activityId = $routeParams.id;
+
+  $auth.validateUser().then(function(resp){
+    console.log(resp);
+    $scope.user = resp;
+    $scope.currentuser = resp.name;
+  }).catch(function(resp){
+    console.log(resp);
+    $location.path('/');
+  });
+
+  // var uniqueDates = function(resp) {
+  //   resp.data.forEach(function(obj){
+  //     if ($scope.dates.indexOf(obj.date) >= 0) {
+  //       console.log("in array already");
+  //     } else {
+  //       $scope.dates.push(obj.date);
+  //     }
+  //   });
+  //   console.log($scope.dates);
+  // };
+
+  var uniqueDates = function(resp) {
+    $scope.datesObj = {};
+    resp.data.forEach(function(obj){
+      if ($scope.datesObj[obj.date]) {
+        $scope.datesObj[obj.date].push(obj);
+      } else {
+        $scope.datesObj[obj.date] = [obj];
+      }
+    });
+    console.log($scope.datesObj);
+  };
+
+  var generateSortedDateArray = function () {
+    $scope.datesArr = [];
+    for (var key in $scope.datesObj) {
+      var activities = $scope.datesObj[key];
+      $scope.datesArr.push([key, activities]);
+    }
+
+    $scope.datesArr.sort(function(a,b){
+      return moment(a[0]).format("YYYYMMDD") - moment(b[0]).format("YYYYMMDD");
+    });
+
+    console.log($scope.datesArr);
+  }
+
+  var getActivities = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities.json'
+    }).then(function(resp){
+      console.log("getting activities!", resp);
+      uniqueDates(resp);
+      generateSortedDateArray();
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.addActivity = function() {
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities',
+      data: {
+        activity: $scope.newActivity
+      }
+    }).then(function(resp){
+      console.log("added new packing", resp);
+      $scope.newActivity = {};
+      $location.path('/trips/' + $routeParams.trip_id + '/activities');
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  var init = function() {
+    getActivities();
+  }
+
+  init();
+
 }]);

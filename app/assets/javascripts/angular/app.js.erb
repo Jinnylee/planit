@@ -1,7 +1,7 @@
 'use strict'; // Make sure you don't have syntax errors
 
 // var app = angular.module('appName', ['oneDependency']);
-var app = angular.module('planit-app', ['ngRoute', 'ng-token-auth']);
+var app = angular.module('planit-app', ['ngRoute', 'ng-token-auth', '720kb.datepicker', 'google.places', 'ui.bootstrap']);
 
 app.config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
@@ -14,29 +14,77 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       templateUrl: "<%= asset_path('trips/index.html') %>",
       controller: 'TripsCtrl'
     }).
+    when('/trips/new', {
+      templateUrl: "<%= asset_path('trips/index_new_edit.html') %>",
+      controller: 'TripsCtrl'
+    }).
+    when('/trips/edit', {
+      templateUrl: "<%= asset_path('trips/index_new_edit.html') %>",
+      controller: 'TripsCtrl'
+    }).
     when('/trips/:trip_id/activities', {
       templateUrl: "<%= asset_path('trips/activities.html') %>",
+      controller: 'ActivitiesCtrl'
+    }).
+    when('/trips/:trip_id/activities/new', {
+      templateUrl: "<%= asset_path('trips/activities_new_edit.html') %>",
+      controller: 'ActivitiesCtrl'
+    }).
+    when('/trips/:trip_id/activities/edit', {
+      templateUrl: "<%= asset_path('trips/activities_new_edit.html') %>",
       controller: 'ActivitiesCtrl'
     }).
     when('/trips/:trip_id/flights', {
       templateUrl: "<%= asset_path('trips/flights.html') %>",
       controller: 'FlightsCtrl'
     }).
+    when('/trips/:trip_id/flights/new', {
+      templateUrl: "<%= asset_path('trips/flights_new_edit.html') %>",
+      controller: 'FlightsCtrl'
+    }).
+    when('/trips/:trip_id/flights/:id/edit', {
+      templateUrl: "<%= asset_path('trips/flights_new_edit.html') %>",
+      controller: 'FlightsCtrl'
+    }).
     when('/trips/:trip_id/accommodations', {
       templateUrl: "<%= asset_path('trips/accommodations.html') %>",
+      controller: 'AccommodationsCtrl'
+    }).
+    when('/trips/:trip_id/accommodations/new', {
+      templateUrl: "<%= asset_path('trips/accommodations_new_edit.html') %>",
+      controller: 'AccommodationsCtrl'
+    }).
+    when('/trips/:trip_id/accommodations/:id/edit', {
+      templateUrl: "<%= asset_path('trips/accommodations_new_edit.html') %>",
       controller: 'AccommodationsCtrl'
     }).
     when('/trips/:trip_id/expenses', {
       templateUrl: "<%= asset_path('trips/expenses.html') %>",
       controller: 'ExpensesCtrl'
     }).
+    when('/trips/:trip_id/expenses/new', {
+      templateUrl: "<%= asset_path('trips/expenses_new_edit.html') %>",
+      controller: 'ExpensesCtrl'
+    }).
+    when('/trips/:trip_id/expenses/:id/edit', {
+      templateUrl: "<%= asset_path('trips/expenses_new_edit.html') %>",
+      controller: 'ExpensesCtrl'
+    }).
     when('/trips/:trip_id/packings', {
       templateUrl: "<%= asset_path('trips/packings.html') %>",
       controller: 'PackingsCtrl'
+    }).
+    when('/trips/:trip_id/members', {
+      templateUrl: "<%= asset_path('trips/members.html') %>",
+      controller: 'MembersCtrl'
     })
 
   $authProvider.configure({
-    apiUrl: 'http://localhost:3000'
+    apiUrl: location.origin
   })
+
+  // app.controller('ExpensesCtrl', ['$scope', '$routeParams', function($scope, $routeParams){
+  //   $scope.tripId = $routeParams.trip_id;
+  // }]);
 
 }]);

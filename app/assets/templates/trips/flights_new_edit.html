@@ -1,0 +1,87 @@
+<script src="src/js/angular-datepicker.js"></script>
+<side-bar></side-bar>
+
+<div class="main-content">
+  <!-- NEW EXPENSES SECTION-->
+  <div id="addNewFlight" class="col-xs-12 col-xs-8">
+      <form autocomplete="off">
+        <div class="add-flight-row form-group">
+          <div class="add-flight-row-label">
+            <h4>Airline</h4>
+          </div>
+          <div class="add-flight-row-content">
+            <input class="form-control" placeholder="Airline" type="text" ng-model="newFlight.airline">
+          </div>
+        </div>
+        <div class="add-flight-row form-group">
+          <div class="add-flight-row-label">
+            <h4>Flight Number</h4>
+          </div>
+          <div class="add-flight-row-content">
+            <input class="form-control" placeholder="Flight number" type="text" ng-model="newFlight.flight_number">
+          </div>
+        </div>
+        <div class="add-flight-row form-group">
+          <div class="add-flight-row-label">
+            <h4>Flight terminal</h4>
+          </div>
+          <div class="add-flight-row-content">
+            <input type="text" class="form-control" placeholder="Flight terminal" ng-model="newFlight.terminal">
+          </div>
+        </div>
+        <div class="add-flight-row form-group">
+          <div class="add-flight-row-label">
+            <h4>Departure Airport</h4>
+          </div>
+          <div class="add-flight-row-content">
+            <input class="form-control" placeholder="departure airport" type="text" ng-model="newFlight.departure_airport">
+          </div>
+        </div>
+        <div class="add-flight-row form-group">
+          <div class="add-flight-row-label">
+            <h4>Arrival Airport</h4>
+          </div>
+          <div class="add-flight-row-content">
+            <input type="text" class="form-control" placeholder="arrival airport" ng-model="newFlight.arrival_airport">
+          </div>
+        </div>
+        <div class="add-flight-row form-group">
+          <div class="add-flight-row-label">
+            <h4>Members taking this flight</h4>
+          </div>
+          <div class="add-flight-row-content">
+            <label class="checkbox-inline" ng-repeat="user in users">
+              <input type="checkbox" ng-click="toggleName(user.id)" ng-checked="isChecked(user.id)">{{ user.name }} | {{ user.email }}
+            </label>
+          </div>
+        </div>
+        <div class="add-flight-row form-group">
+          <div class="add-flight-row-label">
+            <h4 class="datepicker-departure-date">Departure Date</h4>
+          </div>
+          <div class="add-flight-row-content">
+            <datepicker>
+              <input class="form-control" ng-model="newFlight.departure_date" placeholder="Departure Date" type="text"/>
+            </datepicker>
+          </div>
+        </div>
+        <div class="add-flight-row form-group">
+          <div class="add-flight-row-label">
+            <h4 class="datepicker-arrival-date">Arrival Date</h4>
+          </div>
+          <div class="add-flight-row-content">
+            <datepicker>
+              <input class="form-control" ng-model="newFlight.arrival_date" placeholder="Arrival Date" type="text"/>
+            </datepicker>
+          </div>
+        </div>
+
+        <div>
+          <button ng-hide="editing" type="submit" ng-click="addFlight()">Add flight</button>
+<!--           <button ng-show="editing" type="submit" ng-click="editFlight()">Edit flight</button> -->
+        </div>
+      </form>
+  </div>
+
+  <div class="col-xs-12 col-sm-4">Chat</div>
+</div>

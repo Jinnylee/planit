@@ -1,3 +1,101 @@
-app.controller('PackingsCtrl', ['$scope', function($scope){
+app.controller('PackingsCtrl', ['$scope', '$http', '$auth', '$location','$routeParams', function($scope, $http, $auth, $location, $routeParams){
+  console.log($routeParams)
   $scope.message = "Packings";
+
+  $scope.packings = [];
+  $scope.newPackings = {};
+  $scope.tripId = $routeParams.trip_id;
+  $scope.packingId = $routeParams.id;
+
+  var getPackings = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/packings.json'
+    }).then(function(resp){
+      console.log("showing packings!", resp);
+      $scope.packings = resp.data;
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.addPacking = function() {
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/packings',
+      data: {
+        packing: $scope.newPacking
+      }
+    }).then(function(resp){
+      console.log("added new packing", resp);
+      getPackings();
+      $scope.newPackings = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.deletePacking = function(id, index) {
+    $http({
+      method: 'DELETE',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/packings/' + id + '.json'
+    }).then(function(resp){
+      console.log("deleted packing", index)
+      $scope.packings.splice(index, 1);
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+
+  $scope.chats = [];
+  var getChats = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/chats.json'
+    }).then(function(resp){
+      console.log("showing chats!", resp);
+      $scope.chats = resp.data;
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  $scope.newMessage = {};
+
+  $scope.addChat = function() {
+    $auth.validateUser().then(function(resp){
+      console.log(resp, "HERE user");
+      $scope.user = resp;
+    }).catch(function(resp){
+      console.log(resp);
+    });
+
+    $scope.newMessage.user_id = $scope.user.id
+
+    $http({
+      method:'POST',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/chats',
+      data: {
+        chat: $scope.newMessage
+      }
+    }).then(function(resp){
+      console.log("added new message", resp);
+      getChats();
+      $scope.newMessage = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  getChats();
+
+  getPackings();
+
+
 }]);

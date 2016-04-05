@@ -1,0 +1,64 @@
+<side-bar></side-bar>
+
+<div class="main-content">
+  <!-- ACTIVITIES SECTION-->
+  <div class="col-xs-12 col-xs-8">
+    <!-- ADDING TO PACKING LIST -->
+    <section class="member-nav">
+      <button class="memberButton" ng-click="pending=false">Members</button>
+      <button class="memberButton" ng-click="pending=true">Pending Members</button>
+    </section>
+
+    <section ng-show="pending" class="main col-xs-9">
+      <div class="row" id="inviteMembers">
+        <h1 class="tripPageHeader">Pending members</h1>
+          <table class="table table-hover" id="currentMembersTable">
+          <thead>
+            <tr>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="currentMembersTable" ng-repeat="pending_member in pending_members">
+              <td>{{ pending_members.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </section>
+
+    <section ng-hide="pending" class="main col-xs-9">
+      <div class="row" id="inviteMembers">
+        <h1 class="tripPageHeader">Invite members</h1>
+
+        <form id="newMember" ng-submit="addMember()">
+          <div class="col-xs-12 form-inline">
+            <input type="email" id = "memberInput" class="form-control" placeholder="Enter email" ng-model="invitedmember"></input>
+            <button id="newMemberButton" class="btn" type="submit" value="Invite">Send Invitation</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="row" id="currentMembers">
+        <h1 class="tripPageHeader">Members</h1>
+        <table class="table table-hover" id="currentMembersTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="currentMembersTable" ng-repeat="member in members">
+              <td>{{ member.name }}</td>
+              <td>{{ member.email }}</td>
+              <!-- <td><button class="btn btn-primary" ng-click="deleteMember(member.id, $index)">Exit Group</button></td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="col-xs-12 col-sm-4">Chat</div>
+</div>
