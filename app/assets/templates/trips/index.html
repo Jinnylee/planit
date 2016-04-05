@@ -41,18 +41,16 @@
     </div>
 
     <div class="row" id="completedTrips">
+      <div class="form-title-row">
+        <h1>Completed Trips</h1>
+      </div>
       <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
         <div class="row">
-          <form class="form-basic">
-            <div class="form-title-row">
-              <h1>Completed Trips</h1>
-            </div>
-          </form>
         <div class="trip-title"><a href="/#/trips/{{trip.id}}/members"><strong>{{ trip.title }}</strong></a></div>
         <div class="trip-location">{{ trip.location }}</div>
         <div class="trip-date">{{ trip.start_date }} ~ {{ trip.end_date }}</div>
-        <div class="delete trip-btn" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
-        <div class="edit trip-btn" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x"></i></div>
+        <div class="delete trip-btn delete-trip" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
+        <div class="edit trip-btn edit-trip" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x">&nbsp</i></div>
       </div>
     </div>
 

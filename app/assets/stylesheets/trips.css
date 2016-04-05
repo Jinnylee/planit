@@ -211,6 +211,14 @@ a:hover.tooltips span {
   width:100%;
 }
 
+.delete-trip {
+  margin-top: 2px;
+}
+
+.edit-trip {
+  margin-top: 4px;
+}
+
 /*FLIGHTS PAGE*/
 #addFlightsSection, #addHotelsSection, #addActivitiesSection, #currentFlightsSection, #currentHotelsSection, #addExpenseSection, #currentExpensesSection, #addPackingsSection, #currentPackingsSection {
   background-color: white;

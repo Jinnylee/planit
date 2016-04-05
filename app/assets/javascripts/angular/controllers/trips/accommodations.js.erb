@@ -22,7 +22,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   var getUsers = function() {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/users.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/users.json'
     }).then(function(resp){
       $scope.users = resp.data
     }, function(resp){
@@ -34,7 +34,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   var getAccommodations = function() {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/accommodations.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations.json'
     }).then(function(resp){
       // $scope.accommodations = resp.data
       resp.data.forEach(function(obj){
@@ -69,7 +69,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   var getAccommodation = function() {
     $http({
       method: 'GET',
-      url: '/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
     }).then(function(resp){
       check_in = moment(resp.data.check_in).format("lll");
       check_out = moment(resp.data.check_out).format("lll");
@@ -93,7 +93,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   };
 
   var checkPath = function() {
-    if ($location.path() == '/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '/edit') {
+    if ($location.path() == 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '/edit') {
       $scope.editing = true;
       getAccommodation();
     } else {
@@ -127,7 +127,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
     $scope.newAccommodation.check_out = moment($('#check-out-date').val()).format();
     $http({
       method:'POST',
-      url: '/trips/' + $routeParams.trip_id + '/accommodations',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations',
       data: {
         accommodation: $scope.newAccommodation
       }
@@ -144,7 +144,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
 
     $http({
       method: 'PATCH',
-      url: '/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json',
       data: {
         accommodation: $scope.newAccommodation
       }
@@ -159,7 +159,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   $scope.deleteAccommodation = function(id, index) {
     $http({
       method: 'DELETE',
-      url: '/trips/' + $routeParams.trip_id + '/accommodations/' + id + '.json'
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + id + '.json'
     }).then(function(resp){
       $scope.accommodations.splice(index, 1);
     }, function(resp){
