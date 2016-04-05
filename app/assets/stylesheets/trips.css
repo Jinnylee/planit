@@ -204,6 +204,25 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton{
   margin-left: 2%;
 }
 
+.hotelDivBox {
+  margin-left:2%;
+  border:2px solid gray;
+  width:90%;
+  display: inline-block;
+  margin-bottom:2%;
+  padding:2%;
+  height:100%;
+}
+
+#hotelImage > img {
+  width:30%;
+  height:30%;
+  display:inline-block;
+}
+
+#hotelInformation {
+  display:inline-block;
+}
 td.expenseEditIcon {
   width:2%;
   padding:0;
