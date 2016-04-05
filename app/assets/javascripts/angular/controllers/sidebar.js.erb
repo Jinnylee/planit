@@ -1,3 +1,22 @@
-app.controller('SidebarCtrl', ['$scope', '$routeParams', function($scope, $routeParams){
+app.controller('SidebarCtrl', ['$scope', '$auth', '$location', '$routeParams', function($scope, $auth, $location, $routeParams){
   $scope.trip_id = $routeParams.trip_id;
+
+  $scope.logout = function () {
+    $auth.signOut().then(function(resp) {
+      console.log(resp, "logged out!");
+      $location.path('/');
+    }).catch(function(resp) {
+      console.log(resp);
+    });
+  };
+
+  $auth.validateUser().then(function(resp){
+    console.log(resp);
+    $scope.user = resp;
+    $scope.currentuser = resp.name;
+  }).catch(function(resp){
+    console.log(resp);
+    $location.path('/');
+  });
+
 }]);

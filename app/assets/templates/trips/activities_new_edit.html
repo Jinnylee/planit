@@ -3,7 +3,7 @@
 
 <div class="main-content">
   <!-- NEW ACTIVITIES SECTION-->
-  <div class="col-xs-12 col-xs-8">
+  <div id="addnewActivity" class="col-xs-12 col-xs-8">
       <form autocomplete="off">
         <div class="add-activity-row form-group">
           <div class="add-activity-row-label">
@@ -66,7 +66,7 @@
         </div>
 
         <div>
-          <button ng-hide="editing" type="submit" ng-click="addActivity()">Add activity</button>
+          <button class="addNewObjectButton" ng-hide="editing" type="submit" ng-click="addActivity()">Add activity</button>
           <button ng-show="editing" type="submit" ng-click="editActivity()">Edit activity</button>
         </div>
       </form>
