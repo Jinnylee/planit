@@ -26,6 +26,7 @@ gem 'omniauth'
 gem 'rails_12factor', group: :production
 gem 'momentjs-rails'
 gem 'font-awesome-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

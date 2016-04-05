@@ -8,6 +8,8 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
   $scope.tripId = $routeParams.trip_id;
   $scope.flightId = $routeParams.id;
 
+  $('#datetimepicker3').datetimepicker();
+  $('#datetimepicker4').datetimepicker();
 
   var getUsers = function() {
     $http({
@@ -29,14 +31,14 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
     }).then(function(resp){
       console.log("showing flights!", resp);
       resp.data.forEach(function(obj){
-        departure_date = moment(obj.departure_date).format('MM/DD/YYYY')
-        arrival_date = moment(obj.arrival_date).format('MM/DD/YYYY')
+        departure_date = moment(obj.departure_date).format('lll')
+        arrival_date = moment(obj.arrival_date).format('lll')
         $scope.flights.push({
           trip_id: obj.trip_id,
           departure_date: departure_date,
           arrival_date: arrival_date,
-          departure_airport: obj.location,
-          arrival_airport: obj.title,
+          departure_airport: obj.departure_airport,
+          arrival_airport: obj.arrival_airport,
           airline: obj.airline,
           flight_number: obj.flight_number,
           terminal: obj.terminal,
@@ -60,15 +62,29 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
 
   var getFlight = function() {
     $http({
-        method: 'GET',
-        url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json'
-      }).then(function(resp){
-        console.log("got single flight data!", resp);
-        $scope.newFlight = resp.data;
-        extractNameList(resp.data.flight_splits);
-      }, function(resp){
-        console.log("error");
-        console.log(resp);
+      method: 'GET',
+      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json'
+    }).then(function(resp){
+      console.log("got single flight data!", resp);
+      // $scope.newFlight = resp.data;
+      departure_date = moment(resp.data.check_in).format("lll");
+      arrival_date = moment(resp.data.check_out).format("lll");
+      $scope.newFlight = {
+        trip_id: resp.data.trip_id,
+        departure_date: departure_date,
+        arrival_date: arrival_date,
+        departure_airport: resp.data.departure_airport,
+        arrival_airport: resp.data.arrival_airport,
+        airline: resp.data.airline,
+        flight_number: resp.data.flight_number,
+        terminal: resp.data.terminal,
+        flight_splits: resp.data.flight_splits,
+        id: resp.data.id
+      };
+      extractNameList(resp.data.flight_splits);
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
     });
   }
 
@@ -105,6 +121,8 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
 
   $scope.addFlight = function() {
     $scope.newFlight.name_list = $scope.nameList;
+    $scope.newFlight.departure_date = moment($('#departure-date').val()).format();
+    $scope.newFlight.arrival_date = moment($('#arrival-date').val()).format();
 
     $http({
       method:'POST',

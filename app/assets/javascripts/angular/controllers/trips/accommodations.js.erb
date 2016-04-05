@@ -8,6 +8,9 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
   $scope.tripId = $routeParams.trip_id;
   $scope.accommodationId = $routeParams.id;
 
+  $('#datetimepicker1').datetimepicker();
+  $('#datetimepicker2').datetimepicker();
+
 
   $auth.validateUser().then(function(resp){
     console.log(resp);
@@ -39,8 +42,8 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
       console.log("showing accommodations!", resp);
       // $scope.accommodations = resp.data
       resp.data.forEach(function(obj){
-        check_in = moment(obj.check_in).format('MM/DD/YYYY')
-        check_out = moment(obj.check_out).format('MM/DD/YYYY')
+        check_in = moment(obj.check_in).format('lll')
+        check_out = moment(obj.check_out).format('lll')
         $scope.accommodations.push({
           trip_id: obj.trip_id,
           check_in: check_in,
@@ -53,7 +56,6 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
           accommodation_splits: obj.accommodation_splits,
           id: obj.id
         });
-        console.log($scope.accommodations);
       })
     }, function(resp){
       console.log("error");
@@ -74,8 +76,8 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
     }).then(function(resp){
       console.log("got single accommodation data!", resp);
-      check_in = moment(resp.data.check_in).format('MM/DD/YYYY')
-      check_out = moment(resp.data.check_out).format('MM/DD/YYYY')
+      check_in = moment(resp.data.check_in).format("lll");
+      check_out = moment(resp.data.check_out).format("lll");
       $scope.newAccommodation = {
         trip_id: resp.data.trip_id,
         check_in: check_in,
@@ -128,7 +130,9 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
 
   $scope.addAccommodation = function() {
     $scope.newAccommodation.name_list = $scope.nameList;
-
+    console.log($('#check-in-date').val(),"here")
+    $scope.newAccommodation.check_in = moment($('#check-in-date').val()).format();
+    $scope.newAccommodation.check_out = moment($('#check-out-date').val()).format();
     $http({
       method:'POST',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations',

@@ -27,10 +27,29 @@ app.controller('ExpensesCtrl', ['$scope', '$http', '$auth', '$location','$routeP
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/expenses.json'
     }).then(function(resp){
       console.log("showing expenses!", resp);
-      $scope.expenses = resp.data
-    }, function(resp){
-      console.log("error");
-      console.log(resp);
+      // $scope.expenses = resp.data
+        resp.data.forEach(function(obj){
+
+          if (obj.pay_status == false) {
+            var pay_status = 'Unpaid'
+          } else {
+            var pay_status = 'Paid'
+          }
+
+          $scope.expenses.push({
+            trip_id: obj.trip_id,
+            title: obj.title,
+            user: obj.user,
+            amount: obj.amount,
+            expense_splits: obj.expense_splits,
+            pay_status: pay_status,
+            id: obj.id
+          });
+          console.log($scope.expenses);
+        });
+      }, function(resp){
+        console.log("error");
+        console.log(resp);
     });
   };
 
