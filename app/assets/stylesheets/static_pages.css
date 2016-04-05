@@ -56,6 +56,23 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
+/*SECTION TWO HOMEPAGE*/
+.homepage-hero-module2 {
+  background-image:url("http://i68.tinypic.com/15hbh54.jpg");
+  height:100vh;
+  background-size:100%;
+}
+
+.backHome {
+  color:white;
+  text-align:center;
+}
+
+.arrowPic2 {
+  text-align: center;
+  margin-top: 1.5%;
+  margin-left: 48.3%;}
+
 /*#signin-form {
   margin-top:20px;
 }*/
@@ -136,5 +153,5 @@ button.btn.btn-primary {
 
 /*PARALLEX SECTION*/
 .parallax-container {
-      height: 800px;
-    }
+  /*height: 100vh;*/
+}
