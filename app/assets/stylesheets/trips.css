@@ -186,6 +186,10 @@ a:hover.tooltips span {
   padding-left:1%;
 }
 
+.tripInfoStart {
+  font-size: 15px;
+}
+
 .tripInfoHeader4 {
   color:#45bbff;
   display:inline-block;

@@ -10,8 +10,6 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
       method: 'GET',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/members/pending.json'
     }).then(function(resp) {
-      console.log("showing pending members");
-      console.log(resp, "pending members");
       $scope.pending_members = resp.data;
     }, function(resp) {
       console.log("error");
@@ -25,8 +23,6 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
       method: 'GET',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/members.json'
    }).then(function(resp){
-    console.log("showing members!");
-    console.log(resp);
     $scope.members = resp.data;
    }, function(resp){
     console.log("error");
@@ -44,7 +40,6 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
         email: $scope.invitedmember
       }
     }).then(function(resp){
-      console.log("invited new member")
       getMembers();
       $scope.invitedmember = {};
     }, function(resp){
@@ -58,7 +53,6 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
       method: 'DELETE',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/members/' + id + '.json'
     }).then(function(resp){
-      console.log("deleted member", index)
       $scope.members.splice(index, 1);
     }, function(resp){
       console.log("error");

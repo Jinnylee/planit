@@ -5,7 +5,6 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
   $scope.activityId = $routeParams.id;
 
   $auth.validateUser().then(function(resp){
-    console.log(resp);
     $scope.user = resp;
     $scope.currentuser = resp.name;
   }).catch(function(resp){
@@ -35,7 +34,6 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
         $scope.datesObj[obj.date] = [obj];
       }
     });
-    console.log($scope.datesObj);
   };
 
   var generateSortedDateArray = function () {
@@ -48,16 +46,13 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
     $scope.datesArr.sort(function(a,b){
       return moment(a[0]).format("YYYYMMDD") - moment(b[0]).format("YYYYMMDD");
     });
-
-    console.log($scope.datesArr);
-  }
+  };
 
   var getActivities = function() {
     $http({
       method: 'GET',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities.json'
     }).then(function(resp){
-      console.log("getting activities!", resp);
       uniqueDates(resp);
       generateSortedDateArray();
     }, function(resp){
@@ -75,7 +70,6 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
         activity: $scope.newActivity
       }
     }).then(function(resp){
-      console.log("added new packing", resp);
       $scope.newActivity = {};
       $location.path('/trips/' + $routeParams.trip_id + '/activities');
     }, function(resp){
@@ -89,7 +83,6 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
       method: 'DELETE',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities/' + id + '.json'
     }).then(function(resp){
-      console.log("deleted activity", index)
       $scope.datesArr.splice(index, 1);
     }, function(resp){
       console.log("error");
@@ -99,7 +92,7 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
 
   var init = function() {
     getActivities();
-  }
+  };
 
   init();
 

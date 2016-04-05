@@ -3,7 +3,6 @@ app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeP
 
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
-      console.log(resp, "logged out!");
       $location.path('/');
     }).catch(function(resp) {
       console.log(resp);
@@ -11,11 +10,9 @@ app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeP
   };
 
   $auth.validateUser().then(function(resp){
-    console.log(resp);
     $scope.user = resp;
     $scope.currentuser = resp.name;
   }).catch(function(resp){
-    console.log(resp);
     $location.path('/');
   });
 
@@ -25,8 +22,6 @@ app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeP
       method: 'GET',
       url: 'http://localhost:3000/trips.json'
    }).then(function(resp){
-    console.log("showing trips!");
-    console.log(resp.data);
     var obj = resp.data[0];
       start_date = moment(obj.start_date).format('MM/DD/YYYY')
       end_date = moment(obj.end_date).format('MM/DD/YYYY')
@@ -37,7 +32,6 @@ app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeP
         title: obj.title,
         id: obj.id
       };
-      console.log($scope.trips);
    }, function(resp){
     console.log("error");
     console.log(resp);
