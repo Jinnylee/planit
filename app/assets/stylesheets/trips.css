@@ -207,7 +207,7 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton{
 .hotelDivBox {
   margin-left:2%;
   border:2px solid gray;
-  width:90%;
+  width:95%;
   display: inline-block;
   margin-bottom:2%;
   padding:2%;
@@ -215,13 +215,22 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton{
 }
 
 #hotelImage > img {
-  width:30%;
-  height:30%;
+  width:100%;
+  height:100%;
+  object-fit: contain;
   display:inline-block;
+
 }
 
 #hotelInformation {
   display:inline-block;
+  padding-left:2%;
+/*  margin-top:2%;*/
+}
+
+.hotelLabel {
+  text-decoration:bold;
+  padding-right:2%;
 }
 td.expenseEditIcon {
   width:2%;
