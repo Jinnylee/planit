@@ -44,11 +44,22 @@
 }
 
 /*FORMS*/
-.ng-pristine.ng-valid {
+
+#newTrip.form-basic {
   background-color:white;
-  width:60%;
+  opacity:0.95;
+/*  width:70%;*/
   margin:0 auto;
   margin-top:2%;
+  padding:none;
+}
+
+form#newTrip {
+  padding:none;
+}
+#addNewTripInput {
+  width:100%;
+  margin-left:30%;
 }
 
 li.navbar-icon a img {
@@ -120,6 +131,11 @@ a:hover.tooltips span {
   background: white;
 }
 
+#completedTrips {
+  opacity: 0.90;
+  width: 96%;
+  margin-left: 2%;
+}
 
 .currentUserName {
   font-size:16px;
@@ -135,7 +151,164 @@ a:hover.tooltips span {
   margin-right: 1%;
   height: 35px;
   width: 80px;
+  border:none;
 }
+
+.member-nav  {
+  opacity: 0.95;
+  margin-top: 2%;
+}
+
+#inviteMembers, #newMember, #currentMembers {
+  background-color: white;
+  opacity: 0.95;
+  margin-bottom:3%;
+  padding-bottom:2%;
+  margin-left:3%;
+  width:100%;
+}
+
+/*FLIGHTS PAGE*/
+#addFlightsSection, #addHotelsSection, #currentFlightsSection, #currentHotelsSection, #addExpenseSection, #currentExpensesSection, #addPackingsSection, #currentPackingsSection {
+  background-color: white;
+  opacity: 0.95;
+  margin-top:2%;
+  margin-bottom:3%;
+  padding-bottom:2%;
+  margin-left:3%;
+  width:100%;
+}
+
+#currentFlightsSection, #currentExpensesSection, #currentHotelsSection {
+  padding:0px;
+}
+
+#flightInfo {
+  padding-left:2%;
+  padding:2%;
+}
+a#newFlightButton, a#newExpenseButton, #newHotelButton{
+  background-color:#45bbff;
+  color:white;
+  margin:0 auto;
+  line-height:20px;
+  margin-bottom:2%;
+  margin-right:5%;
+  padding:1%;
+  width:30%;
+  margin-left:35%;
+}
+
+#flightTable, #expenseTable {
+  width: 95%;
+  margin-left: 2%;
+}
+
+.hotelDivBox {
+  margin-left:2%;
+  border:2px solid gray;
+  width:90%;
+  display: inline-block;
+  margin-bottom:2%;
+  padding:2%;
+  height:100%;
+}
+
+#hotelImage > img {
+  width:30%;
+  height:30%;
+  display:inline-block;
+}
+
+#hotelInformation {
+  display:inline-block;
+}
+td.expenseEditIcon {
+  width:2%;
+  padding:0;
+}
+
+.packingListBullets {
+  list-style:none;
+  margin-left:2%;
+  padding-left:0;
+}
+
+#trashCanPacking {
+  float:right;
+  right:50px;
+}
+/*FLIGHTS EDIT PAGE*/
+/*
+This is for the form - adding a new flight*/
+#addNewFlight, #addNewExpense {
+  margin-left:3%;
+  width:63.66%;
+  background-color:rgba(255,255,255,0.8);
+}
+
+.datepicker-departure-date, .datepicker-arrival-date {
+  margin-top:5%;
+  margin-bottom:10px;
+}
+
+/*MEMBERS PAGE*/
+#currentMembersTable {
+  margin-left: 5%;
+}
+
+#inviteMembers {
+  margin-bottom:3%;
+  margin-top:3%;
+}
+
+#memberInput {
+  width:70%;
+  display:inline-block;
+}
+
+section.member-nav button {
+  background-color:#45bbff;
+  color:white;
+  border: none;
+  border-radius: 10%;
+  line-height: 25px;
+  margin-right:1%;
+}
+button#newMemberButton {
+  background-color:#45bbff;
+  color:white;
+  float:right;
+  line-height:20px;
+  margin-bottom:2%;
+  margin-right:5%;
+}
+
+#addPackingButton {
+  background-color:#45bbff;
+  color:white;
+  margin-bottom:2%;
+  margin-right:5%;
+  vertical-align:-1px;
+}
+
+#packingInputBox {
+  width:80%;
+}
+
+h1.tripPageHeader {
+  font-size:20px;
+  text-decoration:bold;
+  background:darkturquoise;
+  color:white;
+  text-align:center;
+  margin-top: 0;
+  margin-bottom: 5%;
+  height: 50px;
+  line-height: 50px;
+  padding:0px;
+}
+
 
 /*FORM CSS ON TRIPS PAGE*/
 
@@ -144,7 +317,7 @@ html{
 }
 
 .form-basic{
-    max-width: 640px;
+/*    max-width: 80%;*/
     margin: 0 auto;
     padding: 55px;
     box-sizing: border-box;
@@ -180,7 +353,7 @@ html{
     margin: 0;
 }
 
-.form-basic .form-row > label span{
+/*.form-basic .form-row > label span{
     display: inline-block;
     box-sizing: border-box;
     color: #5F5F5F;
@@ -188,26 +361,16 @@ html{
     text-align: right;
     vertical-align: top;
     padding: 12px 25px;
-}
+}*/
 
-.form-basic input{
+/*.form-basic input{
     color:  #5f5f5f;
     box-sizing: border-box;
     width: 240px;
     box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
     padding: 12px;
     border: 1px solid #dbdbdb;
-}
-
-.form-basic input[type=radio],
-.form-basic input[type=checkbox]{
-    box-shadow: none;
-    width: auto;
-}
-
-.form-basic input[type=checkbox]{
-    margin-top: 13px;
-}
+}*/
 
 .form-basic select{
     background-color: #ffffff;

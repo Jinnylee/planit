@@ -3,7 +3,7 @@
 
 <div class="main-content">
   <!-- NEW EXPENSES SECTION-->
-  <div class="col-xs-12 col-xs-8">
+  <div id="addNewFlight" class="col-xs-12 col-xs-8">
       <form autocomplete="off">
         <div class="add-flight-row form-group">
           <div class="add-flight-row-label">
@@ -57,7 +57,7 @@
         </div>
         <div class="add-flight-row form-group">
           <div class="add-flight-row-label">
-            <h4>Departure Date</h4>
+            <h4 class="datepicker-departure-date">Departure Date</h4>
           </div>
           <div class="add-flight-row-content">
             <datepicker>
@@ -67,7 +67,7 @@
         </div>
         <div class="add-flight-row form-group">
           <div class="add-flight-row-label">
-            <h4>Arrival Date</h4>
+            <h4 class="datepicker-arrival-date">Arrival Date</h4>
           </div>
           <div class="add-flight-row-content">
             <datepicker>
@@ -78,7 +78,7 @@
 
         <div>
           <button ng-hide="editing" type="submit" ng-click="addFlight()">Add flight</button>
-          <button ng-show="editing" type="submit" ng-click="editFlight()">Edit flight</button>
+<!--           <button ng-show="editing" type="submit" ng-click="editFlight()">Edit flight</button> -->
         </div>
       </form>
   </div>

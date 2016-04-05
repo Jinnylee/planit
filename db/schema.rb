@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20160404014414) do
     t.text     "description"
     t.string   "confirmation_number"
     t.float    "price"
-    t.string   "link"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end

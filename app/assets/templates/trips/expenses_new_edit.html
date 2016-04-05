@@ -2,9 +2,8 @@
 
 <div class="main-content">
   <!-- NEW EXPENSES SECTION-->
-  <div class="col-xs-12 col-xs-8">
-      <button ng-click="validate()">validate</button>
-      <form>
+  <div id="addNewExpense" class="col-xs-12 col-xs-8">
+      <form autocomplete="off">
         <div class="add-expense-row form-group">
           <div class="add-expense-row-label">
             <h4>Description</h4>
@@ -44,7 +43,7 @@
         </div>
         <div class="add-expense-row form-group">
           <div class="add-expense-row-label">
-            <h4>Status</h4>
+            <h4>Paid?</h4>
           </div>
           <div class="add-expense-row-content">
             <div class="checkbox">
@@ -57,7 +56,7 @@
 
         <div>
           <button ng-hide="editing" type="submit" ng-click="addExpense()">Add Expense</button>
-          <button ng-show="editing" type="submit" ng-click="editExpense()">Edit Expense</button>
+<!--           <button ng-show="editing" type="submit" ng-click="editExpense()">Edit Expense</button> -->
         </div>
       </form>
   </div>
