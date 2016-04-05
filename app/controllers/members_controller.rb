@@ -48,7 +48,7 @@ class MembersController < ApplicationController
   end
 
   def pending
-    @pending = Invitation.find_by(trip_id: params[:trip_id], used: false)
+    @pending = Invitation.where(trip_id: params[:trip_id], used: false)
     respond_to do |format|
       format.json { render json: @pending }
     end

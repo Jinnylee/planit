@@ -20,7 +20,7 @@ app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeP
   var getTrips = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips.json'
+      url: '/trips.json'
    }).then(function(resp){
     var obj = resp.data[0];
       start_date = moment(obj.start_date).format('MM/DD/YYYY')

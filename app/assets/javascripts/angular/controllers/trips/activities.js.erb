@@ -78,7 +78,7 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
     });
   };
 
-  $scope.deleteActivity = function() {
+  $scope.deleteActivity = function(id, index) {
     $http({
       method: 'DELETE',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities/' + id + '.json'
