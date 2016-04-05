@@ -48,6 +48,13 @@ class TripsController < ApplicationController
     end
   end
 
+  def get_specific_trip
+    @trip = Trip.find(params[:trip_id])
+    respond_to do |format|
+      format.json { render json: @trip }
+    end
+  end
+
   private
     def trip_params
       params.require(:trip).permit(:start_date, :end_date, :title, :id)
