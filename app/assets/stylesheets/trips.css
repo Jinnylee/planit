@@ -219,6 +219,7 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton{
   height:100%;
   object-fit: contain;
   display:inline-block;
+  margin-top:2%;
 
 }
 
@@ -229,8 +230,12 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton{
 }
 
 .hotelLabel {
-  text-decoration:bold;
+  font-weight:bold;
   padding-right:2%;
+}
+
+.hotelIcons {
+  float:right;
 }
 td.expenseEditIcon {
   width:2%;
