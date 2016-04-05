@@ -1,7 +1,7 @@
 'use strict'; // Make sure you don't have syntax errors
 
 // var app = angular.module('appName', ['oneDependency']);
-var app = angular.module('planit-app', ['ngRoute', 'ng-token-auth', '720kb.datepicker', 'google.places']);
+var app = angular.module('planit-app', ['ngRoute', 'ng-token-auth', '720kb.datepicker', 'google.places', 'ui.bootstrap']);
 
 app.config(['$routeProvider', '$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
@@ -27,11 +27,11 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       controller: 'ActivitiesCtrl'
     }).
     when('/trips/:trip_id/activities/new', {
-      templateUrl: "<%= asset_path('trips/activities.html') %>",
+      templateUrl: "<%= asset_path('trips/activities_new_edit.html') %>",
       controller: 'ActivitiesCtrl'
     }).
     when('/trips/:trip_id/activities/edit', {
-      templateUrl: "<%= asset_path('trips/activities.html') %>",
+      templateUrl: "<%= asset_path('trips/activities_new_edit.html') %>",
       controller: 'ActivitiesCtrl'
     }).
     when('/trips/:trip_id/flights', {
