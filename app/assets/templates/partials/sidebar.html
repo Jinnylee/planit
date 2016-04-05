@@ -12,5 +12,12 @@
 </div>
 
 <div class="header-image-row">
-   <button id="logoutHeaderButton" ng-click="logout()">Logout</button>
+   <div class="tripHeaderDiv">
+      <li class="tripInfoHeader1">{{ trips.title }}</li>
+      <li class="tripInfoHeader">{{ trips.location }}</li>
+      <li class="tripInfoHeader">{{ trips.start_date }} - </li>
+      <li class="tripInfoHeader4">{{ trips.end_date }}</li>
+      <button id="logoutHeaderButton" ng-click="logout()">Logout</button>
+   </div>
+
 </div>

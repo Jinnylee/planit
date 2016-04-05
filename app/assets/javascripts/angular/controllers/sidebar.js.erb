@@ -1,4 +1,4 @@
-app.controller('SidebarCtrl', ['$scope', '$auth', '$location', '$routeParams', function($scope, $auth, $location, $routeParams){
+app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
   $scope.trip_id = $routeParams.trip_id;
 
   $scope.logout = function () {
@@ -19,4 +19,30 @@ app.controller('SidebarCtrl', ['$scope', '$auth', '$location', '$routeParams', f
     $location.path('/');
   });
 
+
+  var getTrips = function() {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/trips.json'
+   }).then(function(resp){
+    console.log("showing trips!");
+    console.log(resp.data);
+    var obj = resp.data[0];
+      start_date = moment(obj.start_date).format('MM/DD/YYYY')
+      end_date = moment(obj.end_date).format('MM/DD/YYYY')
+      $scope.trips = {
+        start_date: start_date,
+        end_date: end_date,
+        location: obj.location,
+        title: obj.title,
+        id: obj.id
+      };
+      console.log($scope.trips);
+   }, function(resp){
+    console.log("error");
+    console.log(resp);
+   });
+  };
+
+  getTrips();
 }]);
