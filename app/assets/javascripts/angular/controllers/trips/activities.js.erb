@@ -28,10 +28,11 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
   var uniqueDates = function(resp) {
     $scope.datesObj = {};
     resp.data.forEach(function(obj){
-      if ($scope.datesObj[obj.date]) {
-        $scope.datesObj[obj.date].push(obj);
+      var formatedDate = moment(obj.date).format("YYYY/MMM/DD");
+      if ($scope.datesObj[formatedDate]) {
+        $scope.datesObj[formatedDate].push(obj);
       } else {
-        $scope.datesObj[obj.date] = [obj];
+        $scope.datesObj[formatedDate] = [obj];
       }
     });
   };
@@ -40,7 +41,8 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
     $scope.datesArr = [];
     for (var key in $scope.datesObj) {
       var activities = $scope.datesObj[key];
-      $scope.datesArr.push([key, activities]);
+      var isoDateTime = moment(key, "YYYY/MMM/DD").format();
+      $scope.datesArr.push([isoDateTime, activities]);
     }
 
     $scope.datesArr.sort(function(a,b){
