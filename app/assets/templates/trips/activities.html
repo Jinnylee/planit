@@ -22,7 +22,7 @@
             <div><span class="activityLabel">Time:</span>{{activity.time}}</div>
             <div><span class="activityLabel">Location:</span>{{activity.location}}</div>
             <div><span class="activityLabel">Price:</span>{{activity.price | currency}}</div>
-            <div><span class="activityLabel">Link:</span><a href="http://{{activity.link}}">{{activity.link}}</a></div>
+            <div><span class="activityLabel">Link:</span><a href="{{formatLink(activity.link)}}">{{formatLink(activity.link)}}</a></div>
           <div class="hotelIcons">
             <a href="/#/trips/{{tripId}}/activities/{{activityId}}/edit" ng-click="editPage(activity.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a>
             <i class="fa fa-trash-o fa-2x" ng-click="deleteActivity(activity.id, $index)"></i>
