@@ -1,6 +1,6 @@
 
-<div>
-  <div class="col-xs-12 col-sm-3 col-sm-offset-1 main-chat" ng-show="showChat">
+<div class="col-xs-12 col-sm-3 col-sm-offset-1 chat-area">
+  <div class="main-chat" ng-show="showChat">
 
     <div class="chat-box row">
       <div class="col-xs-12 single-message" ng-repeat="chat in chats"><span>{{chat.user.name}}&nbsp;:&nbsp;</span> <span>&nbsp;{{chat.message}}</span></div>

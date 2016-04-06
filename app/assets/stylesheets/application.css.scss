@@ -31,7 +31,7 @@
 }
 
 .main-chat {
-  height:100%;
+  height:calc(100vh - 80px);
   overflow: auto;
   background-color:white;
   opacity:0.90;
@@ -68,4 +68,5 @@
 .chat-open {
   position: fixed;
   bottom: 0;
+  width: 305px;
 }
