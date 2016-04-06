@@ -57,18 +57,22 @@ app.controller('FlightsCtrl', ['$scope', '$http', '$auth', '$location','$routePa
     }
   };
 
+  var setDatePicker = function (dateTimeStr, dateTimeTarget, inputTarget) {
+    var datetime = moment(dateTimeStr);
+    $(dateTimeTarget).data("DateTimePicker").viewDate(datetime)
+    $(inputTarget).val(datetime.format("MM/DD/YYYY h:mm A"))
+  };
+
   var getFlight = function() {
     $http({
       method: 'GET',
       url: '/trips/' + $routeParams.trip_id + '/flights/' + $routeParams.id + '.json'
     }).then(function(resp){
+      setDatePicker(resp.data.departure_date, '#datetimepicker3', '#departure-date')
+      setDatePicker(resp.data.arrival_date, '#datetimepicker4', '#arrival-date')
       // $scope.newFlight = resp.data;
-      var departure_date = moment(resp.data.check_in).format("lll");
-      var arrival_date = moment(resp.data.check_out).format("lll");
       $scope.newFlight = {
         trip_id: resp.data.trip_id,
-        departure_date: departure_date,
-        arrival_date: arrival_date,
         departure_airport: resp.data.departure_airport,
         arrival_airport: resp.data.arrival_airport,
         airline: resp.data.airline,
