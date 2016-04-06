@@ -222,11 +222,23 @@ a:hover.tooltips span {
   padding:0px;
 }
 
+#currentActivitiesSection {
+  margin-left:2%;
+}
+
+#otherActivityTabs {
+  background:darkturquoise;
+}
+
+a <#otherActivityTabs {
+  color:white;
+}
+
 #flightInfo {
   padding-left:2%;
   padding:2%;
 }
-a#newFlightButton, a#newExpenseButton, #newHotelButton{
+a#newFlightButton, a#newExpenseButton, #newHotelButton, #newActivitiesButton {
   background-color:#45bbff;
   color:white;
   margin:0 auto;
@@ -258,17 +270,28 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton{
   height:100%;
   object-fit: contain;
   display:inline-block;
-  margin-top:2%;
+  margin-top:10%;
 
 }
 
 #hotelInformation {
   display:inline-block;
   padding-left:2%;
+  margin-top:2%;
 /*  margin-top:2%;*/
 }
 
 .hotelLabel {
+  font-weight:bold;
+  padding-right:2%;
+}
+
+.activityTitle {
+  color:darkturquoise;
+  font-weight:bold;
+  font-size:18px;
+}
+.activityLabel {
   font-weight:bold;
   padding-right:2%;
 }

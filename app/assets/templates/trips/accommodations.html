@@ -22,9 +22,9 @@
             <div><span class="hotelLabel">Check in:</span>{{accommodation.check_in}}</div>
             <div><span class="hotelLabel">Check out:</span>{{accommodation.check_out}}</div>
             <div><span class="hotelLabel">Confirmation Number:</span>{{accommodation.confirmation_number}}</div>
-            <div><span class="hotelLabel">Link:</span></div>
+            <div><span class="hotelLabel">Link:</span>{{accommodation.link}}</div>
+            <div><span ng-repeat="accommodation_splits in accommodation.accommodation_splits"><span class="hotelLabel">Staying here:</span>{{accommodation_splits.user.name}}<br></span></div>
           </div>
-          <div><span ng-repeat="accommodation_splits in accommodation.accommodation_splits">{{accommodation_splits.user.name}}<br></span></div>
           <div class="hotelIcons">
             <a href="/#/trips/{{tripId}}/accommodations/{{accommodationId}}/edit" ng-click="editPage(accommodation.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a>
             <i class="fa fa-trash-o fa-2x" ng-click="deleteAccommodation(accommodation.id, $index)"></i>

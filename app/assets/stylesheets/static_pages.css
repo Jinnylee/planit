@@ -82,9 +82,12 @@
 }
 
 .signupRow img {
-  margin-bottom:-8%;
+  margin-bottom:-17%;
+  padding-bottom:11%;
 }
-
+#homeButtonRow {
+  margin-top:7%;
+}
 
 .signupRow p {
   margin-top:2%;
