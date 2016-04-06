@@ -55,7 +55,7 @@
   text-align:center;
 }
 
-form#newTrip < .form-basic .form-row {
+form#newTrip > .form-basic .form-row {
   text-align:center;
 }
 

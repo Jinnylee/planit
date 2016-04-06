@@ -20,7 +20,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
   var getTrips = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips.json'
+      url: '/trips.json'
     }).then(function(resp){
       $scope.trips = [];
       resp.data.forEach(function(obj){
@@ -56,7 +56,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
     if ($scope.editing){
       $http({
         method: 'PATCH',
-        url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id + '.json',
+        url: '/trips/' + $scope.newOrEditTrip._id + '.json',
         data: $scope.newOrEditTrip
       }).then(function(resp){
         getTrips();
@@ -69,7 +69,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
     } else {
       $http({
         method:'POST',
-        url: 'http://localhost:3000/trips.json',
+        url: '/trips.json',
         data: $scope.newOrEditTrip
       }).then(function(resp){
         console.log(resp)
@@ -95,7 +95,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
   $scope.deleteTrip = function(id, index) {
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/trips/' + id + '.json'
+      url: '/trips/' + id + '.json'
     }).then(function(resp){
       $scope.trips.splice(index, 1);
     }, function(resp){

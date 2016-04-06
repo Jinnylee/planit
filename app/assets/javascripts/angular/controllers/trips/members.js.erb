@@ -8,7 +8,7 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
   var getPendingMembers = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/members/pending.json'
+      url: '/trips/' + $routeParams.trip_id + '/members/pending.json'
     }).then(function(resp) {
       console.log(resp);
       $scope.pending_members = resp.data;
@@ -22,7 +22,7 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
   var getMembers = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/members.json'
+      url: '/trips/' + $routeParams.trip_id + '/members.json'
    }).then(function(resp){
     $scope.members = resp.data;
    }, function(resp){
@@ -36,7 +36,7 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
   $scope.addMember = function() {
     $http({
       method:'POST',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id +'/members.json',
+      url: '/trips/' + $routeParams.trip_id +'/members.json',
       data: {
         email: $scope.invitedmember
       }
@@ -53,7 +53,7 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
   $scope.deleteMember = function(id) {
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/members/' + id + '.json'
+      url: '/trips/' + $routeParams.trip_id + '/members/' + id + '.json'
     }).then(function(resp){
       $location.path('/trips');
     }, function(resp){

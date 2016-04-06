@@ -51,7 +51,7 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
   var getActivities = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities.json'
+      url: '/trips/' + $routeParams.trip_id + '/activities.json'
     }).then(function(resp){
       uniqueDates(resp);
       generateSortedDateArray();
@@ -65,7 +65,7 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
     $scope.newActivity.date = moment($('#date-activity').val()).format();
     $http({
       method:'POST',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities',
+      url: '/trips/' + $routeParams.trip_id + '/activities',
       data: {
         activity: $scope.newActivity
       }
@@ -81,7 +81,7 @@ app.controller('ActivitiesCtrl', ['$scope', '$http', '$auth', '$location', '$rou
   $scope.deleteActivity = function(id, index) {
     $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/activities/' + id + '.json'
+      url: '/trips/' + $routeParams.trip_id + '/activities/' + id + '.json'
     }).then(function(resp){
       $scope.datesArr.splice(index, 1);
     }, function(resp){

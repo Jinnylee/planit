@@ -35,7 +35,7 @@ app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeP
     } else {
       $http({
         method: 'GET',
-        url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/sidebar.json'
+        url: '/trips/' + $routeParams.trip_id + '/sidebar.json'
       }).then(function(resp){
         var obj = resp.data;
         TripService.tripObj = obj;
