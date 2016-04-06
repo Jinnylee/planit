@@ -45,6 +45,9 @@
 
 /*FORMS*/
 
+#newTrip {
+  z-index:999;
+}
 #newTrip.form-basic {
   background-color:white;
   opacity:0.95;
@@ -330,6 +333,11 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton, #newActivitiesButton {
 }
 
 #datetimepicker2.input-group {
+  margin-left: 67%;
+  width: 120%;
+}
+
+#datetimepicker5.input-group {
   margin-left: 67%;
   width: 120%;
 }
