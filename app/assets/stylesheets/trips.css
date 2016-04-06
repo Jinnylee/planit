@@ -150,6 +150,11 @@ a:hover.tooltips span {
   margin-top:2%;
   padding:none;
   text-align:center;
+  z-index:990;
+}
+
+._720kb-datepicker-calendar {
+  z-index:999;
 }
 
 #completedTripHeader {
@@ -318,6 +323,16 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton, #newActivitiesButton {
   padding-left:2%;
   margin-top:2%;
 /*  margin-top:2%;*/
+}
+
+#datetimepicker1.input-group {
+  margin-left: 67%;
+  width: 120%;
+}
+
+#datetimepicker2.input-group {
+  margin-left: 67%;
+  width: 120%;
 }
 
 .hotelLabel {
