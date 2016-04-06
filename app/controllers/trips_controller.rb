@@ -23,6 +23,7 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.update(params[:id], trip_params)
+    @trip.location = params["trip"]["location"]["name"]
     respond_to do |format|
       if @trip.save
         format.json { render json: @trip }

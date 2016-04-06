@@ -66,17 +66,22 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
     }
   };
 
+  var setDatePicker = function (dateTimeStr, dateTimeTarget, inputTarget) {
+    var datetime = moment(dateTimeStr);
+    $(dateTimeTarget).data("DateTimePicker").viewDate(datetime)
+    $(inputTarget).val(datetime.format("MM/DD/YYYY h:mm A"))
+  };
+
   var getAccommodation = function() {
     $http({
       method: 'GET',
       url: 'http://localhost:3000/trips/' + $routeParams.trip_id + '/accommodations/' + $routeParams.id + '.json'
     }).then(function(resp){
-      check_in = moment(resp.data.check_in).format("lll");
-      check_out = moment(resp.data.check_out).format("lll");
+      setDatePicker(resp.data.check_in, '#datetimepicker1', '#check-in-date')
+      setDatePicker(resp.data.check_out, '#datetimepicker2', '#check-out-date')
+
       $scope.newAccommodation = {
         trip_id: resp.data.trip_id,
-        check_in: check_in,
-        check_out: check_out,
         name: resp.data.name,
         description: resp.data.description,
         confirmation_number: resp.data.confirmation_number,

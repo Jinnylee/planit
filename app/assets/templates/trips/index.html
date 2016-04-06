@@ -51,7 +51,7 @@
         <div class="trip-location">{{ trip.location }}</div>
         <div class="trip-date">{{ trip.start_date }} ~ {{ trip.end_date }}</div>
         <div class="delete trip-btn delete-trip" ng-click="deleteTrip(trip.id, $index)"><i class="fa fa-trash-o fa-3x"></i></div>
-        <div class="edit trip-btn edit-trip" ng-click="toggleEditMode(trip)"><i class="fa fa-pencil-square-o fa-3x">&nbsp</i></div>
+        <div class="edit trip-btn edit-trip" ng-click="toggleEditMode(trip, $index)"><i class="fa fa-pencil-square-o fa-3x">&nbsp</i></div>
       </div>
     </div>
 

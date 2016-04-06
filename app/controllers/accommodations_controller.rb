@@ -33,7 +33,7 @@ class AccommodationsController < ApplicationController
 
   def update
     @accommodation = Accommodation.update(params[:id], accommodation_params)
-
+    @accommodation.name = params["accommodation"]["name"]["name"]
 
     if @accommodation.save
       if params[:accommodation][:name_list].nil?

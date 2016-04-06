@@ -2,7 +2,7 @@ app.controller('PackingsCtrl', ['$scope', '$http', '$auth', '$location','$routeP
   $scope.message = "Packings";
 
   $scope.packings = [];
-  $scope.newPackings = {};
+  // $scope.newPacking = {};
   $scope.tripId = $routeParams.trip_id;
   $scope.packingId = $routeParams.id;
 
@@ -27,7 +27,7 @@ app.controller('PackingsCtrl', ['$scope', '$http', '$auth', '$location','$routeP
       }
     }).then(function(resp){
       getPackings();
-      $scope.newPackings = {};
+      $scope.newPacking = '';
     }, function(resp){
       console.log("error");
       console.log(resp);

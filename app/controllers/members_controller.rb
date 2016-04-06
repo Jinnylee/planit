@@ -30,11 +30,10 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    # UserTrip.destroy(trip_id: params[:trip_id], user_id: params[:user_id])
-    # respond_to do |format|
-    #   # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
+    UserTrip.destroy(trip_id: params[:trip_id], user_id: params[:id])
+    respond_to do |format|
+      format.json { head :no_content }
+    end
   end
 
   def join_by_hash

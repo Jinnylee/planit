@@ -10,7 +10,6 @@
     "jquery": "^2.2.2",
     "bootstrap": "^3.3.6",
     "angularjs-datepicker": "^0.2.16",
-    "angular-google-places-autocomplete": "^0.2.7",
     "angular-ui-bootstrap-datetimepicker": "^1.2.4",
     "Materialize": "materialize#^0.97.6"
   },

@@ -13,7 +13,6 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
     $location.path('/');
   });
 
-  $scope.trips = [];
   $scope.newOrEditTrip = {};
   $scope.editing = false;
   $scope.adding = true;
@@ -22,25 +21,26 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
     $http({
       method: 'GET',
       url: 'http://localhost:3000/trips.json'
-   }).then(function(resp){
-    resp.data.forEach(function(obj){
-      start_date = moment(obj.start_date).format('MM/DD/YYYY')
-      end_date = moment(obj.end_date).format('MM/DD/YYYY')
-      $scope.trips.push({
-        start_date: start_date,
-        end_date: end_date,
-        location: obj.location,
-        title: obj.title,
-        id: obj.id
-      });
-    })
-   }, function(resp){
-    console.log("error");
-    console.log(resp);
-   });
+    }).then(function(resp){
+      $scope.trips = [];
+      resp.data.forEach(function(obj){
+        start_date = moment(obj.start_date).format('MM/DD/YYYY')
+        end_date = moment(obj.end_date).format('MM/DD/YYYY')
+        $scope.trips.push({
+          start_date: start_date,
+          end_date: end_date,
+          location: obj.location,
+          title: obj.title,
+          id: obj.id
+        });
+      })
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
   };
 
-  $scope.toggleEditMode = function(trip) {
+  $scope.toggleEditMode = function(trip, index) {
     $scope.newOrEditTrip = {
       title: trip.title,
       location: trip.location,
@@ -49,19 +49,19 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
       _id: trip.id
     };
     $scope.editing = true;
+    $scope.editingIndex = index;
   };
 
-  $scope.addOrEditTrip = function() {
+  $scope.addOrEditTrip = function(index) {
     if ($scope.editing){
       $http({
         method: 'PATCH',
         url: 'http://localhost:3000/trips/' + $scope.newOrEditTrip._id + '.json',
         data: $scope.newOrEditTrip
       }).then(function(resp){
-
+        getTrips();
         $scope.newOrEditTrip = {};
         $scope.editing = false;
-
       }, function(resp){
         console.log("error");
         console.log(resp);
@@ -72,6 +72,7 @@ app.controller('TripsCtrl', ['$scope', '$http', '$auth', '$location', function($
         url: 'http://localhost:3000/trips.json',
         data: $scope.newOrEditTrip
       }).then(function(resp){
+        console.log(resp)
         start_date = moment(resp.data.start_date).format('MM/DD/YYYY')
         end_date = moment(resp.data.end_date).format('MM/DD/YYYY')
 

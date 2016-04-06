@@ -18,10 +18,6 @@ app.config(['$routeProvider', '$authProvider', function($routeProvider, $authPro
       templateUrl: "<%= asset_path('trips/index_new_edit.html') %>",
       controller: 'TripsCtrl'
     }).
-    when('/trips/edit', {
-      templateUrl: "<%= asset_path('trips/index_new_edit.html') %>",
-      controller: 'TripsCtrl'
-    }).
     when('/trips/:trip_id/activities', {
       templateUrl: "<%= asset_path('trips/activities.html') %>",
       controller: 'ActivitiesCtrl'
