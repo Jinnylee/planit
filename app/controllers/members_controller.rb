@@ -29,12 +29,12 @@ class MembersController < ApplicationController
   def update
   end
 
-  def destroy
-    UserTrip.destroy(trip_id: params[:trip_id], user_id: params[:id])
-    respond_to do |format|
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   UserTrip.destroy(trip_id: params[:trip_id], user_id: params[:id])
+  #   respond_to do |format|
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   def join_by_hash
     user_trip = @user.user_trips.new(trip_id: @invitation.trip_id)
