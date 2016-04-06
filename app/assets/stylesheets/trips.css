@@ -334,6 +334,11 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton, #newActivitiesButton {
   width: 120%;
 }
 
+#datetimepicker5.input-group {
+  margin-left: 67%;
+  width: 120%;
+}
+
 .hotelLabel {
   font-weight:bold;
   padding-right:2%;
