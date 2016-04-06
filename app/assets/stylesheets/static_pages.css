@@ -142,13 +142,13 @@ button.btn.btn-primary {
 }
 
 .btn.btn-form.btn-lg {
-  background-color:#45bbff;
+  background-color:darkturquoise;
   color:white;
   margin-bottom:20px;
 }
 
 .btn.btn-danger.btn-lg {
-  background-color:#455eff;
+  background-color:#45bbff;
   color:white;
   border:none;
   margin-bottom:20px;
