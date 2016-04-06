@@ -3,7 +3,7 @@ class FlightsController < ApplicationController
   before_action :set_trip, only: [:create]
 
   def index
-    @flights = Flight.includes(:flight_splits).where(trip_id: params[:trip_id])
+    @flights = Flight.includes(:flight_splits).where(trip_id: params[:trip_id]).order(departure_date: :asc)
     respond_to do |format|
       format.json { render json: @flights.as_json(include: { flight_splits: { include: :user }, user: {} })}
     end

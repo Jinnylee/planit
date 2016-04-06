@@ -29,13 +29,12 @@ class MembersController < ApplicationController
   def update
   end
 
-  def destroy
-    # UserTrip.destroy(trip_id: params[:trip_id], user_id: params[:user_id])
-    # respond_to do |format|
-    #   # format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
-  end
+  # def destroy
+  #   UserTrip.destroy(trip_id: params[:trip_id], user_id: params[:id])
+  #   respond_to do |format|
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   def join_by_hash
     user_trip = @user.user_trips.new(trip_id: @invitation.trip_id)
@@ -48,7 +47,7 @@ class MembersController < ApplicationController
   end
 
   def pending
-    @pending = Invitation.find_by(trip_id: params[:trip_id], used: false)
+    @pending = Invitation.where(trip_id: params[:trip_id], used: false)
     respond_to do |format|
       format.json { render json: @pending }
     end

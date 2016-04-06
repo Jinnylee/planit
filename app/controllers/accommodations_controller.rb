@@ -3,7 +3,7 @@ class AccommodationsController < ApplicationController
   before_action :set_trip, only: [:create]
 
   def index
-    @accommodations = Accommodation.includes(:accommodation_splits).where(trip_id: params[:trip_id])
+    @accommodations = Accommodation.includes(:accommodation_splits).where(trip_id: params[:trip_id]).order(check_in: :asc)
     respond_to do |format|
       format.json { render json: @accommodations.as_json(include: { accommodation_splits: { include: :user }, user: {} })}
     end
@@ -33,7 +33,7 @@ class AccommodationsController < ApplicationController
 
   def update
     @accommodation = Accommodation.update(params[:id], accommodation_params)
-
+    @accommodation.name = params["accommodation"]["name"]["name"]
 
     if @accommodation.save
       if params[:accommodation][:name_list].nil?
@@ -61,7 +61,7 @@ class AccommodationsController < ApplicationController
 
   private
     def accommodation_params
-      params.require(:accommodation).permit(:description, :price, :check_in, :check_out, :confirmation_number)
+      params.require(:accommodation).permit(:description, :price, :check_in, :check_out, :confirmation_number, :link)
     end
 
     def set_trip

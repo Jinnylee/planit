@@ -11,23 +11,26 @@
       <a href="/#/trips/{{tripId}}/accommodations/new" id="newHotelButton" class="btn btn-default">Add Accommodation</a>
     </section>
 
-    <section id="currentHotelsSection" class="col-xs-9">
+    <section id="currentHotelsSection" class="col-xs-3">
       <h1 class="tripPageHeader">Current Accommodation</h1>
         <div class="hotelDivBox" ng-repeat="accommodation in accommodations">
-          <div id="hotelImage"><img src="http://www.parkhotelgroup.com/d/clarkequay/media/Park_Hotel_Clarke_Quay_-_Club_Premier_Room.jpg">
-          <div id="hotelInformation">
-            <div>{{accommodation.name}}</div>
-            <div>{{accommodation.price | currency}}/night</div>
-            <div>{{accommodation.description}}</div>
-            <div>{{accommodation.check_in}}</div>
-            <div>{{accommodation.check_out}}</div>
-            <div>{{accommodation.confirmation_number}}</div>
+          <div id="hotelImage" class="col-xs-4"><img src="http://www.parkhotelgroup.com/d/clarkequay/media/Park_Hotel_Clarke_Quay_-_Club_Premier_Room.jpg"></div>
+          <div id="hotelInformation" class="col-xs-8">
+            <div><span class="hotelLabel">{{accommodation.name}}</span></div>
+            <div><span class="hotelLabel">Price:</span>{{accommodation.price | currency}}/night</div>
+            <div><span class="hotelLabel">Description:</span>{{accommodation.description}}</div>
+            <div><span class="hotelLabel">Check in:</span>{{accommodation.check_in}}</div>
+            <div><span class="hotelLabel">Check out:</span>{{accommodation.check_out}}</div>
+            <div><span class="hotelLabel">Confirmation Number:</span>{{accommodation.confirmation_number}}</div>
+            <div><span class="hotelLabel">Link:</span><a href="{{formatLink(accommodation.link)}}">{{formatLink(accommodation.link)}}</a></div>
+            <div><span ng-repeat="accommodation_splits in accommodation.accommodation_splits"><span class="hotelLabel">Staying here:</span>{{accommodation_splits.user.name}} &nbsp;| &nbsp; </span></div>
           </div>
-          <div><span ng-repeat="accommodation_splits in accommodation.accommodation_splits">{{accommodation_splits.user.name}}<br></span></div>
-          <a href="/#/trips/{{tripId}}/accommodations/{{accommodationId}}/edit" ng-click="editPage(accommodation.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-          <i class="fa fa-trash-o fa-2x" ng-click="deleteAccommodation(accommodation.id, $index)"></i>
+          <div class="hotelIcons">
+            <a href="/#/trips/{{tripId}}/accommodations/{{accommodationId}}/edit" ng-click="editPage(accommodation.id)"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+            <i class="fa fa-trash-o fa-2x" ng-click="deleteAccommodation(accommodation.id, $index)"></i>
+          </div>
         </div>
     </section>
   </div>
-
-  <div class="col-xs-12 col-sm-4">Chat</div>
+  <chat-box></chat-box>
+</div>

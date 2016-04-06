@@ -13,8 +13,8 @@
  *= require bootstrap/dist/css/bootstrap
  *= require font-awesome
  *= require angularjs-datepicker/src/css/angular-datepicker
+ *= require bootstrap-datetimepicker
  *= require angular-ui-bootstrap-datetimepicker/datetimepicker.css
- *= require angular-google-places-autocomplete/src/autocomplete
  *= require_tree .
  *= require_self
  */
@@ -30,3 +30,43 @@
   }
 }
 
+.main-chat {
+  height:calc(100vh - 80px);
+  overflow: auto;
+  background-color:white;
+  opacity:0.90;
+}
+
+.input-message {
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 5px;
+  position: fixed;
+  bottom: 5%;
+}
+
+.message-box {
+  width: 305px;
+  display: inline-block;
+}
+.enter-btn {
+  width: 305px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.single-message {
+  width: 305px;
+  padding:10px;
+  margin: 20px;
+  margin-bottom: 2px;
+  margin-top:10px;
+  border: solid 0.1px navy;
+  border-radius: 10px;
+}
+
+.chat-open {
+  position: fixed;
+  bottom: 0;
+  width: 305px;
+}

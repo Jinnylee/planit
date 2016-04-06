@@ -6,19 +6,17 @@ var loadVideo = function () {
     scaleVideoContainer();
 
     initBannerVideoSize('.video-container .poster img');
-    initBannerVideoSize('.video-container .filter');
     initBannerVideoSize('.video-container video');
 
     $(window).on('resize', function() {
       scaleVideoContainer();
       scaleBannerVideoSize('.video-container .poster img');
-      scaleBannerVideoSize('.video-container .filter');
       scaleBannerVideoSize('.video-container video');
     });
   });
 
   function scaleVideoContainer() {
-    var height = $(window).height() + 5;
+    var height = $(window).height();
     var unitHeight = parseInt(height) + 'px';
     $('.homepage-hero-module').css('height', unitHeight);
   }
@@ -43,22 +41,18 @@ var loadVideo = function () {
 
       $(this).width(windowWidth);
 
-      if (windowWidth < 1000) {
-        videoHeight = windowHeight;
-        videoWidth = videoHeight / videoAspectRatio;
-        $(this).css({ 'margin-top': 0, 'margin-left': -(videoWidth - windowWidth) / 2 + 'px' });
-
-        $(this).width(videoWidth).height(videoHeight);
-      }
+      videoHeight = windowHeight;
+      videoWidth = videoHeight / videoAspectRatio;
+      $(this).css({ 'margin-top': 0, 'margin-left': -(videoWidth - windowWidth) / 2 + 'px' });
+      $(this).width(videoWidth).height(videoHeight);
 
       $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
     });
   }
 }
 
-// PARALLEX
+// SCROLL DOWN EFFECT ON HOME PAGE
 
-  // $('.parallax').parallax();
 
 // STATIC PAGES CONTROLLER
 
@@ -104,4 +98,28 @@ app.controller('StaticPagesCtrl', ['$scope', '$auth', '$location', '$routeParams
       });
   };
 
+  $scope.scrollToSection = function (section) {
+  var height = $(window).height();
+  var targetScrollTop = height * section;
+  var currentScrollTop = $(window).scrollTop();
+  var difference = targetScrollTop - currentScrollTop;
+
+
+  var totalDuration = 200;
+  var tickDuration = 1;
+  var tickAmount = totalDuration / tickDuration;
+  var count = 1;
+  var tickHeight = difference / tickAmount;
+
+  var scrollInterval = setInterval(function(){
+    if (count >= tickAmount) {
+      clearInterval(scrollInterval);
+    }
+
+    $(window).scrollTop(currentScrollTop + (tickHeight * count));
+    count++
+  }, tickDuration)
+};
+
 }]);
+

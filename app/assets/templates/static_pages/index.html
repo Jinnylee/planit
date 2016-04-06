@@ -1,3 +1,4 @@
+
 <!-- VIDEO BACKGROUND:
  -->
 <div class="homepage-hero-module">
@@ -7,27 +8,24 @@
       <source ng-src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.webm" type="video/webm" />Your browser does not support the video tag. Please upgrade your browser.
       <source ng-src="https://media.gadventures.com/media-server/dynamic/looptail/wp-content/uploads/2014/07/yolo-main-loop1.mp4" type="video/mp4" />Your browser does not support the video tag. Please upgrade your browser.
     </video>
-    <div class="poster hidden">
-      <img src="../../images/Beach-Bali.jpg" alt="">
     </div>
   </div>
 </div>
 
-
 <div class="signupRow">
   <!--       <h1> {{ message }} </h1> -->
   <div class="row" ng-hide="homeLogo">
-    <img src="http://i65.tinypic.com/vs036g.png">
+    <img src="http://i64.tinypic.com/2sbae7s.png">
   </div>
 
-  <div class="row">
+  <div class="row" id="homeButtonRow">
     <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme2=true; showme=false; homeLogo=true">SIGN UP</button></a>
     <a><button class="btn btn-primary" ng-hide="homeLogo" ng-click="showme=true; showme2=false; homeLogo=true">SIGN IN</button></a>
   </div>
 
   <div class="row" "howItWorks" ng-hide="homeLogo">
     <p>How it works</p>
-    <img class="arrowPic" src="http://i64.tinypic.com/2wgr636.png">
+    <img class="arrowPic" ng-click="scrollToSection(1)" src="http://i64.tinypic.com/2wgr636.png">
   </div>
 
 
@@ -86,11 +84,12 @@
   </div>
 </div>
 
-<!--
-<div class="informationRow1">
-  <img src="http://gearpatrol.com/wp-content/uploads/2015/01/wuyishan-fujian-china-best-adventure-travel-gear-patrol.jpg">
-</div> -->
-
-<!-- <div class="parallax-container">
-  <div class="parallax"><img src="http://gearpatrol.com/wp-content/uploads/2015/01/wuyishan-fujian-china-best-adventure-travel-gear-patrol.jpg"></div>
-</div> -->
+<div class="homepage-hero-module2">
+  <div id="homeSectionTwo">
+    <a><img class="arrowPic2" ng-click="scrollToSection(0)" src="http://i64.tinypic.com/j5ck8k.png"></a>
+    <p class="backHome">Back Home</p>
+  </div>
+  <div id="sectionTwoImage">
+    <img class="home2" src="http://i67.tinypic.com/k9ark8.png">
+  </div>
+</div>
