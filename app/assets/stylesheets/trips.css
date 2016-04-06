@@ -264,6 +264,10 @@ a:hover.tooltips span {
   width:100%;
 }
 
+#addPackingsSection, #currentPackingsSection {
+  width: 70%;
+}
+
 #currentFlightsSection, #currentExpensesSection, #currentHotelsSection {
   padding:0px;
 }
