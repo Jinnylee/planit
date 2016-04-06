@@ -60,34 +60,6 @@ app.controller('PackingsCtrl', ['$scope', '$http', '$auth', '$location','$routeP
     });
   };
 
-  $scope.newMessage = {};
-
-  $scope.addChat = function() {
-    $auth.validateUser().then(function(resp){
-      $scope.user = resp;
-    }).catch(function(resp){
-      console.log(resp);
-    });
-
-    $scope.newMessage.user_id = $scope.user.id
-
-    $http({
-      method:'POST',
-      url: '/trips/' + $routeParams.trip_id + '/chats',
-      data: {
-        chat: $scope.newMessage
-      }
-    }).then(function(resp){
-      getChats();
-      $scope.newMessage = {};
-    }, function(resp){
-      console.log("error");
-      console.log(resp);
-    });
-  };
-
-  getChats();
-
   getPackings();
 
 
