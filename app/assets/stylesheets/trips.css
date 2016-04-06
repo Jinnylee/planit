@@ -270,13 +270,14 @@ a#newFlightButton, a#newExpenseButton, #newHotelButton, #newActivitiesButton {
   height:100%;
   object-fit: contain;
   display:inline-block;
-  margin-top:2%;
+  margin-top:10%;
 
 }
 
 #hotelInformation {
   display:inline-block;
   padding-left:2%;
+  margin-top:2%;
 /*  margin-top:2%;*/
 }
 
