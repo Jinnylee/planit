@@ -136,10 +136,33 @@ a:hover.tooltips span {
   background: white;
 }
 
-#completedTrips {
+/*#completedTrips {
+  background:white;
   opacity: 0.90;
   width: 96%;
   margin-left: 2%;
+}*/
+#newTrip2 {
+  width: 92%;
+  left: 4%;
+  opacity:0.95;
+  margin:0 auto;
+  margin-top:2%;
+  padding:none;
+  text-align:center;
+}
+
+#completedTripHeader {
+  background:white;
+  color: #4c565e;
+  font-size: 24px;
+  padding: 0 10px 15px;
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+#completedTripHeader > h1 {
+  border-bottom: 2px solid #6caee0;
 }
 
 .currentUserName {

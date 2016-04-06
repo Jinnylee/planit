@@ -42,7 +42,8 @@
     </div>
 
     <div class="row" id="completedTrips">
-      <div class="form-title-row">
+      <form id="newTrip2" class="form-basic col-xs-12" ng-submit="addOrEditTrip()" autocomplete="off">
+      <div class="form-title-row" id="completedTripHeader">
         <h1>Completed Trips</h1>
       </div>
       <div ng-repeat="trip in trips" class="col-xs-12 each-trip">
@@ -54,6 +55,8 @@
         <div class="edit trip-btn edit-trip" ng-click="toggleEditMode(trip, $index)"><i class="fa fa-pencil-square-o fa-3x">&nbsp</i></div>
       </div>
     </div>
+      </form>
+
 
   </section>
 
