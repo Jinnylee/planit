@@ -36,6 +36,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
       method: 'GET',
       url: '/trips/' + $routeParams.trip_id + '/accommodations.json'
     }).then(function(resp){
+      console.log(resp)
       // $scope.accommodations = resp.data
       resp.data.forEach(function(obj){
         check_in = moment(obj.check_in).format('lll')
@@ -57,6 +58,16 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
       console.log("error");
       console.log(resp);
     });
+  };
+
+  $scope.formatLink = function (link) {
+    if (link == null) {
+      return "";
+    } else if (link.indexOf("http://") >= 0 || link.indexOf("https://") >= 0) {
+      return link;
+    } else {
+      return "http://" + link;
+    }
   };
 
   var extractNameList = function (accommodationSplits) {

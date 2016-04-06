@@ -22,7 +22,7 @@
             <div><span class="hotelLabel">Check in:</span>{{accommodation.check_in}}</div>
             <div><span class="hotelLabel">Check out:</span>{{accommodation.check_out}}</div>
             <div><span class="hotelLabel">Confirmation Number:</span>{{accommodation.confirmation_number}}</div>
-            <div><span class="hotelLabel">Link:</span>{{accommodation.link}}</div>
+            <div><span class="hotelLabel">Link:</span><a href="{{formatLink(accommodation.link)}}">{{formatLink(accommodation.link)}}</a></div>
             <div><span ng-repeat="accommodation_splits in accommodation.accommodation_splits"><span class="hotelLabel">Staying here:</span>{{accommodation_splits.user.name}}<br></span></div>
           </div>
           <div class="hotelIcons">
