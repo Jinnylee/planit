@@ -60,6 +60,12 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
     });
   };
 
+  $scope.stayingUsers = function(splits) {
+    return splits.map(function(split) {
+      return split.user.name;
+    }).join(" | ");
+  };
+
   $scope.formatLink = function (link) {
     if (link == null) {
       return "";

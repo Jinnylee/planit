@@ -19,6 +19,17 @@
  *= require_self
  */
 
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: font-url('glyphicons-halflings-regular.eot');
+  src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+       font-url('glyphicons-halflings-regular.woff2') format('woff2'),
+       font-url('glyphicons-halflings-regular.woff') format('woff'),
+       font-url('glyphicons-halflings-regular.ttf') format('truetype'),
+       font-url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
 .main-content {
   margin-top: 80px;
   margin-left: 75px;
@@ -42,7 +53,7 @@
   margin-right: 2px;
   margin-top: 5px;
   position: fixed;
-  bottom: 5%;
+  bottom: 8%;
 }
 
 .message-box {
@@ -61,12 +72,38 @@
   margin: 20px;
   margin-bottom: 2px;
   margin-top:10px;
-  border: solid 0.1px navy;
+  // margin-right:20px;
+  border: solid 2.1px navy;
   border-radius: 10px;
+  font-size:16px;
 }
-
+.chat-area {
+  background-color:white;
+}
 .chat-open {
   position: fixed;
   bottom: 0;
   width: 305px;
+  background: darkturquoise;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  height: 50px;
+  width: 313px;
+}
+
+.chat-open:hover{
+  position: fixed;
+  bottom: 0;
+  width: 305px;
+  background: darkturquoise;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  height: 50px;
+  width:313px;
+}
+
+.chatUserName {
+  font-weight: bold;
 }

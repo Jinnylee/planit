@@ -3,7 +3,7 @@
   <div class="main-chat" ng-show="showChat">
 
     <div class="chat-box row">
-      <div class="col-xs-12 single-message" ng-repeat="chat in chats"><span>{{chat.user.name}}&nbsp;:&nbsp;</span> <span>&nbsp;{{chat.message}}</span></div>
+      <div class="col-xs-12 single-message" ng-repeat="chat in chats"><span class="chatUserName">{{chat.user.name}}&nbsp;:&nbsp;</span> <span>&nbsp;{{chat.message}}</span></div>
     </div>
 
     <div class="input-message row">
