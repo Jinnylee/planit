@@ -43,6 +43,8 @@ app.controller('MembersCtrl', ['$scope', '$location', '$routeParams', '$auth', '
     }).then(function(resp){
       console.log("invited new member")
       getMembers();
+      getPendingMembers();
+
       $scope.invitedmember = '';
     }, function(resp){
       console.log("error");
