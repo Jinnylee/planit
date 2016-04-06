@@ -30,3 +30,42 @@
   }
 }
 
+.main-chat {
+  height:100%;
+  overflow: auto;
+  background-color:white;
+  opacity:0.90;
+}
+
+.input-message {
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 5px;
+  position: fixed;
+  bottom: 5%;
+}
+
+.message-box {
+  width: 305px;
+  display: inline-block;
+}
+.enter-btn {
+  width: 305px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.single-message {
+  width: 305px;
+  padding:10px;
+  margin: 20px;
+  margin-bottom: 2px;
+  margin-top:10px;
+  border: solid 0.1px navy;
+  border-radius: 10px;
+}
+
+.chat-open {
+  position: fixed;
+  bottom: 0;
+}
