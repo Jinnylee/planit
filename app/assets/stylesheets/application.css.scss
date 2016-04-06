@@ -42,7 +42,7 @@
   margin-right: 2px;
   margin-top: 5px;
   position: fixed;
-  bottom: 5%;
+  bottom: 8%;
 }
 
 .message-box {
@@ -61,12 +61,36 @@
   margin: 20px;
   margin-bottom: 2px;
   margin-top:10px;
-  border: solid 0.1px navy;
+  // margin-right:20px;
+  border: solid 2.1px navy;
   border-radius: 10px;
+  font-size:16px;
 }
 
 .chat-open {
   position: fixed;
   bottom: 0;
   width: 305px;
+  background: darkturquoise;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  height: 50px;
+  width:311px;
+}
+
+.chat-open:hover{
+  position: fixed;
+  bottom: 0;
+  width: 305px;
+  background: darkturquoise;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  height: 50px;
+  width:311px;
+}
+
+.chatUserName {
+  font-weight: bold;
 }
