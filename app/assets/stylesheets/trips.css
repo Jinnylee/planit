@@ -40,7 +40,8 @@
 
 .main-content {
   background-image:url("http://gearpatrol.com/wp-content/uploads/2015/01/marquette-michigan-best-adventure-travel-gear-patrol-.jpg");
-  background-size:100%;
+  background-size:cover;
+  background-repeat: no-repeat;
 }
 
 /*FORMS*/
@@ -132,7 +133,8 @@ a:hover.tooltips span {
   background-image:url("http://thewowstyle.com/wp-content/uploads/2015/01/beautiful-places.jpg");
   height:100vh;
   margin-top:-20px;
-  background-size:100%;
+  background-size:cover;
+  background-repeat: no-repeat;
 }
 
 .alltrips {

@@ -60,7 +60,8 @@
 .homepage-hero-module2 {
   background-image:url("http://hdwallpaperbackgrounds.net/wp-content/uploads/2015/07/Amazing-Travel-Wallpapers.jpg");
   height:100vh;
-  background-size:100%;
+  background-size:cover;
+  background-repeat: no-repeat;
 }
 
 img.home2 {
