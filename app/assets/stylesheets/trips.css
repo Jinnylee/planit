@@ -45,6 +45,9 @@
 
 /*FORMS*/
 
+#newTrip {
+  z-index:999;
+}
 #newTrip.form-basic {
   background-color:white;
   opacity:0.95;
