@@ -58,9 +58,14 @@
 
 /*SECTION TWO HOMEPAGE*/
 .homepage-hero-module2 {
-  background-image:url("http://i68.tinypic.com/15hbh54.jpg");
+  background-image:url("http://hdwallpaperbackgrounds.net/wp-content/uploads/2015/07/Amazing-Travel-Wallpapers.jpg");
   height:100vh;
   background-size:100%;
+}
+
+img.home2 {
+  margin-left: 25%;
+  margin-top: 5%;
 }
 
 .backHome {
@@ -137,13 +142,13 @@ button.btn.btn-primary {
 }
 
 .btn.btn-form.btn-lg {
-  background-color:#45bbff;
+  background-color:darkturquoise;
   color:white;
   margin-bottom:20px;
 }
 
 .btn.btn-danger.btn-lg {
-  background-color:#455eff;
+  background-color:#45bbff;
   color:white;
   border:none;
   margin-bottom:20px;
@@ -158,3 +163,4 @@ button.btn.btn-primary {
 .parallax-container {
   /*height: 100vh;*/
 }
+
