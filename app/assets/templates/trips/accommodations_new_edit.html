@@ -57,23 +57,35 @@
           </div>
         </div>
         <div class="add-accommodation-row form-group">
-          <div class="add-accommodation-row-label">
+          <div class="add-accommodation-row-label row">
             <h4>Check In</h4>
           </div>
-          <div class="add-accommodation-row-content">
-            <datepicker>
-              <input class="form-control" ng-model="newAccommodation.check_in" placeholder="Check in" type="text"/>
-            </datepicker>
-          </div>
-        </div>
+          <div class="add-accommodation-row-content row">
+            <div class='col-sm-6'>
+              <div class="form-group">
+                <div class='input-group' id='datetimepicker1'>
+                  <input type='text' class="form-control" id="check-in-date"/>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
         <div class="add-accommodation-row form-group">
-          <div class="add-accommodation-row-label">
+          <div class="add-accommodation-row-label row">
             <h4>Check Out</h4>
           </div>
-          <div class="add-accommodation-row-content">
-            <datepicker>
-              <input class="form-control" ng-model="newAccommodation.check_out" placeholder="Check out" type="text"/>
-            </datepicker>
+          <div class="add-accommodation-row-content row">
+            <div class='col-sm-6'>
+              <div class="form-group">
+                <div class='input-group' id='datetimepicker2'>
+                  <input type='text' class="form-control" id="check-out-date"/>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -84,5 +96,5 @@
       </form>
   </div>
 
-  <div class="col-xs-12 col-sm-4">Chat</div>
+  <chat-box></chat-box>
 </div>

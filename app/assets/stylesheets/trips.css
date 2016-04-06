@@ -55,7 +55,7 @@
   text-align:center;
 }
 
-form#newTrip < .form-basic .form-row {
+form#newTrip > .form-basic .form-row {
   text-align:center;
 }
 
@@ -164,7 +164,7 @@ a:hover.tooltips span {
   color:white;
   float: right;
   margin-right:8%;
-  margin-top:2%;
+  margin-top:1.6%;
   height: 35px;
   width: 80px;
   border:none;
@@ -186,6 +186,10 @@ a:hover.tooltips span {
   padding-left:1%;
 }
 
+.tripInfoStart {
+  font-size: 15px;
+}
+
 .tripInfoHeader4 {
   color:#45bbff;
   display:inline-block;
@@ -205,6 +209,18 @@ a:hover.tooltips span {
   padding-bottom:2%;
   margin-left:3%;
   width:100%;
+}
+
+.delete-trip {
+  margin-top: 2px;
+}
+
+.edit-trip {
+  margin-top: 4px;
+}
+
+.input-add {
+  margin-bottom: 15px;
 }
 
 /*FLIGHTS PAGE*/
@@ -315,6 +331,7 @@ td.expenseEditIcon {
   float:right;
   right:50px;
 }
+
 /*FLIGHTS EDIT PAGE*/
 /*
 This is for the form - adding a new flight*/

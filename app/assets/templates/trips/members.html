@@ -20,7 +20,7 @@
           </thead>
           <tbody>
             <tr id="currentMembersTable" ng-repeat="pending_member in pending_members">
-              <td>{{ pending_members.email }}</td>
+              <td>{{ pending_member.email }}</td>
             </tr>
           </tbody>
         </table>
@@ -51,8 +51,8 @@
             <tr id="currentMembersTable" ng-repeat="member in members">
               <td>{{ member.name }}</td>
               <td>{{ member.email }}</td>
-              <!-- <td><button class="btn btn-primary" ng-click="deleteMember(member.id, $index)">Exit Group</button></td> -->
-            </tr>
+<!--               <td><button class="btn btn-primary" ng-click="deleteMember(member.id, $index)">Exit Group</button></td>
+ -->            </tr>
           </tbody>
         </table>
       </div>
@@ -60,5 +60,5 @@
 
   </div>
 
-  <div class="col-xs-12 col-sm-4">Chat</div>
+  <chat-box></chat-box>
 </div>

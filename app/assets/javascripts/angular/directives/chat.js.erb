@@ -1,0 +1,7 @@
+app.directive('chatBox', function(){
+  return {
+    restrict: 'E',
+    templateUrl: "<%= asset_path('partials/chat.html') %>",
+    controller: "ChatboxCtrl"
+  };
+});

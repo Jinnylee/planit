@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'members/join_by_hash', to: 'members#join_by_hash'
   get 'trips/:trip_id/members/pending', to: 'members#pending'
   get  'trips/:trip_id/users', to: 'trips#get_users'
+  get 'trips/:trip_id/sidebar', to: 'trips#get_specific_trip'
 
   get 'trips/:trip_id/chats', to: 'chats#index'
   post 'trips/:trip_id/chats', to: 'chats#create'

@@ -1,9 +1,8 @@
-app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', function($scope, $http, $auth, $location, $routeParams){
+app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeParams', 'TripService', function($scope, $http, $auth, $location, $routeParams, TripService){
   $scope.trip_id = $routeParams.trip_id;
 
   $scope.logout = function () {
     $auth.signOut().then(function(resp) {
-      console.log(resp, "logged out!");
       $location.path('/');
     }).catch(function(resp) {
       console.log(resp);
@@ -11,37 +10,41 @@ app.controller('SidebarCtrl', ['$scope', '$http', '$auth', '$location', '$routeP
   };
 
   $auth.validateUser().then(function(resp){
-    console.log(resp);
     $scope.user = resp;
     $scope.currentuser = resp.name;
   }).catch(function(resp){
-    console.log(resp);
     $location.path('/');
   });
 
+  var setTrip = function (obj) {
+    var start_date = moment(obj.start_date).format('MM/DD/YYYY')
+    var end_date = moment(obj.end_date).format('MM/DD/YYYY')
+    $scope.trips = {
+      start_date: start_date,
+      end_date: end_date,
+      location: obj.location,
+      title: obj.title,
+      id: obj.id
+    };
+  }
 
   var getTrips = function() {
-    $http({
-      method: 'GET',
-      url: 'http://localhost:3000/trips.json'
-   }).then(function(resp){
-    console.log("showing trips!");
-    console.log(resp.data);
-    var obj = resp.data[0];
-      start_date = moment(obj.start_date).format('MM/DD/YYYY')
-      end_date = moment(obj.end_date).format('MM/DD/YYYY')
-      $scope.trips = {
-        start_date: start_date,
-        end_date: end_date,
-        location: obj.location,
-        title: obj.title,
-        id: obj.id
-      };
-      console.log($scope.trips);
-   }, function(resp){
-    console.log("error");
-    console.log(resp);
-   });
+    if (TripService.tripObj && $routeParams.trip_id == TripService.tripObj.id) {
+      var obj = TripService.tripObj;
+      setTrip(obj);
+    } else {
+      $http({
+        method: 'GET',
+        url: '/trips/' + $routeParams.trip_id + '/sidebar.json'
+      }).then(function(resp){
+        var obj = resp.data;
+        TripService.tripObj = obj;
+        setTrip(obj);
+      }, function(resp){
+        console.log("error");
+        console.log(resp);
+      });
+    }
   };
 
   getTrips();

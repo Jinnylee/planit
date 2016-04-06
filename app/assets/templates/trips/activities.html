@@ -12,24 +12,25 @@
     </section>
 
   <!-- Nav tabs -->
-  <section id="currentActivitiesSection" class="col-xs-12">
-    <uib-tabset active="active" id="activeTab">
-      <uib-tab id="otherActivityTabs" ng-repeat="date in datesArr" heading="{{date[0] | date:'MMM dd, EEE' }}">
-        <div ng-repeat="activity in date[1]" class="well">
-          <div class="well">
-            <div><span class="activityTitle">{{activity.title}}<span></div>
-            <div><span class="activityLabel">Description:</span>{{activity.description}}</div>
-            <div><span class="activityLabel">Time:</span>{{activity.time}}</div>
-            <div><span class="activityLabel">Location:</span>{{activity.location}}</div>
-            <div><span class="activityLabel">Price:</span>{{activity.price | currency}}</div>
-            <div><span class="activityLabel">Link:</span><a href="http://{{activity.link}}">{{activity.link}}</a></div>
+    <section id="currentActivitiesSection" class="col-xs-12">
+      <uib-tabset active="active" id="activeTab">
+        <uib-tab id="otherActivityTabs" ng-repeat="date in datesArr" heading="{{date[0] | date:'MMM dd, EEE' }}">
+          <div ng-repeat="activity in date[1]" class="well">
+            <div class="well">
+              <div><span class="activityTitle">{{activity.title}}</span></div>
+              <div><span class="activityLabel">Description:</span>{{activity.description}}</div>
+              <div><span class="activityLabel">Time:</span>{{activity.time}}</div>
+              <div><span class="activityLabel">Location:</span>{{activity.location}}</div>
+              <div><span class="activityLabel">Price:</span>{{activity.price | currency}}</div>
+              <div><span class="activityLabel">Link:</span><a href="http://{{activity.link}}">{{activity.link}}</a></div>
+            </div>
           </div>
-        </div>
-      </uib-tab>
-    </uib-tabset>
-  </section>
+        </uib-tab>
+      </uib-tabset>
+    </section>
+  </div>
 
-  <div class="col-xs-12 col-sm-4">Chat</div>
+  <chat-box></chat-box>
 </div>
         <!-- <div ng-repeat="activity in activities" class="well"> -->
 

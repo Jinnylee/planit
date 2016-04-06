@@ -1,1 +1,31 @@
-// var myDataRef = new Firebase('https://cy6o8hnqrow.firebaseio-demo.com/');
+app.controller('ChatboxCtrl', ['$scope', '$http', '$auth', '$location','$routeParams', function($scope, $http, $auth, $location, $routeParams){
+
+  $scope.newMessage = {};
+
+  $scope.addChat = function() {
+    $auth.validateUser().then(function(resp){
+      $scope.user = resp;
+    }).catch(function(resp){
+      console.log(resp);
+    });
+
+    $scope.newMessage.user_id = $scope.user.id
+
+    $http({
+      method:'POST',
+      url: '/trips/' + $routeParams.trip_id + '/chats',
+      data: {
+        chat: $scope.newMessage
+      }
+    }).then(function(resp){
+      getChats();
+      $scope.newMessage = {};
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
+  getChats();
+
+}]);
