@@ -1,5 +1,28 @@
 app.controller('ChatboxCtrl', ['$scope', '$http', '$auth', '$location','$routeParams', function($scope, $http, $auth, $location, $routeParams){
 
+  $scope.showChat = false;
+
+  $scope.trueChat = function() {
+    $scope.showChat = true;
+  };
+  $scope.falseChat = function() {
+    $scope.showChat = false;
+  }
+
+
+  $scope.chats = [];
+  var getChats = function() {
+    $http({
+      method: 'GET',
+      url: '/trips/' + $routeParams.trip_id + '/chats.json'
+    }).then(function(resp){
+      $scope.chats = resp.data;
+    }, function(resp){
+      console.log("error");
+      console.log(resp);
+    });
+  };
+
   $scope.newMessage = {};
 
   $scope.addChat = function() {

@@ -1,6 +1,24 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = true
+
+  # Change mail delvery to either :smtp, :sendmail, :file, :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "planithk.herokuapp.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"], # heroku config:set GMAIL_USERNAME=email
+    password: ENV["GMAIL_PASSWORD"]   # heroku config:set GMAIL_PASSWORD=password
+  }
+
+  # Specify what domain to use for mailer URLs
+  config.action_mailer.default_url_options = {host: "planithk.herokuapp.com"}
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
