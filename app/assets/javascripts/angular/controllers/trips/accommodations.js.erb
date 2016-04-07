@@ -163,7 +163,6 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
 
   $scope.editAccommodation = function(id, index) {
     $scope.newAccommodation.name_list = $scope.nameList;
-    // $scope.newAccommodation.name = $scope.newAccommodation.name.
     $scope.newAccommodation.check_in = moment($('#check-in-date').val()).format();
     $scope.newAccommodation.check_out = moment($('#check-out-date').val()).format();
 
@@ -176,6 +175,7 @@ app.controller('AccommodationsCtrl', ['$scope', '$http', '$auth', '$location','$
         accommodation: $scope.newAccommodation
       }
     }).then(function(resp){
+      console.log(resp)
       $location.path('/trips/' + $routeParams.trip_id + '/accommodations');
     }, function(resp){
       console.log("error");
